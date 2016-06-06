@@ -1,4 +1,4 @@
-Schema Creator by Raven [![Build Status](https://travis-ci.org/raventools/schema-creator.svg?branch=master)](https://travis-ci.org/raventools/schema-creator)
+Sailenseo by Shiva Acharjee 
 ========================
 
 Provides an easy to use form to embed properly constructed schema.org microdata into a WordPress post or page.
@@ -7,26 +7,25 @@ Installation
 --------------
 This section describes how to install the plugin and get it working.
 
-1. Upload `schema-creator` to the `/wp-content/plugins/` directory.
+1. Upload `Sailenseo` to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 Frequently Asked Questions
 --------------------------
 ### How does this all work?
-The Schema Creator plugin places an icon above the Post/Page rich text editor (next to the Add Media icon). Click on the icon to select a supported schema, fill in the form, and then insert it into your page/post. The plugin uses shortcode, so you can easily edit the schema after you create it. There are additional options on the Schema Creator Settings page.
+Updating soon.
 
 ### Can I test the output to see how the search engine will view it?
-Yes, although there is no guarantee that it will indeed show up that way. Google offers a [Rich Snippet Testing tool](http://www.google.com/webmasters/tools/richsnippets "Google Rich Snippet Test") to review.
-
+Updating sonn..
 ### I have a problem. Where do I go?
-This plugin is also maintained on [GitHub](https://github.com/raventools/schema-creator/ "Schema Creator on GitHub"). The best place to post questions / issues / bugs / enhancement requests is on the [issues page](https://github.com/raventools/schema-creator/issues "Issues page for Schema Creator on GitHub") there.
+This plugin is also maintained on [GitHub](https://github.com/shivaacharjee/sailenseo/ "Sailenseo on GitHub"). The best place to post questions / issues / bugs / enhancement requests is on the [issues page](https://github.com/shivaacharjee/sailenseo/issues "Issues page for Sailenseo on GitHub") there.
 
 ### How can I use this in my own language?
 If your `locale` is not provided in the `/languages/` subfolder, you have to either wait or create your own language file. For example, you could use POEdit to open default.po and save it as your own locale and translate it.
 
 Screenshots
 --------------------------
-
+/*
 ![Screenshot](https://raw.github.com/raventools/schema-creator/master/screenshot-1.png)
 
 The plugin creates a Schema Creator icon above the rich text editor. Click the icon to create a new schema
@@ -73,3 +72,4 @@ Filters
 --------------
 - `raven_sc_default_settings` gets default settings values. Add filters to add more default settings. In conjunction with `raven_sc_register_settings`.
 - `raven_sc_admin_tooltip` gets the tooltips for admin pages. Add filters to add more tooltips. In conjunction with `raven_sc_register_settings`.
+*/
