@@ -1,0 +1,14 @@
+#folder of things
+_stuff
+
+#screenshots
+/*.png
+
+#potmaker
+makepot.bat
+
+#docs
+docs/
+
+#composer
+vendor/
