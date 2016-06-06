@@ -22,10 +22,10 @@ This plugin is also maintained on [GitHub](https://github.com/shivaacharjee/sail
 
 ### How can I use this in my own language?
 If your `locale` is not provided in the `/languages/` subfolder, you have to either wait or create your own language file. For example, you could use POEdit to open default.po and save it as your own locale and translate it.
-
+[](
 Screenshots
 --------------------------
-/*
+
 ![Screenshot](https://raw.github.com/raventools/schema-creator/master/screenshot-1.png)
 
 The plugin creates a Schema Creator icon above the rich text editor. Click the icon to create a new schema
@@ -72,4 +72,4 @@ Filters
 --------------
 - `raven_sc_default_settings` gets default settings values. Add filters to add more default settings. In conjunction with `raven_sc_register_settings`.
 - `raven_sc_admin_tooltip` gets the tooltips for admin pages. Add filters to add more tooltips. In conjunction with `raven_sc_register_settings`.
-*/
+)
