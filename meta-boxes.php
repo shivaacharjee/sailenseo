@@ -7,15 +7,35 @@ function sailen_metaboxes( array $meta_boxes ) {
  	
 	$meta_boxes[] = array(
 		'id'         => 'review_metabox',
-		'title'      => __('Configure Rich Snippet','rich-snippets'),
+		'title'      => __('Sailenseo: Configure Rich Snippet, Social Share and Meta-Tags','rich-snippets'),
 		'pages'      => $post_types, //array( 'post','page' ), // Custom Post types
 		'context'    => 'normal',
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
 		'fields'     => array(
+
 			array(
-				'name'    => __('','rich-snippets'),
-				'desc'    => __('','rich-snippets'),
+				'name' => __('Meta&nbsp;Keywords ','rich-snippets'),
+				'desc' => __('Enter the keywords seperated by &#145 &#44 &#145 which best describe your contents. Maximum (5)','rich-snippets'),
+				'id'   => $prefix . 'meta_keywords',
+				'class' => 'meta_keywords',
+				'type' => 'text',
+			),		
+
+
+
+			array(
+				'name' => __('Meta&nbsp;Description ','rich-snippets'),
+				'desc' => __('Enter the description which best describe your contents','rich-snippets'),
+				'id'   => $prefix . 'meta_descriptions',
+				'class' => 'meta_descriptions',
+				'type' => 'textarea',
+			),		
+
+
+			array(
+				'name'    => __('Rich Snippets','rich-snippets'),
+				'desc'    => __('Rich Snippets is the term used to describe structured data markup that site operators can add to their existing HTML, which in turn allow search engines to better understand what information is contained on each web page','rich-snippets'),
 				'id'      => $prefix . 'post_type',
 				'class'   => 'snippet-type',
 				'type'    => 'select',
@@ -35,6 +55,15 @@ function sailen_metaboxes( array $meta_boxes ) {
 
 				),
 			),
+
+
+
+
+	
+
+
+
+
 			// Meta Settings for Item Review		
 			array(
 				'name' => __('Rich Snippets - Item Review','rich-snippets'),
