@@ -7,30 +7,42 @@ function sailen_metaboxes( array $meta_boxes ) {
  	
 	$meta_boxes[] = array(
 		'id'         => 'review_metabox',
-		'title'      => __('Sailenseo: Configure Rich Snippet and Meta-Tags','rich-snippets'),
+		'title'      => __('Sailenseo: Configure your contents for better search results','rich-snippets'),
 		'pages'      => $post_types, //array( 'post','page' ), // Custom Post types
 		'context'    => 'normal',
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
 		'fields'     => array(
 
-			array(
-				'name' => __('Meta&nbsp;Keywords ','rich-snippets'),
-				'desc' => __('Enter the keywords seperated by &#145 &#44 &#145 which best describe your contents. Maximum (5)','rich-snippets'),
-				'id'   => $prefix . 'meta_keywords',
-				'class' => 'meta_keywords',
+			 
+
+	array(
+				'name' => __('Facebook&#47G&#43 Title','rich-snippets'),
+				'desc' => __('If you don&#144t want to use the post title for sharing the post on Facebook and G&#43 but instead want another title there, write it here.','rich-snippets'),
+				'id'   => $prefix . 'og_title',
+				'class' => 'sailen_og_title',
 				'type' => 'text',
-			),		
+				),	
 
-
-
-			array(
-				'name' => __('Meta&nbsp;Description ','rich-snippets'),
-				'desc' => __('Enter the description which best describe your contents','rich-snippets'),
+	
+	array(
+				'name' => __('Facebook&#47G&#43 Description','rich-snippets'),
+				'desc' => __('If you don&#144t want to use the meta description for sharing the post on Facebook and G&#43 but want another description there, write it here.','rich-snippets'),
 				'id'   => $prefix . 'meta_descriptions',
-				'class' => 'meta_descriptions',
+				'class' => 'sailen_og_description',
 				'type' => 'textarea',
 			),		
+
+		array(
+				'name' => __('Facebook&#47G&#43 Featured image','rich-snippets'),
+				'desc' => __('If you want to override the image used on Facebook and G&#43 for this post, upload &#147 choose an image or add the URL here. The recommended image size for Facebook is 1200 × 630px.','rich-snippets'),
+				'id'   => $prefix . 'meta_descriptions',
+				'class' => 'sailen_og_image',
+				'type' => 'file',
+			),		
+
+
+			
 
 
 			array(
@@ -54,13 +66,11 @@ function sailen_metaboxes( array $meta_boxes ) {
 					array( 'name' => __('Service','rich-snippets'), 'value' => '11', ),
 
 				),
+
 			),
 
 
-
-
-	
-
+		
 
 
 
