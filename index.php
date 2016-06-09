@@ -4,7 +4,7 @@ Plugin Name: Salenseo
 Plugin URI: https://github.com//shivaacharjee/sailenseo
 Author: Shiva Acharjee
 Author URI: https://www.shivaacharjee.com
-Description: One sollution to perect your blog searches
+Description: One sollution to perfect your blog searches
 Version: 1.4.0
 Text Domain: Sailenseo
 License: GPL2
