@@ -7,7 +7,7 @@ function sailen_metaboxes( array $meta_boxes ) {
  	
 	$meta_boxes[] = array(
 		'id'         => 'review_metabox',
-		'title'      => __('Sailenseo: Configure Rich Snippet, Social Share and Meta-Tags','rich-snippets'),
+		'title'      => __('Sailenseo: Configure Rich Snippet and Meta-Tags','rich-snippets'),
 		'pages'      => $post_types, //array( 'post','page' ), // Custom Post types
 		'context'    => 'normal',
 		'priority'   => 'high',
