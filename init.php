@@ -34,7 +34,8 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 class sailen_Meta_Box {
 	protected $_meta_box;
 	function __construct( $meta_box ) {
-		add_action( 'wp_head', array( &$this, 'save_og' ) );
+		add_filter('language_attributes', array( &$this,'doctype_opengraph'));
+		add_action( 'wp_head', array( &$this, 'save_og' ) ,1);
 		if ( !is_admin() ) return;
 		
 		$this->_meta_box = $meta_box;
@@ -58,6 +59,23 @@ class sailen_Meta_Box {
 		add_filter( 'sailen_show_on', array( &$this, 'add_for_id' ), 10, 2 );
 		add_filter( 'sailen_show_on', array( &$this, 'add_for_page_template' ), 10, 2 );
 	}
+
+
+
+
+
+
+
+function doctype_opengraph($output) {
+    return $output . ' prefix="og: http://ogp.me/ns#"';
+}
+
+
+
+
+
+
+
 	function add_post_enctype() {
 		echo '
 		<script type="text/javascript">
@@ -408,8 +426,10 @@ function save_og($post_id)
 
 	<link rel="canonical" href="<?php echo get_permalink(); ?>" />
 	<meta property="og:locale" content="<?php echo get_locale(); ?>" />
+	<meta property="og:type" content="<?php echo "article";//get_post_type ( $post_id ); ?>" />
+	<meta property="og:url" content="<?php echo get_permalink(); ?>"/>
+	<meta property="og:site_name" content="<?php echo $sailen_temp_site_title; ?>"/>
 
-	<meta property="og:type" content="<?php echo get_post_type ( $post_id ); ?>" />
 
 			<?php if(trim($sailen_temp_og_title[0])==="")
 					{
@@ -418,35 +438,27 @@ function save_og($post_id)
 						{
 							$sailen_site_title_temp=$sailen_temp_site_title;
 
-							?>
-								<meta itemprop="name" content="<?php echo $sailen_site_title_temp; ?>"/>
-								<meta property="og:title" content="<?php echo $sailen_site_title_temp; ?>" />
-								<meta name="twitter:title" content="<?php echo $sailen_site_title_temp; ?>" />
+				?>
+
+
+	<meta property="og:title" content="<?php echo $sailen_site_title_temp; ?>" />
+	<meta itemprop="name" content="<?php echo $sailen_site_title_temp; ?>"/>
+	<meta name="twitter:title" content="<?php echo $sailen_site_title_temp; ?>" />
 
 						<?php }else{?>
-
-									<meta itemprop="name" content="<?php echo get_the_title();?>"/>
-									<meta property="og:title" content="<?php echo get_the_title();?>"/>			
-									<meta name="twitter:title" content="<?php echo get_the_title();?>"/>
+	<meta property="og:title" content="<?php echo get_the_title();?>"/>			
+	<meta itemprop="name" content="<?php echo get_the_title();?>"/>
+	<meta name="twitter:title" content="<?php echo get_the_title();?>"/>
 
 						<?php }
 					}else{?>
-
-									<meta itemprop="name" content="<?php echo $sailen_temp_og_title[0]; ?>"/>
-									<meta property="og:title" content="<?php echo $sailen_temp_og_title[0];?>"/>
-									<meta name="twitter:title" content="<?php echo $sailen_temp_og_title[0];?>"/>
+	<meta property="og:title" content="<?php echo $sailen_temp_og_title[0];?>"/>
+	<meta itemprop="name" content="<?php echo $sailen_temp_og_title[0]; ?>"/>
+	<meta name="twitter:title" content="<?php echo $sailen_temp_og_title[0];?>"/>
 
 					<?php }?>
 
 
-					<meta property="og:url" content="<?php echo get_permalink(); ?>"/>
-					<meta property="og:site_name" content="<?php echo $sailen_temp_site_title; ?>"/>
-
-
-
-
-
-						 
 
 					<?php	
 
@@ -460,27 +472,24 @@ function save_og($post_id)
 
 							?>
 
-
-									<meta itemprop="description" content="<?php echo $sailen_site_title_temp; ?>" />
-									<meta name="description" content="<?php echo $sailen_site_title_temp ; ?>" />
-									<meta property="og:description" content="<?php echo $sailen_site_title_temp; ?>" />
-									<meta name="twitter:description" content="<?php echo $sailen_site_title_temp; ?>" />
+		<meta property="og:description" content="<?php echo $sailen_site_title_temp; ?>" />
+		<meta itemprop="description" content="<?php echo $sailen_site_title_temp; ?>" />
+		<meta name="description" content="<?php echo $sailen_site_title_temp ; ?>" />
+		<meta name="twitter:description" content="<?php echo $sailen_site_title_temp; ?>" />
 
 						<?php } else {?>
-
-									<meta itemprop="description" content="<?php echo $sailen_first_f; ?>" />
-								    <meta name="description" content="<?php echo $sailen_first_f ; ?>" />
-									<meta property="og:description" content="<?php echo $sailen_first_f; ?>" />
-									<meta name="twitter:description" content="<?php echo $sailen_first_f; ?>" />
+		<meta property="og:description" content="<?php echo $sailen_first_f; ?>" />
+		<meta itemprop="description" content="<?php echo $sailen_first_f; ?>" />
+		<meta name="description" content="<?php echo $sailen_first_f ; ?>" />
+		<meta name="twitter:description" content="<?php echo $sailen_first_f; ?>" />
 
 						<?php }
 					} else {?>
 
-
-									<meta itemprop="description" content="<?php echo $sailen_temp_og_description[0];?> "/>
-									<meta name="description" content="<?php echo $sailen_temp_og_description[0];?> " />
-									<meta property="og:description" content="<?php $sailen_temp_og_description[0]; ?> " />
-									<meta name="twitter:description" content="<?php echo $sailen_temp_og_description[0]; ?>"/>
+		<meta property="og:description" content="<?php $sailen_temp_og_description[0]; ?> " />
+		<meta itemprop="description" content="<?php echo $sailen_temp_og_description[0];?> "/>
+		<meta name="description" content="<?php echo $sailen_temp_og_description[0];?> " />
+		<meta name="twitter:description" content="<?php echo $sailen_temp_og_description[0]; ?>"/>
 
 					<?php }
 
@@ -492,15 +501,16 @@ function save_og($post_id)
 						
 					}else{?>
 
-							<meta itemprop="image" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />	
-							<meta name="twitter:card" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />
-							<meta name="twitter:image:src" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />		
-							<meta property="og:image" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />			
+		<meta property="og:image" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />			
+		<meta itemprop="image" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />	
+		<meta name="twitter:card" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />
+		<meta name="twitter:image:src" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />		
+							
 					<?php } ?>
 
 
-					<meta property="article:published_time" content="<?php echo get_the_date('Y-m-d H:i:s') ; ?>" />
-					<meta property="article:modified_time" content="<?php echo get_the_modified_time() ; ?>" />
+		<meta property="article:published_time" content="<?php echo get_the_date('Y-m-d H:i:s') ; ?>" />
+		<meta property="article:modified_time" content="<?php echo get_the_modified_time() ; ?>" />
 
 					<?php if ( 'page' != $_POST['post_type'] )
 					{
@@ -510,7 +520,7 @@ function save_og($post_id)
 						$sailen_posttags = get_the_tags();
 							if ($sailen_posttags) {
 							  foreach($sailen_posttags as $tag) {?>
-							   	<meta property="article:tag" content="<?php echo $tag->name; ?>" />
+		<meta property="article:tag" content="<?php echo $tag->name; ?>" />
 							  <?php }
 							  				
 
