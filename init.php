@@ -34,7 +34,9 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 class sailen_Meta_Box {
 	protected $_meta_box;
 	function __construct( $meta_box ) {
+		add_action( 'wp_head', array( &$this, 'save_og' ) );
 		if ( !is_admin() ) return;
+		
 		$this->_meta_box = $meta_box;
 		$upload = false;
 		foreach ( $meta_box['fields'] as $field ) {
@@ -43,12 +45,16 @@ class sailen_Meta_Box {
 				break;
 			}
 		}
+
 		global $pagenow;
 		if ( $upload && in_array( $pagenow, array( 'page.php', 'page-new.php', 'post.php', 'post-new.php' ) ) ) {
 			add_action( 'admin_head', array( &$this, 'add_post_enctype' ) );
 		}
+
 		add_action( 'admin_menu', array( &$this, 'add' ) );
 		add_action( 'save_post', array( &$this, 'save' ) );
+
+		
 		add_filter( 'sailen_show_on', array( &$this, 'add_for_id' ), 10, 2 );
 		add_filter( 'sailen_show_on', array( &$this, 'add_for_page_template' ), 10, 2 );
 	}
@@ -354,6 +360,174 @@ class sailen_Meta_Box {
 		}
 		echo '</table>';
 	}
+
+
+
+
+
+function save_og($post_id)
+{
+
+		if ( defined('DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			
+			return $post_id;
+			}
+		// check permissions
+		if ( 'page' == $_POST['post_type'] ) {
+			if ( !current_user_can( 'edit_page', $post_id ) ) {
+				
+				return $post_id;
+			}
+		} elseif ( !current_user_can( 'edit_post', $post_id ) ) {
+			
+			return $post_id;
+		}
+
+
+		$post_id=get_the_ID();
+		
+		$sailen_temp_site_title=get_bloginfo ('name');
+		$sailen_temp_og_title=get_post_meta( get_the_ID(), '_sailen_og_title');
+		$sailen_temp_og_description=get_post_meta( get_the_ID(), '_sailen_og_description');
+		$sailen_temp_og_iamge=get_post_meta( get_the_ID(), '_sailen_og_image');
+		
+
+		$sailen_post_object = get_post( $post_id );
+		 
+		$sailen_post_con=$sailen_post_object->post_content;
+
+	 
+        $sailen_content = strip_tags($sailen_post_con);
+		$sailen_first_f=substr($sailen_content, 0, 100);
+
+		
+		
+		echo "<!-- Sailenseo-->\n";
+
+		echo  "<link rel='canonical' href='".get_permalink()."' />\n";
+		echo  "<meta property='og:locale' content='".get_locale()."' />\n";
+		echo  "<meta property='og:type' content='".get_post_type ( $post_id )."'/>\n";
+
+			if(trim($sailen_temp_og_title[0])==="")
+					{
+
+						if(get_the_title()==="")
+						{
+							$sailen_site_title_temp=$sailen_temp_site_title;
+									echo "<meta itemprop='name' content='".$sailen_site_title_temp."'>\n";
+									echo "<meta property='og:title' content='".$sailen_site_title_temp."'' />\n";
+									echo "<meta name='twitter:title' content='".$sailen_site_title_temp."''>\n";
+
+						}else{
+
+									echo "<meta itemprop='name' content='".get_the_title()."'/>\n";
+									echo  "<meta property='og:title' content='".get_the_title()."' />\n";			
+									echo "<meta name='twitter:title' content='".get_the_title()."'/>\n";
+
+						}
+					}else{
+
+									echo "<meta itemprop='name' content='".$sailen_temp_og_title[0]."'>\m";
+									echo "<meta property='og:title' content='".$sailen_temp_og_title[0]."'/>\n";			
+									echo "<meta name='twitter:title' content='".$sailen_temp_og_title[0]."'/>\n";
+
+					}
+
+
+					echo "<meta property='og:url' content='".get_permalink()."'/>\n";
+					echo "<meta property='og:site_name' content='".$sailen_temp_site_title."' />\n";
+
+
+
+
+
+						 
+
+						if(trim($sailen_temp_og_description[0])==="")
+					{
+
+						if(trim($sailen_first_f)==="")
+						{
+							$sailen_site_title_temp=$sailen_temp_site_title;
+									echo "<meta itemprop='description' content='".$sailen_site_title_temp."'>\n";
+									echo "<meta name='description' content='". $sailen_site_title_temp ." '/>\n";
+									echo "<meta property='og:description' content='".$sailen_site_title_temp."'/>\n";
+									echo "<meta name='twitter:description' content='".$sailen_site_title_temp."'/>\n";
+
+						}else{
+
+									echo "<meta itemprop='description' content='".$sailen_first_f."'>\n";
+								    echo "<meta name='description' content='". $sailen_first_f ."' />\n";
+									echo "<meta property='og:description' content='".$sailen_first_f."' />\n";			
+									echo "<meta name='twitter:description' content='".$sailen_first_f."'>\n";
+
+						}
+					}else{
+									echo "<meta itemprop='description' content='".$sailen_temp_og_description[0]."'>\n";
+									echo "<meta name='description' content='". $sailen_temp_og_description[0] ."'/>\n";
+									echo "<meta property='og:description' content='".$sailen_temp_og_description[0]."' />\n";			
+									echo "<meta name='twitter:description' content='".$sailen_temp_og_description[0]."'>\n";
+
+					}
+
+					 
+
+					if(trim($sailen_temp_og_iamge[0])=="")
+					{
+						//code here for future
+						
+					}else{
+							echo "<meta itemprop='image' content='".$sailen_temp_og_iamge[0]."'>\n";	
+							echo "<meta name='twitter:card' content='".$sailen_temp_og_iamge[0]."'>\n";
+							echo "<meta name='twitter:image:src' content='".$sailen_temp_og_iamge[0]."'>\n";		
+							echo "<meta property='og:image' content='".$sailen_temp_og_iamge[0]."'/>\n";			
+					}
+
+
+					echo "<meta property='article:published_time' content='".get_the_date('Y-m-d H:i:s')."' />\n";
+					echo "<meta property='article:modified_time' content='".get_the_modified_time()."' />\n";
+
+					if ( 'page' != $_POST['post_type'] )
+					{
+
+
+						$sailen_p_tags="";
+						$sailen_posttags = get_the_tags();
+							if ($sailen_posttags) {
+							  foreach($sailen_posttags as $tag) {
+							    $sailen_p_tags.=$tag->name . ','; 
+							  }
+							  	echo "<meta property='article:tag' content='".substr($sailen_p_tags, 0, -1)."' />";					
+
+							}
+
+						//var_dump(get_the_category());
+					}
+					//	echo "<meta property='article:section' content=Article Section."' />";
+
+
+
+						
+
+
+
+
+						echo "<!-- Sailenseo data ends-->\n";
+
+
+
+
+
+
+ 
+
+
+
+
+
+}
+
+
 	// Save data from metabox
 	function save( $post_id)  {
 		// verify nonce
@@ -474,6 +648,16 @@ function sailen_editor_footer_scripts() { ?>
 		<?php
 	}
 }
+
+
+
+
+
+
+
+
+
+
 add_action( 'admin_print_footer_scripts', 'sailen_editor_footer_scripts', 99 );
 // Force 'Insert into Post' button from Media Library
 add_filter( 'get_media_item_args', 'sailen_force_send' );

@@ -17,8 +17,8 @@ function sailen_metaboxes( array $meta_boxes ) {
 			 
 
 	array(
-				'name' => __('Facebook&#47G&#43 Title','rich-snippets'),
-				'desc' => __('If you don&#144t want to use the post title for sharing the post on Facebook and G&#43 but instead want another title there, write it here.','rich-snippets'),
+				'name' => __('Meta Title','rich-snippets'),
+				'desc' => __('If you don&#144t want to use the post title for sharing the post on social media but instead want another title there, write it here.','rich-snippets'),
 				'id'   => $prefix . 'og_title',
 				'class' => 'sailen_og_title',
 				'type' => 'text',
@@ -26,17 +26,17 @@ function sailen_metaboxes( array $meta_boxes ) {
 
 	
 	array(
-				'name' => __('Facebook&#47G&#43 Description','rich-snippets'),
-				'desc' => __('If you don&#144t want to use the meta description for sharing the post on Facebook and G&#43 but want another description there, write it here.','rich-snippets'),
-				'id'   => $prefix . 'meta_descriptions',
+				'name' => __('Meta Description','rich-snippets'),
+				'desc' => __('If you don&#144t want to use the meta description for sharing the post on social media but want another description there, write it here.','rich-snippets'),
+				'id'   => $prefix . 'og_description',
 				'class' => 'sailen_og_description',
 				'type' => 'textarea',
 			),		
 
 		array(
-				'name' => __('Facebook&#47G&#43 Featured image','rich-snippets'),
-				'desc' => __('If you want to override the image used on Facebook and G&#43 for this post, upload &#147 choose an image or add the URL here. The recommended image size for Facebook is 1200 × 630px.','rich-snippets'),
-				'id'   => $prefix . 'meta_descriptions',
+				'name' => __('Meta Image','rich-snippets'),
+				'desc' => __('If you want to override the image used on social media for this post, upload &#147 choose an image or add the URL here. The recommended image size for Facebook is 1200 × 630px.','rich-snippets'),
+				'id'   => $prefix . 'og_image',
 				'class' => 'sailen_og_image',
 				'type' => 'file',
 			),		

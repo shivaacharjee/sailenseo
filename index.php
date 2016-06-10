@@ -20,9 +20,9 @@ License: GPL2
     You should have received a copy of the GNU General Public License
     along with this program.
 */
-if ( !class_exists( "RichSnippets" ) )
+if ( !class_exists( "Sailenseo" ) )
 {
-	class RichSnippets
+	class Sailenseo
 	{
 		function __construct() // Constructor
 		{
@@ -42,9 +42,9 @@ if ( !class_exists( "RichSnippets" ) )
 			add_action( 'admin_enqueue_scripts', array( $this, 'post_new_enqueue') );
 			$plugin = plugin_basename(__FILE__);
 			add_filter("plugin_action_links_$plugin", array( $this,'sailen_settings_link') );
-			add_action( 'wp_ajax_sailen_submit_request', array( $this, 'submit_request') );
+			add_action( 'wp_ajax_sailen_submit_request', array( $this, 'sailen_submit_request') );
 
-			add_action( 'wp_ajax_sailen_submit_color', array( $this, 'submit_color') );
+			add_action( 'wp_ajax_sailen_submit_color', array( $this, 'sailen_submit_color') );
 			// Admin bar menu
 			add_action( 'admin_bar_menu', array( $this, "aiosrs_admin_bar" ),100 );
 		}
@@ -71,7 +71,7 @@ if ( !class_exists( "RichSnippets" ) )
 			$page = add_menu_page('Sailenseo Dashboard', 'Sailenseo', 'administrator', 'rich_snippet_dashboard', 'rich_snippet_dashboard', 'div');
 			//Call the function to print the stylesheets and javascripts in only this plugins admin area
 			add_action( 'admin_print_styles-' . $page, 'sailen_admin_styles' );
-			add_action('admin_print_scripts-' . $page, array( $this, 'iris_enqueue_scripts' ) );
+			add_action('admin_print_scripts-' . $page, array( $this, 'sailen_iris_enqueue_scripts' ) );
 		}
 		// Add settings link on plugin page
 		function sailen_settings_link($links) {
@@ -150,18 +150,18 @@ if ( !class_exists( "RichSnippets" ) )
 		}
 		function register_sailen_settings() {
 			require_once(plugin_dir_path( __FILE__ ).'settings.php');
-			add_review_option();
-			add_event_option();
-			add_person_option();
-			add_product_option();
-			add_recipe_option();
-			add_software_option();
-			add_video_option();
-			add_article_option();
-			add_service_option();
-			add_color_option();
+			sailen_add_review_option();
+			sailen_add_event_option();
+			sailen_add_person_option();
+			sailen_add_product_option();
+			sailen_add_recipe_option();
+			sailen_add_software_option();
+			sailen_add_video_option();
+			sailen_add_article_option();
+			sailen_add_service_option();
+			sailen_add_color_option();
 		}
-		function submit_request()
+		function sailen_submit_request()
 		{
 			$to = "Shiva Acharjee <contact@shivaacharjee.com>";
 			$from = $_POST['email'];
@@ -228,7 +228,7 @@ if ( !class_exists( "RichSnippets" ) )
 
 			die();
 		}
-		function submit_color()
+		function sailen_submit_color()
 		{
 
 			$snippet_box_bg = $_POST['snippet_box_bg'];
@@ -247,7 +247,7 @@ if ( !class_exists( "RichSnippets" ) )
 
 			die();
 		}
-		function iris_enqueue_scripts()
+		function sailen_iris_enqueue_scripts()
 		{
 				wp_enqueue_script( 'wp-color-picker' );
 				// load the minified version of custom script
@@ -281,7 +281,7 @@ if ( !class_exists( "RichSnippets" ) )
 	require_once(plugin_dir_path( __FILE__ ).'functions.php');
 	add_filter( 'sailen_meta_boxes', 'sailen_metaboxes' );
 // Instantiating the Class
-if (class_exists("RichSnippets")) {
-	$RichSnippets= new RichSnippets();
+if (class_exists("Sailenseo")) {
+	$Sailenseo= new Sailenseo();
 }
 ?>

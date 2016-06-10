@@ -1,6 +1,6 @@
 <?php
 // Function to add review option for settings
-function add_review_option()
+function sailen_add_review_option()
 {
 	$review_opt = array(
 		'review_title'	 =>	__('Summary','rich-snippets'),
@@ -13,7 +13,7 @@ function add_review_option()
 	add_option('sailen_review',$review_opt);
 }
 // Function to add event option for settings
-function add_event_option()
+function sailen_add_event_option()
 {
 	$event_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -29,7 +29,7 @@ function add_event_option()
 	add_option('sailen_event',$event_opt);
 }
 // Function to add person option for settings
-function add_person_option()
+function sailen_add_person_option()
 {
 	$person_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -43,7 +43,7 @@ function add_person_option()
 	add_option('sailen_person',$person_opt);
 }
 // Function to add product option for settings
-function add_product_option()
+function sailen_add_product_option()
 {
 	$product_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -57,7 +57,7 @@ function add_product_option()
 	add_option('sailen_product',$product_opt);
 }
 // Function to add recipe option for settings
-function add_recipe_option()
+function sailen_add_recipe_option()
 {
 	$recipe_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -73,7 +73,7 @@ function add_recipe_option()
 	add_option('sailen_recipe',$recipe_opt);
 }
 // Function to add software option for settings
-function add_software_option()
+function sailen_add_software_option()
 {	
 	$software_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -90,7 +90,7 @@ function add_software_option()
 	add_option('sailen_software',$software_opt);
 }
 // Function to add video option for settings
-function add_video_option()
+function sailen_add_video_option()
 {
 	$video_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -102,7 +102,7 @@ function add_video_option()
 	add_option('sailen_video',$video_opt);
 }
 // Function to add article option for settings
-function add_article_option()
+function sailen_dd_article_option()
 {
 	$article_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -117,7 +117,7 @@ function add_article_option()
 	add_option('sailen_article',$article_opt);
 }
 // Function to add article option for settings
-function add_service_option()
+function sailen_add_service_option()
 {
 	$service_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -133,7 +133,7 @@ function add_service_option()
 	add_option('sailen_service',$service_opt);
 }
 // Function for customization
-function add_color_option()
+function sailen_add_color_option()
 {
 	$color_opt = array(
 		'snippet_box_bg'	   =>	'#F5F5F5',
