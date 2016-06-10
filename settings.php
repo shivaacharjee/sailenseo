@@ -102,7 +102,7 @@ function sailen_add_video_option()
 	add_option('sailen_video',$video_opt);
 }
 // Function to add article option for settings
-function sailen_dd_article_option()
+function sailen_add_article_option()
 {
 	$article_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
