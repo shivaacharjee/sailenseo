@@ -402,40 +402,45 @@ function save_og($post_id)
 
 		
 		
-		echo "<!-- Sailenseo-->\n";
+		?>
 
-		echo  "<link rel='canonical' href='".get_permalink()."' />\n";
-		echo  "<meta property='og:locale' content='".get_locale()."' />\n";
-		echo  "<meta property='og:type' content='".get_post_type ( $post_id )."'/>\n";
+		<!-- Sailenseo-->
 
-			if(trim($sailen_temp_og_title[0])==="")
+	<link rel="canonical" href="<?php echo get_permalink(); ?>" />
+	<meta property="og:locale" content="<?php echo get_locale(); ?>" />
+
+	<meta property="og:type" content="<?php echo get_post_type ( $post_id ); ?>" />
+
+			<?php if(trim($sailen_temp_og_title[0])==="")
 					{
 
 						if(get_the_title()==="")
 						{
 							$sailen_site_title_temp=$sailen_temp_site_title;
-									echo "<meta itemprop='name' content='".$sailen_site_title_temp."'>\n";
-									echo "<meta property='og:title' content='".$sailen_site_title_temp."'' />\n";
-									echo "<meta name='twitter:title' content='".$sailen_site_title_temp."''>\n";
 
-						}else{
+							?>
+								<meta itemprop="name" content="<?php echo $sailen_site_title_temp; ?>"/>
+								<meta property="og:title" content="<?php echo $sailen_site_title_temp; ?>" />
+								<meta name="twitter:title" content="<?php echo $sailen_site_title_temp; ?>" />
 
-									echo "<meta itemprop='name' content='".get_the_title()."'/>\n";
-									echo  "<meta property='og:title' content='".get_the_title()."' />\n";			
-									echo "<meta name='twitter:title' content='".get_the_title()."'/>\n";
+						<?php }else{?>
 
-						}
-					}else{
+									<meta itemprop="name" content="<?php echo get_the_title();?>"/>
+									<meta property="og:title" content="<?php echo get_the_title();?>"/>			
+									<meta name="twitter:title" content="<?php echo get_the_title();?>"/>
 
-									echo "<meta itemprop='name' content='".$sailen_temp_og_title[0]."'>\m";
-									echo "<meta property='og:title' content='".$sailen_temp_og_title[0]."'/>\n";			
-									echo "<meta name='twitter:title' content='".$sailen_temp_og_title[0]."'/>\n";
+						<?php }
+					}else{?>
 
-					}
+									<meta itemprop="name" content="<?php echo $sailen_temp_og_title[0]; ?>"/>
+									<meta property="og:title" content="<?php echo $sailen_temp_og_title[0];?>"/>
+									<meta name="twitter:title" content="<?php echo $sailen_temp_og_title[0];?>"/>
+
+					<?php }?>
 
 
-					echo "<meta property='og:url' content='".get_permalink()."'/>\n";
-					echo "<meta property='og:site_name' content='".$sailen_temp_site_title."' />\n";
+					<meta property="og:url" content="<?php echo get_permalink(); ?>"/>
+					<meta property="og:site_name" content="<?php echo $sailen_temp_site_title; ?>"/>
 
 
 
@@ -443,32 +448,41 @@ function save_og($post_id)
 
 						 
 
-						if(trim($sailen_temp_og_description[0])==="")
+					<?php	
+
+					if(trim($sailen_temp_og_description[0])==="")
 					{
 
 						if(trim($sailen_first_f)==="")
 						{
-							$sailen_site_title_temp=$sailen_temp_site_title;
-									echo "<meta itemprop='description' content='".$sailen_site_title_temp."'>\n";
-									echo "<meta name='description' content='". $sailen_site_title_temp ." '/>\n";
-									echo "<meta property='og:description' content='".$sailen_site_title_temp."'/>\n";
-									echo "<meta name='twitter:description' content='".$sailen_site_title_temp."'/>\n";
+							$sailen_site_title_temp=$sailen_temp_site_title; 
 
-						}else{
 
-									echo "<meta itemprop='description' content='".$sailen_first_f."'>\n";
-								    echo "<meta name='description' content='". $sailen_first_f ."' />\n";
-									echo "<meta property='og:description' content='".$sailen_first_f."' />\n";			
-									echo "<meta name='twitter:description' content='".$sailen_first_f."'>\n";
+							?>
 
-						}
-					}else{
-									echo "<meta itemprop='description' content='".$sailen_temp_og_description[0]."'>\n";
-									echo "<meta name='description' content='". $sailen_temp_og_description[0] ."'/>\n";
-									echo "<meta property='og:description' content='".$sailen_temp_og_description[0]."' />\n";			
-									echo "<meta name='twitter:description' content='".$sailen_temp_og_description[0]."'>\n";
 
-					}
+									<meta itemprop="description" content="<?php echo $sailen_site_title_temp; ?>" />
+									<meta name="description" content="<?php echo $sailen_site_title_temp ; ?>" />
+									<meta property="og:description" content="<?php echo $sailen_site_title_temp; ?>" />
+									<meta name="twitter:description" content="<?php echo $sailen_site_title_temp; ?>" />
+
+						<?php } else {?>
+
+									<meta itemprop="description" content="<?php echo $sailen_first_f; ?>" />
+								    <meta name="description" content="<?php echo $sailen_first_f ; ?>" />
+									<meta property="og:description" content="<?php echo $sailen_first_f; ?>" />
+									<meta name="twitter:description" content="<?php echo $sailen_first_f; ?>" />
+
+						<?php }
+					} else {?>
+
+
+									<meta itemprop="description" content="<?php echo $sailen_temp_og_description[0];?> "/>
+									<meta name="description" content="<?php echo $sailen_temp_og_description[0];?> " />
+									<meta property="og:description" content="<?php $sailen_temp_og_description[0]; ?> " />
+									<meta name="twitter:description" content="<?php echo $sailen_temp_og_description[0]; ?>"/>
+
+					<?php }
 
 					 
 
@@ -476,28 +490,29 @@ function save_og($post_id)
 					{
 						//code here for future
 						
-					}else{
-							echo "<meta itemprop='image' content='".$sailen_temp_og_iamge[0]."'>\n";	
-							echo "<meta name='twitter:card' content='".$sailen_temp_og_iamge[0]."'>\n";
-							echo "<meta name='twitter:image:src' content='".$sailen_temp_og_iamge[0]."'>\n";		
-							echo "<meta property='og:image' content='".$sailen_temp_og_iamge[0]."'/>\n";			
-					}
+					}else{?>
+
+							<meta itemprop="image" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />	
+							<meta name="twitter:card" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />
+							<meta name="twitter:image:src" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />		
+							<meta property="og:image" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />			
+					<?php } ?>
 
 
-					echo "<meta property='article:published_time' content='".get_the_date('Y-m-d H:i:s')."' />\n";
-					echo "<meta property='article:modified_time' content='".get_the_modified_time()."' />\n";
+					<meta property="article:published_time" content="<?php echo get_the_date('Y-m-d H:i:s') ; ?>" />
+					<meta property="article:modified_time" content="<?php echo get_the_modified_time() ; ?>" />
 
-					if ( 'page' != $_POST['post_type'] )
+					<?php if ( 'page' != $_POST['post_type'] )
 					{
 
 
-						$sailen_p_tags="";
+						
 						$sailen_posttags = get_the_tags();
 							if ($sailen_posttags) {
-							  foreach($sailen_posttags as $tag) {
-							    $sailen_p_tags.=$tag->name . ','; 
-							  }
-							  	echo "<meta property='article:tag' content='".substr($sailen_p_tags, 0, -1)."' />";					
+							  foreach($sailen_posttags as $tag) {?>
+							   	<meta property="article:tag" content="<?php echo $tag->name; ?>" />
+							  <?php }
+							  				
 
 							}
 
