@@ -386,20 +386,7 @@ function doctype_opengraph($output) {
 function save_og($post_id)
 {
 
-		if ( defined('DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-			
-			return $post_id;
-			}
-		// check permissions
-		if ( 'page' == $_POST['post_type'] ) {
-			if ( !current_user_can( 'edit_page', $post_id ) ) {
-				
-				return $post_id;
-			}
-		} elseif ( !current_user_can( 'edit_post', $post_id ) ) {
-			
-			return $post_id;
-		}
+		 
 
 
 		$post_id=get_the_ID();
@@ -486,7 +473,7 @@ function save_og($post_id)
 						<?php }
 					} else {?>
 
-		<meta property="og:description" content="<?php $sailen_temp_og_description[0]; ?> " />
+		<meta property="og:description" content="<?php echo $sailen_temp_og_description[0]; ?> " />
 		<meta itemprop="description" content="<?php echo $sailen_temp_og_description[0];?> "/>
 		<meta name="description" content="<?php echo $sailen_temp_og_description[0];?> " />
 		<meta name="twitter:description" content="<?php echo $sailen_temp_og_description[0]; ?>"/>
@@ -510,7 +497,7 @@ function save_og($post_id)
 
 
 		<meta property="article:published_time" content="<?php echo get_the_date('Y-m-d H:i:s') ; ?>" />
-		<meta property="article:modified_time" content="<?php echo get_the_modified_time() ; ?>" />
+		
 
 					<?php if ( 'page' != $_POST['post_type'] )
 					{
@@ -526,9 +513,11 @@ function save_og($post_id)
 
 							}
 
-						//var_dump(get_the_category());
-					}
-					//	echo "<meta property='article:section' content=Article Section."' />";
+						
+					}?>
+				<!-- Sailenseo data ends-->
+
+				<?php
 
 
 
@@ -537,7 +526,7 @@ function save_og($post_id)
 
 
 
-						echo "<!-- Sailenseo data ends-->\n";
+						
 
 
 
