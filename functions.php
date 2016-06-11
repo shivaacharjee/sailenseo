@@ -28,7 +28,7 @@ function check_snippet_existence(){
 	global $post;	
 	$type = get_post_meta($post->ID, '_sailen_post_type', true);
 	if($type){		
-		add_action( 'wp_head', 'frontend_style' );
+		add_action( 'wp_head',  'frontend_style' );
 		add_action('wp_enqueue_scripts', 'enque');
 	}	
 }
@@ -962,7 +962,7 @@ function display_rich_snippet($content) {
 }
 //Filter the content and return with rich snippet output
 add_filter('the_content','display_rich_snippet');
-require_once(plugin_dir_path( __FILE__ ).'meta-boxes.php');
+require_once(plugin_dir_path( __FILE__ ).'sailenseo_metabox.php');
 function get_the_ip() {
     if (isset($_SERVER["HTTP_X_FORWARDED_FOR"])) {
         return $_SERVER["HTTP_X_FORWARDED_FOR"];

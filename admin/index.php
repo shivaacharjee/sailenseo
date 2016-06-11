@@ -734,25 +734,25 @@ function sailen_reset_options($option_to_reset)
 {
 	require_once(dirname(__FILE__) .'/../settings.php');
 	if($option_to_reset == 'review')	
-		add_review_option();
+		sailen_add_review_option();
 	if($option_to_reset == 'event')
-		add_event_option();
+		sailen_add_event_option();
 	if($option_to_reset == 'person')
-		add_person_option();
+		sailen_add_person_option();
 	if($option_to_reset == 'product')
-		add_product_option();
+		sailen_add_product_option();
 	if($option_to_reset == 'recipe')
-		add_recipe_option();
+		sailen_add_recipe_option();
 	if($option_to_reset == 'software')
-		add_software_option();
+		sailen_add_software_option();
 	if($option_to_reset == 'video')
-		add_video_option();
+		sailen_add_video_option();
 	if($option_to_reset == 'article')
-		add_article_option();
+		sailen_add_article_option();
 	if($option_to_reset == 'service')
-		add_service_option();
+		sailen_add_service_option();
 	if($option_to_reset == 'color')
-		add_color_option();
+		sailen_add_color_option();
 	
 	header("location:?page=rich_snippet_dashboard");
 }
