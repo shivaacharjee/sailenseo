@@ -512,7 +512,7 @@ function save_og($post_id)
 							  				
 
 							}
-
+//click
 						
 					}?>
 				<!-- Sailenseo data ends-->
