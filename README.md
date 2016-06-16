@@ -1,2 +1,2 @@
 # sailenseo
-original project modified from  schemaorg-rich-snippets
+original project modified on  schemaorg-rich-snippets
