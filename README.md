@@ -1,5 +1,5 @@
  
-# Sailen Seo #
+# Sailenseo #
 **Contributors:** Shiva Acharjee, brainstormforce, yawalkarm  
 **Author link:** https://www.shivaacharjee.com  
 **Tags:** Review, Event, People, Product, Recipe, Software Application, Video, Article, rdfa, rich snippet, schema.org, schema, microdata, microformat, SERP, Google, Yahoo, Bing, Yandex  
@@ -41,13 +41,14 @@ This plugin supports the following types of Schemas:
 
 ### Through Dashboard ###
 1. Go to Plugins -> Add New -> click Upload Plugin. Locate the downloaded zip file and click install now.
+2. Click activate. 
 
 ### Through FTP ###
 1. Extract the downloaded file. 
 1. Upload into `wp-content/plugins` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
-Now go and create a new post. There you will find a meta box, select the type of post from dropdown and fill out the details, publish the post.
+Now go and create a new post. There you will find a meta box, select the type of post from dropdown and fill out the details, publish the post. Use <a herf="https://search.google.com/structured-data/testing-tool">Google structured data testing tool</a> to test and validate structured data in your newly created post. 
 Google will start showing rich snippets in the search results, as soon as your post is crawled.
 
 =======
