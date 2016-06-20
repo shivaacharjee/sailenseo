@@ -493,6 +493,7 @@ function rich_snippet_dashboard() {
 											 		<li>Add the details and publish. Thats it!</li>
 											 		<li>
 											 				<a target="_blank" href="'.plugins_url("/sailenseo-shiva/demouse.png").'">
+											 				
 											 						<img width="95%" src="'.plugins_url("/sailenseo-shiva/demouse.png").'"/>
 											 				</a>
 											 		</li>	
