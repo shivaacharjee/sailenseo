@@ -617,7 +617,9 @@ function display_rich_snippet($content) {
 			$software .= '<div class="snippet-label-img">'.$args_soft['software_agr'].'</div>';
 		//}
 		$software .= '<div class="snippet-data-img">';
-		$software .= '<span itemprop="ratingValue">'.average_rating().'</span>';						
+		
+		$software .= '<span itemprop="ratingValue">'.$software_rating.'</span>';						
+		//$software .= '<span itemprop="ratingValue">'.average_rating().'</span>';						
 		$software .= ' based on <span class="rating-count" itemprop="reviewCount">'.rating_count().'</span> votes </span></div></div><div class="snippet-clear"></div>';
 		
 //////////////////////////////////////////////////////////////////////
