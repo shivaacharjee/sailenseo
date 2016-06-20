@@ -425,7 +425,8 @@ function display_rich_snippet($content) {
 			$product .= '<div class="snippet-label-img">'.$args_product['product_agr'].'</div>';
 		}
 		$product .= '<div class="snippet-data-img">';
-		$product .= '<span itemprop="ratingValue">'.average_rating() >= 0 ? average_rating() : $product_rating.'</span>';						
+		$product .= '<span itemprop="ratingValue">'.$product_rating.'</span>'; 
+		//$product .= '<span itemprop="ratingValue">'.average_rating() >= 0 ? average_rating() : $product_rating.'</span>';						
 		$product .= ' based on <span class="rating-count" itemprop="reviewCount">'.rating_count().'</span> votes </span></div></div><div class="snippet-clear"></div>';
 		
 
