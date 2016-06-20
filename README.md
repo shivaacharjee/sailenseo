@@ -21,7 +21,7 @@ Rich Snippets provide a small sample of a site’s content on Search Engine Resu
 - Rich Snippets are very interactive (photos, star ratings, price, author, etc.) to let you stand out from competition
 - Helps you rank higher in search results
 - Helps Facebook/twitter/G+ display customized  information when users share your links on those platform
-> **Curious, how does this plugin work?**
+
 
 
 ### Supported Content Types - ###
