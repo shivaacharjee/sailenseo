@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Sailen Seo #
 **Contributors:** Shiva Acharjee, brainstormforce, yawalkarm  
 **Author link:** https://www.shivaacharjee.com  
@@ -48,3 +49,7 @@ Now go and create a new post. There you will find a meta box, select the type of
 Google will start showing rich snippets in the search results, as soon as your post is crawled.
 
 
+=======
+# sailenseo
+original project modified on  schemaorg-rich-snippets
+>>>>>>> c71c27474eaf8d0b6ac1e13143e8d0519687a8f1

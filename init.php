@@ -418,11 +418,11 @@ function save_og($post_id)
 	<meta property="og:site_name" content="<?php echo $sailen_temp_site_title; ?>"/>
 
 
-			<?php if(trim($sailen_temp_og_title[0])==="")
-					{
+			<?php if(trim($sailen_temp_og_title[0])===""){
+					
 
-						if(get_the_title()==="")
-						{
+						if(''===get_the_title()){
+						
 							$sailen_site_title_temp=$sailen_temp_site_title;
 
 				?>
@@ -449,11 +449,11 @@ function save_og($post_id)
 
 					<?php	
 
-					if(trim($sailen_temp_og_description[0])==="")
-					{
+					if(trim($sailen_temp_og_description[0])===""){
+					
 
-						if(trim($sailen_first_f)==="")
-						{
+						if(''===trim($sailen_first_f)){
+						
 							$sailen_site_title_temp=$sailen_temp_site_title; 
 
 
@@ -482,8 +482,8 @@ function save_og($post_id)
 
 					 
 
-					if(trim($sailen_temp_og_iamge[0])=="")
-					{
+					if(trim(''===$sailen_temp_og_iamge[0])){
+					
 						//code here for future
 						
 					}else{?>
@@ -499,8 +499,8 @@ function save_og($post_id)
 		<meta property="article:published_time" content="<?php echo get_the_date('Y-m-d H:i:s') ; ?>" />
 		
 
-					<?php if ( 'page' != $_POST['post_type'] )
-					{
+					<?php if ( 'page' != $_POST['post_type'] ){
+					
 
 
 						

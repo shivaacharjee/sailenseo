@@ -1,5 +1,11 @@
 <?php 
-// Metabox for review
+
+/**
+ * Initialize metabox elements
+ *
+ * @param array $meta_boxes 
+ * @return meta-box elements
+ */
 function sailen_metaboxes( array $meta_boxes ) {
 	// Start with an underscore to hide fields from custom fields list
 	$prefix = '_sailen_';

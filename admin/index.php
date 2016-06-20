@@ -42,7 +42,7 @@ function rich_snippet_dashboard() {
 			<li class="tab"><a href="#tab-1">'.__("Configuration","rich-snippets").'</a></li>
 			<li class="tab"><a href="#tab-4">'.__("Preference","rich-snippets").'</a></li>
 			<li class="tab"><a href="#tab-2">'.__("How to Use?","rich-snippets").'</a></li>
-			<li class="tab"><a href="#tab-3">'.__("FAQs","rich-snippets").'</a></li>
+			<!--<li class="tab"><a href="#tab-3">'.__("FAQs","rich-snippets").'</a></li>-->
 			
 		 </ul>
 		 <div class="clear"></div>
@@ -484,7 +484,25 @@ function rich_snippet_dashboard() {
 								<div class="handlediv" title="Click to toggle"><br></div>
 								<h3 class="hndle"><span>'.__("Usage Instructions","rich-snippets").'</span></h3>
 								<div class="inside">
-									<img width="95%" src="'.plugins_url("/all-in-one-schemaorg-rich-snippets/how-to-use.png").'"/>
+									
+
+										<p>Using it is a piece of cake!]
+											<ul>	
+											 		<li>click on Cretae new page/post</li>
+											 		<li>Sailenseo meta box will be displayed at the bottom</li>
+											 		<li>Add the details and publish. Thats it!</li>
+											 		<li>
+											 				<a target="_blank" href="'.plugins_url("/sailenseo-shiva/demouse.png").'">
+											 						<img width="95%" src="'.plugins_url("/sailenseo-shiva/demouse.png").'"/>
+											 				</a>
+											 		</li>	
+
+									 		</ul>
+
+								 		</p>
+
+
+
 								</div>
 							</div>
 						</div>
@@ -492,7 +510,7 @@ function rich_snippet_dashboard() {
 				</div>
 			</div>
 	
-			 <div id="tab-3">
+			 <!--<div id="tab-3">
 				<div id="poststuff">
 					<div id="postbox-container-5" class="postbox-container">
 						<div class="meta-box-sortables ui-sortable">
@@ -507,7 +525,7 @@ function rich_snippet_dashboard() {
 							</div>
 						</div>
 					</div>
-				 </div>
+				 </div>-->
 				<!-- Tab 4-->
 				<div id="tab-4">
 					<div id="poststuff">
