@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+ 
 # Sailen Seo #
 **Contributors:** Shiva Acharjee, brainstormforce, yawalkarm  
 **Author link:** https://www.shivaacharjee.com  
@@ -50,6 +50,4 @@ Google will start showing rich snippets in the search results, as soon as your p
 
 
 =======
-# sailenseo
-original project modified on  schemaorg-rich-snippets
->>>>>>> c71c27474eaf8d0b6ac1e13143e8d0519687a8f1
+ 
