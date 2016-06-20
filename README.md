@@ -40,14 +40,15 @@ This plugin supports the following types of Schemas:
 ## Installation ##
 
 ### Through Dashboard ###
-1. Go to Plugins -> Add New -> Search for "Sailenseo" Or Upload the plugins zip file
+1. Go to Plugins -> Add New -> click Upload Plugin. Locate the downloaded zip file and click install now.
+
 ### Through FTP ###
-1. Upload the plugin into `wp-content/plugins` directory
+1. Extract the downloaded file. 
+1. Upload into `wp-content/plugins` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. That's It. 
+
 Now go and create a new post. There you will find a meta box, select the type of post from dropdown and fill out the details, publish the post.
 Google will start showing rich snippets in the search results, as soon as your post is crawled.
-
 
 =======
  
