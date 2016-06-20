@@ -10,7 +10,7 @@
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 Sailenseo  help search engines (google, yahoo, yandex, bing) to read and display posts/pages content in a better and more user friendly way using Rich Snippets. Thus helping your content to get more visibility and increase the probability of being clicked. It also help posts/page to become a rich object in a social graph with the help of Open Graph , Twitter Cards and more.
 
-## Description ##
+## Sailenseo makes use of  Rich Snippets, OG for better performance ##
 
 ### What is a Rich Snippet? ###
 Rich Snippets provide a small sample of a site’s content on Search Engine Result Pages (SERPs) of search engines such as Google, Yahoo and Bing. They enhance your search listing, making it more enticing for users to click on and easier for search engines to extract information.Adding Rich Snippets to your site won’t affect the appearance or content of your pages; rather, everything is done behind the scenes in your site’s HTML code. To display Rich Snippets, you just need to tweak the code of your website with some additional tags.
