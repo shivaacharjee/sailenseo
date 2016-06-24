@@ -1,4 +1,4 @@
-=== Sailenseo rich object in a social graph ===
+=== Sailenseo ===
 Contributors: shivaacharjee,prasantrai
 Tags: Review, Event, People, Product, Recipe, Software Application, Video, Article, rdfa, rich snippet, schema.org, schema, microdata, microformat, SERP, Google, Yahoo, Bing, Yandex, Social Graph, Rich Snippet
 Requires at least: 3.7
