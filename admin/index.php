@@ -1,8 +1,9 @@
 <?php
 // Start object buffering to supress warning messages
-ob_start();
+
 if ( is_admin() )
 {
+	//ob_start();
 	add_action( 'admin_footer', 'add_footer_script' );
 }
 //enqueues the scripts and styles in admin dashboard
@@ -22,7 +23,7 @@ function add_the_script() {
 }
 add_action('admin_print_scripts', 'add_the_script');
 //The Main Admin Dashboard for Rich Snippets Plugin
-function rich_snippet_dashboard() {
+function sailen_rich_snippet_dashboard() {
 	$plugins_url = plugins_url();
 	$args_review = get_option('sailen_review');
 	$args_event = get_option('sailen_event');
@@ -83,7 +84,7 @@ function rich_snippet_dashboard() {
 													<tr><td colspan="2"></td></tr>
 													<tr>
 														<td></td>
-														<td><input type="submit" class="button-primary" name="item_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=rich_snippet_dashboard&amp;action=reset&options=review">'.__('Reset ','rich-snippets').'</a></td>
+														<td><input type="submit" class="button-primary" name="item_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=sailen_rich_snippet_dashboard&amp;action=reset&options=review">'.__('Reset ','rich-snippets').'</a></td>
 													</tr>
 												</tbody>
 											</table>
@@ -127,7 +128,7 @@ function rich_snippet_dashboard() {
 													<tr><td colspan="2"></td></tr>
 													<tr>
 														<td></td>
-														<td><input type="submit" class="button-primary" name="event_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=rich_snippet_dashboard&amp;action=reset&options=event">'.__('Reset ','rich-snippets').'</a></td>
+														<td><input type="submit" class="button-primary" name="event_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=sailen_rich_snippet_dashboard&amp;action=reset&options=event">'.__('Reset ','rich-snippets').'</a></td>
 													</tr>
 												</tbody>
 											</table>
@@ -175,7 +176,7 @@ function rich_snippet_dashboard() {
 													<tr><td colspan="2"></td></tr>
 													<tr>
 														<td></td>
-														<td><input type="submit" class="button-primary" name="person_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=rich_snippet_dashboard&amp;action=reset&options=person">'.__('Reset ','rich-snippets').'</a></td>
+														<td><input type="submit" class="button-primary" name="person_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=sailen_rich_snippet_dashboard&amp;action=reset&options=person">'.__('Reset ','rich-snippets').'</a></td>
 													</tr>
 												</tbody>
 											</table>
@@ -223,7 +224,7 @@ function rich_snippet_dashboard() {
 													<tr><td colspan="2"></td></tr>
 													<tr>
 														<td></td>
-														<td><input type="submit" class="button-primary" name="product_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=rich_snippet_dashboard&amp;action=reset&options=product">'.__('Reset ','rich-snippets').'</a></td>
+														<td><input type="submit" class="button-primary" name="product_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=sailen_rich_snippet_dashboard&amp;action=reset&options=product">'.__('Reset ','rich-snippets').'</a></td>
 													</tr>
 												</tbody>
 											</table>
@@ -271,7 +272,7 @@ function rich_snippet_dashboard() {
 													<tr><td colspan="2"></td></tr>
 													<tr>
 														<td></td>
-														<td><input type="submit" class="button-primary" name="recipe_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=rich_snippet_dashboard&amp;action=reset&options=recipe">'.__('Reset ','rich-snippets').'</a></td>
+														<td><input type="submit" class="button-primary" name="recipe_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=sailen_rich_snippet_dashboard&amp;action=reset&options=recipe">'.__('Reset ','rich-snippets').'</a></td>
 													</tr>
 												</tbody>
 											</table>
@@ -319,7 +320,7 @@ function rich_snippet_dashboard() {
 													<tr><td colspan="2"></td></tr>
 													<tr>
 														<td></td>
-														<td><input type="submit" class="button-primary" name="software_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=rich_snippet_dashboard&amp;action=reset&options=software">'.__('Reset ','rich-snippets').'</a></td>
+														<td><input type="submit" class="button-primary" name="software_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=sailen_rich_snippet_dashboard&amp;action=reset&options=software">'.__('Reset ','rich-snippets').'</a></td>
 													</tr>
 												</tbody>
 											</table>
@@ -361,7 +362,7 @@ function rich_snippet_dashboard() {
 													<tr><td colspan="2"></td></tr>
 													<tr>
 														<td></td>
-														<td><input type="submit" class="button-primary" name="video_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=rich_snippet_dashboard&amp;action=reset&options=video">'.__('Reset ','rich-snippets').'</a></td>
+														<td><input type="submit" class="button-primary" name="video_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=sailen_rich_snippet_dashboard&amp;action=reset&options=video">'.__('Reset ','rich-snippets').'</a></td>
 													</tr>
 												</tbody>
 											</table>
@@ -409,7 +410,7 @@ function rich_snippet_dashboard() {
 													<tr><td colspan="2"></td></tr>
 													<tr>
 														<td></td>
-														<td><input type="submit" class="button-primary" name="article_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=rich_snippet_dashboard&amp;action=reset&options=article">'.__('Reset ','rich-snippets').'</a></td>
+														<td><input type="submit" class="button-primary" name="article_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=sailen_rich_snippet_dashboard&amp;action=reset&options=article">'.__('Reset ','rich-snippets').'</a></td>
 													</tr>
 												</tbody>
 											</table>
@@ -461,7 +462,7 @@ function rich_snippet_dashboard() {
 													<tr><td colspan="2"></td></tr>
 													<tr>
 														<td></td>
-														<td><input type="submit" class="button-primary" name="service_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=rich_snippet_dashboard&amp;action=reset&options=service">'.__('Reset ','rich-snippets').'</a></td>
+														<td><input type="submit" class="button-primary" name="service_submit" value="'.__("Update ").'"/>&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=sailen_rich_snippet_dashboard&amp;action=reset&options=service">'.__('Reset ','rich-snippets').'</a></td>
 													</tr>
 												</tbody>
 											</table>
@@ -560,7 +561,7 @@ function rich_snippet_dashboard() {
 												</tr>
 												<tr>
 													<td></td>
-													<td><input id="submit_colors" class="button-primary" type="submit" value="Update Colors" />&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=rich_snippet_dashboard&amp;action=reset&options=color">'.__('Reset ','rich-snippets').'</a></td>
+													<td><input id="submit_colors" class="button-primary" type="submit" value="Update Colors" />&nbsp;&nbsp;&nbsp;<a class="button-primary" href="?page=sailen_rich_snippet_dashboard&amp;action=reset&options=color">'.__('Reset ','rich-snippets').'</a></td>
 												</tr>
 											</table>
 											</form>
@@ -605,9 +606,10 @@ if(isset($_POST['item_submit']))
 	{
 		if(isset($_POST[$option])) 
 		{
-			$args[$option] = $_POST[$option];
+			$args[$option] = sanitize_text_field($_POST[$option]);
 		}		
 	}
+	
 	$status = update_option('sailen_review',$args);
 	displayStatus($status);
 }
@@ -617,7 +619,7 @@ if(isset($_POST['event_submit']))
 	{
 		if(isset($_POST[$option])) 
 		{
-			$args[$option] = $_POST[$option];
+			$args[$option] =  sanitize_text_field($_POST[$option]);
 		}		
 	}
 	$status = update_option('sailen_event',$args);
@@ -629,7 +631,7 @@ if(isset($_POST['person_submit']))
 	{
 		if(isset($_POST[$option])) 
 		{
-			$args[$option] = $_POST[$option];
+			$args[$option] =  sanitize_text_field($_POST[$option]);
 		}		
 	}
 	$status = update_option('sailen_person',$args);
@@ -641,7 +643,7 @@ if(isset($_POST['product_submit']))
 	{
 		if(isset($_POST[$option])) 
 		{
-			$args[$option] = $_POST[$option];
+			$args[$option] =  sanitize_text_field($_POST[$option]);
 		}		
 	}
 	$status = update_option('sailen_product',$args);
@@ -653,7 +655,7 @@ if(isset($_POST['recipe_submit']))
 	{
 		if(isset($_POST[$option])) 
 		{
-			$args[$option] = $_POST[$option];
+			$args[$option] =  sanitize_text_field($_POST[$option]);
 		}		
 	}
 	$status = update_option('sailen_recipe',$args);
@@ -665,7 +667,7 @@ if(isset($_POST['software_submit']))
 	{
 		if(isset($_POST[$option])) 
 		{
-			$args[$option] = $_POST[$option];
+			$args[$option] =  sanitize_text_field($_POST[$option]);
 		}		
 	}
 	$status = update_option('sailen_software',$args);
@@ -677,7 +679,7 @@ if(isset($_POST['video_submit']))
 	{
 		if(isset($_POST[$option])) 
 		{
-			$args[$option] = $_POST[$option];
+			$args[$option] =  sanitize_text_field($_POST[$option]);
 		}		
 	}
 	$status = update_option('sailen_video',$args);
@@ -689,7 +691,7 @@ if(isset($_POST['article_submit']))
 	{
 		if(isset($_POST[$option])) 
 		{
-			$args[$option] = $_POST[$option];
+			$args[$option] =  sanitize_text_field($_POST[$option]);
 		}		
 	}
 	$status = update_option('sailen_article',$args);
@@ -701,7 +703,7 @@ if(isset($_POST['service_submit']))
 	{
 		if(isset($_POST[$option])) 
 		{
-			$args[$option] = $_POST[$option];
+			$args[$option] =  sanitize_text_field($_POST[$option]);
 		}		
 	}
 	$status = update_option('sailen_service',$args);
@@ -773,7 +775,7 @@ function sailen_reset_options($option_to_reset)
 	if($option_to_reset == 'color')
 		sailen_add_color_option();
 	
-	header("location:?page=rich_snippet_dashboard");
+	header("location:?page=sailen_rich_snippet_dashboard");
 }
 function add_footer_script()
 {?>

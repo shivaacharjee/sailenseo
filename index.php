@@ -68,14 +68,14 @@ if ( !class_exists( "Sailenseo" ) )
 		function register_custom_menu_page()
 		{
 			require_once(plugin_dir_path( __FILE__ ).'admin/index.php');
-			$page = add_menu_page('Sailenseo Dashboard', 'Sailenseo', 'administrator', 'rich_snippet_dashboard', 'rich_snippet_dashboard', 'div');
+			$page = add_menu_page('Sailenseo Dashboard', 'Sailenseo', 'administrator', 'sailen_rich_snippet_dashboard', 'sailen_rich_snippet_dashboard', 'div');
 			//Call the function to print the stylesheets and javascripts in only this plugins admin area
 			add_action( 'admin_print_styles-' . $page, 'sailen_admin_styles' );
 			add_action('admin_print_scripts-' . $page, array( $this, 'sailen_iris_enqueue_scripts' ) );
 		}
 		// Add settings link on plugin page
 		function sailen_settings_link($links) {
-		  $settings_link = '<a href="admin.php?page=rich_snippet_dashboard">Settings</a>';
+		  $settings_link = '<a href="admin.php?page=sailen_rich_snippet_dashboard">Settings</a>';
 		  array_unshift($links, $settings_link);
 		  return $links;
 		}
@@ -130,13 +130,13 @@ if ( !class_exists( "Sailenseo" ) )
 		function star_icons() {
 		?>
 		<style>
-			#toplevel_page_rich_snippet_dashboard .wp-menu-image {
+			#toplevel_page_sailen_rich_snippet_dashboard .wp-menu-image {
 				background: url(<?php echo plugins_url('/images/star.png',__FILE__); ?>) no-repeat !important;
 			}
-			#toplevel_page_rich_snippet_dashboard:hover .wp-menu-image, #toplevel_page_rich_snippet_dashboard.wp-has-current-submenu .wp-menu-image {
+			#toplevel_page_sailen_rich_snippet_dashboard:hover .wp-menu-image, #toplevel_page_rich_snippet_dashboard.wp-has-current-submenu .wp-menu-image {
 				background: url(<?php echo plugins_url('/images/star.png',__FILE__); ?>) no-repeat 0 -32px !important;
 			}
-			#toplevel_page_rich_snippet_dashboard .current .wp-menu-image, #toplevel_page_rich_snippet_dashboard.wp-has-current-submenu .wp-menu-image {
+			#toplevel_page_sailen_rich_snippet_dashboard .current .wp-menu-image, #toplevel_page_rich_snippet_dashboard.wp-has-current-submenu .wp-menu-image {
 				background: url(<?php echo plugins_url('/images/star.png',__FILE__); ?>) no-repeat 0 -32px !important;
 			}
 			#star-icons-32.icon32 {background: url(<?php echo plugins_url('/images/gray-32.png',__FILE__); ?>) no-repeat;}

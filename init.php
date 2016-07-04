@@ -34,8 +34,8 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 class sailen_Meta_Box {
 	protected $_meta_box;
 	function __construct( $meta_box ) {
-		add_filter('language_attributes', array( &$this,'doctype_opengraph'));
-		add_action( 'wp_head', array( &$this, 'save_og' ) ,1);
+		add_filter('language_attributes', array( &$this,'sailen_doctype_opengraph'));
+		add_action( 'wp_head', array( &$this, 'sailen_save_og' ) ,1);
 		if ( !is_admin() ) return;
 		
 		$this->_meta_box = $meta_box;
@@ -52,8 +52,8 @@ class sailen_Meta_Box {
 			add_action( 'admin_head', array( &$this, 'add_post_enctype' ) );
 		}
 
-		add_action( 'admin_menu', array( &$this, 'add' ) );
-		add_action( 'save_post', array( &$this, 'save' ) );
+		add_action( 'admin_menu', array( &$this, 'sailen_add' ) );
+		add_action( 'save_post', array( &$this, 'sailen_save' ) );
 
 		
 		add_filter( 'sailen_show_on', array( &$this, 'add_for_id' ), 10, 2 );
@@ -66,7 +66,7 @@ class sailen_Meta_Box {
 
 
 
-function doctype_opengraph($output) {
+function sailen_doctype_opengraph($output) {
     return $output . ' prefix="og: http://ogp.me/ns#"';
 }
 
@@ -86,7 +86,7 @@ function doctype_opengraph($output) {
 		</script>';
 	}
 	// Add metaboxes
-	function add() {
+	function sailen_add() {
 		$this->_meta_box['context'] = empty($this->_meta_box['context']) ? 'normal' : $this->_meta_box['context'];
 		$this->_meta_box['priority'] = empty($this->_meta_box['priority']) ? 'high' : $this->_meta_box['priority'];
 		$this->_meta_box['show_on'] = empty( $this->_meta_box['show_on'] ) ? array('key' => false, 'value' => false) : $this->_meta_box['show_on'];
@@ -383,7 +383,7 @@ function doctype_opengraph($output) {
 
 
 
-function save_og($post_id)
+function sailen_save_og($post_id)
 {
 
 		 
@@ -415,7 +415,7 @@ function save_og($post_id)
 	<meta property="og:locale" content="<?php echo get_locale(); ?>" />
 	<meta property="og:type" content="<?php echo "article";//get_post_type ( $post_id ); ?>" />
 	<meta property="og:url" content="<?php echo get_permalink(); ?>"/>
-	<meta property="og:site_name" content="<?php echo $sailen_temp_site_title; ?>"/>
+	<meta property="og:site_name" content="<?php echo htmlspecialchars($sailen_temp_site_title); ?>"/>
 
 
 			<?php if(trim($sailen_temp_og_title[0])===""){
@@ -428,20 +428,20 @@ function save_og($post_id)
 				?>
 
 
-	<meta property="og:title" content="<?php echo $sailen_site_title_temp; ?>" />
-	<meta itemprop="name" content="<?php echo $sailen_site_title_temp; ?>"/>
-	<meta name="twitter:title" content="<?php echo $sailen_site_title_temp; ?>" />
+	<meta property="og:title" content="<?php echo htmlspecialchars($sailen_site_title_temp); ?>" />
+	<meta itemprop="name" content="<?php echo htmlspecialchars($sailen_site_title_temp); ?>"/>
+	<meta name="twitter:title" content="<?php echo htmlspecialchars($sailen_site_title_temp); ?>" />
 
 						<?php }else{?>
-	<meta property="og:title" content="<?php echo get_the_title();?>"/>			
-	<meta itemprop="name" content="<?php echo get_the_title();?>"/>
-	<meta name="twitter:title" content="<?php echo get_the_title();?>"/>
+	<meta property="og:title" content="<?php echo htmlspecialchars(get_the_title());?>"/>			
+	<meta itemprop="name" content="<?php echo htmlspecialchars(get_the_title());?>"/>
+	<meta name="twitter:title" content="<?php echo htmlspecialchars(get_the_title());?>"/>
 
 						<?php }
 					}else{?>
-	<meta property="og:title" content="<?php echo $sailen_temp_og_title[0];?>"/>
-	<meta itemprop="name" content="<?php echo $sailen_temp_og_title[0]; ?>"/>
-	<meta name="twitter:title" content="<?php echo $sailen_temp_og_title[0];?>"/>
+	<meta property="og:title" content="<?php echo htmlspecialchars($sailen_temp_og_title[0]);?>"/>
+	<meta itemprop="name" content="<?php echo htmlspecialchars($sailen_temp_og_title[0]); ?>"/>
+	<meta name="twitter:title" content="<?php echo htmlspecialchars($sailen_temp_og_title[0]);?>"/>
 
 					<?php }?>
 
@@ -459,24 +459,24 @@ function save_og($post_id)
 
 							?>
 
-		<meta property="og:description" content="<?php echo $sailen_site_title_temp; ?>" />
-		<meta itemprop="description" content="<?php echo $sailen_site_title_temp; ?>" />
-		<meta name="description" content="<?php echo $sailen_site_title_temp ; ?>" />
-		<meta name="twitter:description" content="<?php echo $sailen_site_title_temp; ?>" />
+		<meta property="og:description" content="<?php echo htmlspecialchars($sailen_site_title_temp); ?>" />
+		<meta itemprop="description" content="<?php echo htmlspecialchars($sailen_site_title_temp); ?>" />
+		<meta name="description" content="<?php echo htmlspecialchars($sailen_site_title_temp) ; ?>" />
+		<meta name="twitter:description" content="<?php echo htmlspecialchars($sailen_site_title_temp); ?>" />
 
 						<?php } else {?>
-		<meta property="og:description" content="<?php echo $sailen_first_f; ?>" />
-		<meta itemprop="description" content="<?php echo $sailen_first_f; ?>" />
-		<meta name="description" content="<?php echo $sailen_first_f ; ?>" />
-		<meta name="twitter:description" content="<?php echo $sailen_first_f; ?>" />
+		<meta property="og:description" content="<?php echo htmlspecialchars($sailen_first_f); ?>" />
+		<meta itemprop="description" content="<?php echo htmlspecialchars($sailen_first_f); ?>" />
+		<meta name="description" content="<?php echo htmlspecialchars($sailen_first_f) ; ?>" />
+		<meta name="twitter:description" content="<?php echo htmlspecialchars($sailen_first_f); ?>" />
 
 						<?php }
 					} else {?>
 
-		<meta property="og:description" content="<?php echo $sailen_temp_og_description[0]; ?> " />
-		<meta itemprop="description" content="<?php echo $sailen_temp_og_description[0];?> "/>
-		<meta name="description" content="<?php echo $sailen_temp_og_description[0];?> " />
-		<meta name="twitter:description" content="<?php echo $sailen_temp_og_description[0]; ?>"/>
+		<meta property="og:description" content="<?php echo htmlspecialchars($sailen_temp_og_description[0]); ?> " />
+		<meta itemprop="description" content="<?php echo htmlspecialchars($sailen_temp_og_description[0]);?> "/>
+		<meta name="description" content="<?php echo htmlspecialchars($sailen_temp_og_description[0]);?> " />
+		<meta name="twitter:description" content="<?php echo htmlspecialchars($sailen_temp_og_description[0]); ?>"/>
 
 					<?php }
 
@@ -488,10 +488,10 @@ function save_og($post_id)
 						
 					}else{?>
 
-		<meta property="og:image" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />			
-		<meta itemprop="image" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />	
-		<meta name="twitter:card" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />
-		<meta name="twitter:image:src" content="<?php echo $sailen_temp_og_iamge[0]; ?>" />		
+		<meta property="og:image" content="<?php echo esc_url($sailen_temp_og_iamge[0]); ?>" />			
+		<meta itemprop="image" content="<?php echo esc_url($sailen_temp_og_iamge[0]); ?>" />	
+		<meta name="twitter:card" content="<?php echo esc_url($sailen_temp_og_iamge[0]); ?>" />
+		<meta name="twitter:image:src" content="<?php echo esc_url($sailen_temp_og_iamge[0]); ?>" />		
 							
 					<?php } ?>
 
@@ -507,7 +507,7 @@ function save_og($post_id)
 						$sailen_posttags = get_the_tags();
 							if ($sailen_posttags) {
 							  foreach($sailen_posttags as $tag) {?>
-		<meta property="article:tag" content="<?php echo $tag->name; ?>" />
+		<meta property="article:tag" content="<?php echo htmlspecialchars($tag->name); ?>" />
 							  <?php }
 							  				
 
@@ -543,7 +543,7 @@ function save_og($post_id)
 
 
 	// Save data from metabox
-	function save( $post_id)  {
+	function sailen_save( $post_id)  {
 		// verify nonce
 		if ( ! isset( $_POST['wp_meta_box_nonce'] ) || !wp_verify_nonce( $_POST['wp_meta_box_nonce'], basename(__FILE__) ) ) {
 			return $post_id;
@@ -593,10 +593,12 @@ function save_og($post_id)
 				delete_post_meta( $post_id, $name );
 				if ( !empty( $new ) ) {
 					foreach ( $new as $add_new ) {
+						 
 						add_post_meta( $post_id, $name, $add_new, false );
 					}
 				}
 			} elseif ( '' !== $new && $new != $old  ) {
+				 
 				update_post_meta( $post_id, $name, $new );
 			} elseif ( '' == $new ) {
 				delete_post_meta( $post_id, $name );
@@ -610,6 +612,7 @@ function save_og($post_id)
 					$new = "";
 				}
 				if ( $new && $new != $old ) {
+					 
 					update_post_meta( $post_id, $name, $new );
 				} elseif ( '' == $new && $old ) {
 					delete_post_meta( $post_id, $name, $old );
