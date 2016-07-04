@@ -1,9 +1,9 @@
 <?php
-// Start object buffering to supress warning messages
+ 
 
 if ( is_admin() )
 {
-	//ob_start();
+	 
 	add_action( 'admin_footer', 'add_footer_script' );
 }
 //enqueues the scripts and styles in admin dashboard
