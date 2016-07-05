@@ -94,7 +94,7 @@ if ( !class_exists( "Sailenseo" ) )
 			wp_enqueue_script( 'sailen-scripts-media' );
 			wp_enqueue_script('jquery-ui-datepicker');
 			if(!function_exists('vc_map'))
-			wp_enqueue_style('jquery-style', plugin_dir_url(__FILE__) . 'css/jquery.ui.css');
+			wp_enqueue_style('jquery-style', plugin_dir_url(__FILE__) . 'css/jquery-ui.css');
 		}
 		function sailen_post_new_enqueue($hook) {
 			if('post-new.php' != $hook )
@@ -110,7 +110,7 @@ if ( !class_exists( "Sailenseo" ) )
 			wp_enqueue_script( 'sailen-scripts-media' );
 			wp_enqueue_script('jquery-ui-datepicker');
 			if(!function_exists('vc_map'))
-				wp_enqueue_style('jquery-style', plugin_dir_url(__FILE__) . 'css/jquery.ui.css');
+				wp_enqueue_style('jquery-style', plugin_dir_url(__FILE__) . 'css/jquery-ui.css');
 		}
 		//Initialize the metabox class
 		function wp_initialize_sailen_meta_boxes() {
