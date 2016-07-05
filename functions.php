@@ -18,21 +18,21 @@ add_action( 'wp_ajax_sailen_submit_rating', 'sailen_add_rating' );
 add_action( 'wp_ajax_nopriv_sailen_update_rating', 'sailen_update_rating' );
 add_action( 'wp_ajax_sailen_update_rating', 'sailen_update_rating' );
 // Include the Ajax library on the front end
-add_action( 'wp_head', 'add_ajax_library' );
+add_action( 'wp_head', 'sailen_add_ajax_library' );
 /**
  * Initialize the metabox class.
  */
 /* FUNCTION to check for posts having snippets */
-add_action('wp_head','check_snippet_existence','',7);
-function check_snippet_existence(){	
+add_action('wp_head','sailen_check_snippet_existence','',7);
+function sailen_check_snippet_existence(){	
 	global $post;	
 	$type = get_post_meta($post->ID, '_sailen_post_type', true);
 	if($type){		
 		add_action( 'wp_head',  'frontend_style' );
-		add_action('wp_enqueue_scripts', 'enque');
+		add_action('wp_sailen_enqueue_scripts', 'sailen_enque');
 	}	
 }
-function enque() {
+function sailen_enque() {
 	wp_enqueue_style('rating_style', plugin_dir_url(__FILE__) . 'css/jquery.rating.css');
 	wp_enqueue_script('jquery_rating', plugin_dir_url(__FILE__) . 'js/jquery.rating.min.js', array('jquery'));
 }
@@ -45,7 +45,7 @@ function sailen_initialize_sailen_meta_boxes() {
 		require_once plugin_dir_path( __FILE__ ).'init.php';
 }
 //Function to display the rich snippet output below the content
-function display_rich_snippet($content) {
+function sailen_display_rich_snippet($content) {
 	global $post;
 	
 	$args_color = get_option('sailen_custom');
@@ -426,8 +426,8 @@ function display_rich_snippet($content) {
 		}
 		$product .= '<div class="snippet-data-img">';
 		$product .= '<span itemprop="ratingValue">'.$product_rating.'</span>'; 
-		//$product .= '<span itemprop="ratingValue">'.average_rating() >= 0 ? average_rating() : $product_rating.'</span>';						
-		$product .= ' based on <span class="rating-count" itemprop="reviewCount">'.rating_count().'</span> votes </span></div></div><div class="snippet-clear"></div>';
+		//$product .= '<span itemprop="ratingValue">'.sailen_average_rating() >= 0 ? sailen_average_rating() : $product_rating.'</span>';						
+		$product .= ' based on <span class="rating-count" itemprop="reviewCount">'.sailen_rating_count().'</span> votes </span></div></div><div class="snippet-clear"></div>';
 		
 
 		if(trim($product_brand) != "")
@@ -494,8 +494,8 @@ function display_rich_snippet($content) {
 		$recipes_photo = get_post_meta( $post->ID, '_sailen_recipes_photo', true );
 		$recipes_desc = get_post_meta( $post->ID, '_sailen_recipes_desc', true );
 		$recipes_ingredient = get_post_meta( $post->ID, '_sailen_recipes_ingredient', true );
-		$count = rating_count();
-		$agregate = average_rating();
+		$count = sailen_rating_count();
+		$agregate = sailen_average_rating();
 		if(trim($recipes_photo) != "")
 		{
 			$recipe .= '<div class="snippet-image"><img width="180" itemprop="image" src="'.$recipes_photo.'"/></div>';
@@ -619,8 +619,8 @@ function display_rich_snippet($content) {
 		$software .= '<div class="snippet-data-img">';
 		
 		$software .= '<span itemprop="ratingValue">'.$software_rating.'</span>';						
-		//$software .= '<span itemprop="ratingValue">'.average_rating().'</span>';						
-		$software .= ' based on <span class="rating-count" itemprop="reviewCount">'.rating_count().'</span> votes </span></div></div><div class="snippet-clear"></div>';
+		//$software .= '<span itemprop="ratingValue">'.sailen_average_rating().'</span>';						
+		$software .= ' based on <span class="rating-count" itemprop="reviewCount">'.sailen_rating_count().'</span> votes </span></div></div><div class="snippet-clear"></div>';
 		
 //////////////////////////////////////////////////////////////////////
 
@@ -893,14 +893,14 @@ function display_rich_snippet($content) {
 			}
 			$service .= '<div class="aio-info">';
 			
-			if( average_rating() > 0 ){
+			if( sailen_average_rating() > 0 ){
 				if($args_service['service_rating'] != "")
 				{	
 					$service .= '<div class="aggregate_sec" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
 					$service .= '<div class="snippet-label-img">'.$args_service['service_rating'].'</div>';
 					$service .= '<div class="snippet-data-img">';
-					$service .= '<span itemprop="ratingValue">'.average_rating().'</span>';						
-					$service .= ' based on <span class="rating-count" itemprop="reviewCount">'.rating_count().'</span> votes </span></div></div><div class="snippet-clear"></div>';
+					$service .= '<span itemprop="ratingValue">'.sailen_average_rating().'</span>';						
+					$service .= ' based on <span class="rating-count" itemprop="reviewCount">'.sailen_rating_count().'</span> votes </span></div></div><div class="snippet-clear"></div>';
 				}
 			}
 			
@@ -964,7 +964,7 @@ function display_rich_snippet($content) {
 	}
 }
 //Filter the content and return with rich snippet output
-add_filter('the_content','display_rich_snippet');
+add_filter('the_content','sailen_display_rich_snippet');
 require_once(plugin_dir_path( __FILE__ ).'sailenseo_metabox.php');
 function get_the_ip() {
     if (isset($_SERVER["HTTP_X_FORWARDED_FOR"])) {
@@ -977,7 +977,7 @@ function get_the_ip() {
         return $_SERVER["REMOTE_ADDR"];
     }
 }
-function average_rating() {
+function sailen_average_rating() {
 //	global $wpdb;
 	global $post;
 	
@@ -987,25 +987,25 @@ function average_rating() {
 	{
 		$counter = 0;
 	
-		$average_rating = 0;    
+		$sailen_average_rating = 0;    
 		foreach($data as $d)
 		{
 			$rating = $d['user_rating'];
 	
-			$average_rating = $average_rating + $rating;
+			$sailen_average_rating = $sailen_average_rating + $rating;
 	
 			$counter++;
 		
 		} 
 		//round the average to the nearast 1/2 point
-		return (round(($average_rating/$counter)*2,0)/2);  
+		return (round(($sailen_average_rating/$counter)*2,0)/2);  
 	
 	} else {
 		//no ratings
 		return 'no rating';
 	}
 }
-function rating_count()
+function sailen_rating_count()
 {
 	global $post;
 	
@@ -1028,11 +1028,11 @@ function sailen_do_rating()
 		}
 		if(!in_array($ip,$ip_array) )
 		{
-			return display_rating();
+			return sailen_display_ratingargs();
 		}
 		else if(in_array($ip,$ip_array) )
 		{
-			$rating = get_previous_rating($ip, $data);
+			$rating = sailen_get_previous_rating($ip, $data);
 			
 			$stars = sailen_display_rating($rating);
 			return $stars;
@@ -1040,18 +1040,18 @@ function sailen_do_rating()
 	}
 	else
 	{
-		return display_rating();
+		return sailen_display_ratingargs();
 	}
 }
-function get_previous_rating($needle, $haystack, $strict = false) {
+function sailen_get_previous_rating($needle, $haystack, $strict = false) {
     foreach ($haystack as $item) {
-        if (($strict ? $item === $needle : $item == $needle) || (is_array($item) && get_previous_rating($needle, $item, $strict))) {
+        if (($strict ? $item === $needle : $item == $needle) || (is_array($item) && sailen_get_previous_rating($needle, $item, $strict))) {
             return @$item['user_rating'];
         }
     }
     return false;
 }
-function add_ajax_library() {
+function sailen_add_ajax_library() {
  
     $html = '<script type="text/javascript">';
         $html .= 'var ajaxurl = "' . admin_url( 'admin-ajax.php' ) . '"';
@@ -1096,7 +1096,7 @@ function sailen_update_rating()
 	echo false ==  update_post_meta($postid, 'post-rating', $user_rating, $prev_data) ? 'Error updating your rating' : 'Ratings updated successfully !';
 	die();
 }
-function display_rating() {
+function sailen_display_ratingargs() {
 	
 		global $post;
         $rating = '<span class="ratings"><div class="star-blocks">';

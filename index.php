@@ -31,25 +31,25 @@ if ( !class_exists( "Sailenseo" ) )
 //			add_action( 'admin_notices', array($this, 'display_message') );
 			add_action( 'admin_head', array( $this, 'star_icons') );
 			// Add Admin Menu
-			add_action('admin_menu', array( $this, 'register_custom_menu_page') );
-			add_action( 'admin_init', array( $this, 'set_styles' ));
+			add_action('admin_menu', array( $this, 'sailen_register_custom_menu_page') );
+			add_action( 'admin_init', array( $this, 'sailen_set_styles' ));
 
 			add_action( 'admin_init', array( $this, 'sailen_color_scripts' ));
 //			add_action( 'init', array( $this, 'register_sailen_settings' ));
 
 			add_filter('plugins_loaded', array( $this, 'rich_snippet_translation'));
-			add_action( 'admin_enqueue_scripts', array( $this, 'post_enqueue') );
-			add_action( 'admin_enqueue_scripts', array( $this, 'post_new_enqueue') );
+			add_action( 'admin_enqueue_scripts', array( $this, 'sailen_post_enqueue') );
+			add_action( 'admin_enqueue_scripts', array( $this, 'sailen_post_new_enqueue') );
 			$plugin = plugin_basename(__FILE__);
 			add_filter("plugin_action_links_$plugin", array( $this,'sailen_settings_link') );
 			add_action( 'wp_ajax_sailen_submit_request', array( $this, 'sailen_submit_request') );
 
 			add_action( 'wp_ajax_sailen_submit_color', array( $this, 'sailen_submit_color') );
 			// Admin bar menu
-			add_action( 'admin_bar_menu', array( $this, "aiosrs_admin_bar" ),100 );
+			add_action( 'admin_bar_menu', array( $this, "sailen_admin_bar" ),100 );
 		}
 		// admin bar menu
-		function aiosrs_admin_bar()
+		function sailen_admin_bar()
 		{
 			global $wp_admin_bar;
 			$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -65,7 +65,7 @@ if ( !class_exists( "Sailenseo" ) )
 				) );
 			}
 		}
-		function register_custom_menu_page()
+		function sailen_register_custom_menu_page()
 		{
 			require_once(plugin_dir_path( __FILE__ ).'admin/index.php');
 			$page = add_menu_page('Sailenseo Dashboard', 'Sailenseo', 'administrator', 'sailen_rich_snippet_dashboard', 'sailen_rich_snippet_dashboard', 'div');
@@ -80,7 +80,7 @@ if ( !class_exists( "Sailenseo" ) )
 		  return $links;
 		}
 		//print the star rating style on post edit page
-		function post_enqueue($hook) {
+		function sailen_post_enqueue($hook) {
 			if( 'post.php' != $hook )
 				return;
 		//	wp_enqueue_script( 'sailen_jquery' );
@@ -94,9 +94,9 @@ if ( !class_exists( "Sailenseo" ) )
 			wp_enqueue_script( 'sailen-scripts-media' );
 			wp_enqueue_script('jquery-ui-datepicker');
 			if(!function_exists('vc_map'))
-				wp_enqueue_style('jquery-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
+			wp_enqueue_style('jquery-style', plugin_dir_url(__FILE__) . 'css/jquery.ui.css');
 		}
-		function post_new_enqueue($hook) {
+		function sailen_post_new_enqueue($hook) {
 			if('post-new.php' != $hook )
 				return;
 		//	wp_enqueue_script( 'sailen_jquery' );
@@ -110,14 +110,14 @@ if ( !class_exists( "Sailenseo" ) )
 			wp_enqueue_script( 'sailen-scripts-media' );
 			wp_enqueue_script('jquery-ui-datepicker');
 			if(!function_exists('vc_map'))
-				wp_enqueue_style('jquery-style', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
+				wp_enqueue_style('jquery-style', plugin_dir_url(__FILE__) . 'css/jquery.ui.css');
 		}
 		//Initialize the metabox class
 		function wp_initialize_sailen_meta_boxes() {
 			if ( ! class_exists( 'sailen_Meta_Box' ) )
 				require_once(plugin_dir_path( __FILE__ ) . 'init.php');
 		}
-		function set_styles() {
+		function sailen_set_styles() {
 			wp_register_style( 'star_style', plugins_url('/css/jquery.rating.css', __FILE__) );
 			wp_register_style( 'meta_style', plugins_url('admin/css/style.css', __FILE__) );
 
@@ -164,12 +164,12 @@ if ( !class_exists( "Sailenseo" ) )
 		function sailen_submit_request()
 		{
 			$to = "Shiva Acharjee <contact@shivaacharjee.com>";
-			$from = $_POST['email'];
-			$site = $_POST['site_url'];
-			$sub = $_POST['subject'];
-			$message = $_POST['message'];
-			$name = $_POST['name'];
-			$post_url = $_POST['post_url'];
+			$from = sanitize_text_field($_POST['email']);
+			$site = sanitize_text_field($_POST['site_url']);
+			$sub = sanitize_text_field($_POST['subject']);
+			$message = sanitize_text_field($_POST['message']);
+			$name = sanitize_text_field($_POST['name']);
+			$post_url = sanitize_text_field($_POST['post_url']);
 
 			if($sub == "question")
 				$subject = "[AIOSRS] New question received from ".$name;
@@ -223,7 +223,7 @@ if ( !class_exists( "Sailenseo" ) )
 			$headers  = 'MIME-Version: 1.0' . "\r\n";
 			$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 			$headers .= 'From:'.$name.'<'.$from.'>' . "\r\n";
-			$headers .= 'Cc: Prasant Rai <pkr.prasant@gmail.com>' . "\r\n";
+			$headers .= 'Cc: Prasant Rai <pkr.prasant1990@gmail.com>' . "\r\n";
 			echo mail($to,$subject,$html,$headers) ? "Thank you!" : "Something went wrong!";
 
 			die();
@@ -231,11 +231,11 @@ if ( !class_exists( "Sailenseo" ) )
 		function sailen_submit_color()
 		{
 
-			$snippet_box_bg = $_POST['snippet_box_bg'];
-			$snippet_title_bg = $_POST['snippet_title_bg'];
-			$border_color = $_POST['snippet_border'];
-			$title_color = $_POST['snippet_title_color'];
-			$box_color = $_POST['snippet_box_color'];
+			$snippet_box_bg = sanitize_text_field($_POST['snippet_box_bg']);
+			$snippet_title_bg = sanitize_text_field($_POST['snippet_title_bg']);
+			$border_color = sanitize_text_field($_POST['snippet_border']);
+			$title_color = sanitize_text_field($_POST['snippet_title_color']);
+			$box_color = sanitize_text_field($_POST['snippet_box_color']);
 			$color_opt = array(
 				'snippet_box_bg'	   =>	$snippet_box_bg,
 				'snippet_title_bg'	 =>	$snippet_title_bg,
