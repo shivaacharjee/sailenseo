@@ -29,7 +29,7 @@ function sailen_check_snippet_existence(){
 	$type = get_post_meta($post->ID, '_sailen_post_type', true);
 	if($type){		
 		add_action( 'wp_head',  'frontend_style' );
-		add_action('wp_sailen_enqueue_scripts', 'sailen_enque');
+		add_action('wp_enqueue_scripts', 'sailen_enque');
 	}	
 }
 function sailen_enque() {

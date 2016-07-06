@@ -86,6 +86,7 @@ if ( !class_exists( "Sailenseo" ) )
 		//	wp_enqueue_script( 'sailen_jquery' );
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'sailen_jquery_star' );
+			wp_enqueue_script( 'sailen_jquery_ui' );
 			wp_enqueue_script( 'sailen_toggle' );
 			wp_enqueue_style( 'star_style' );
 			wp_register_script( 'sailen-scripts', sailen_META_BOX_URL . 'js/cmb.js','', '0.9.1' );
@@ -102,6 +103,7 @@ if ( !class_exists( "Sailenseo" ) )
 		//	wp_enqueue_script( 'sailen_jquery' );
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'sailen_jquery_star' );
+			wp_enqueue_script( 'sailen_jquery_ui' );			
 			wp_enqueue_script( 'sailen_toggle' );
 			wp_enqueue_style( 'star_style' );
 			wp_register_script( 'sailen-scripts', sailen_META_BOX_URL . 'js/cmb.js', '', '0.9.1' );
@@ -164,12 +166,12 @@ if ( !class_exists( "Sailenseo" ) )
 		function sailen_submit_request()
 		{
 			$to = "Shiva Acharjee <contact@shivaacharjee.com>";
-			$from = sanitize_text_field($_POST['email']);
-			$site = sanitize_text_field($_POST['site_url']);
+			$from = sanitize_email($_POST['email']);
+			$site = esc_url($_POST['site_url']);
 			$sub = sanitize_text_field($_POST['subject']);
 			$message = sanitize_text_field($_POST['message']);
 			$name = sanitize_text_field($_POST['name']);
-			$post_url = sanitize_text_field($_POST['post_url']);
+			$post_url = esc_url($_POST['post_url']);
 
 			if($sub == "question")
 				$subject = "[AIOSRS] New question received from ".$name;
