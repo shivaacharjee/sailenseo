@@ -86,7 +86,7 @@ if ( !class_exists( "Sailenseo" ) )
 		//	wp_enqueue_script( 'sailen_jquery' );
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'sailen_jquery_star' );
-			wp_enqueue_script( 'sailen_jquery_ui' );
+			
 			wp_enqueue_script( 'sailen_toggle' );
 			wp_enqueue_style( 'star_style' );
 			wp_register_script( 'sailen-scripts', sailen_META_BOX_URL . 'js/cmb.js','', '0.9.1' );
@@ -103,7 +103,7 @@ if ( !class_exists( "Sailenseo" ) )
 		//	wp_enqueue_script( 'sailen_jquery' );
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'sailen_jquery_star' );
-			wp_enqueue_script( 'sailen_jquery_ui' );			
+					
 			wp_enqueue_script( 'sailen_toggle' );
 			wp_enqueue_style( 'star_style' );
 			wp_register_script( 'sailen-scripts', sailen_META_BOX_URL . 'js/cmb.js', '', '0.9.1' );
@@ -124,7 +124,7 @@ if ( !class_exists( "Sailenseo" ) )
 			wp_register_style( 'meta_style', plugins_url('admin/css/style.css', __FILE__) );
 
 			wp_register_style( 'admin_style', plugins_url('admin/css/admin.css', __FILE__) );
-			wp_register_script( 'sailen_jquery_ui', plugins_url('/js/jquery-ui.js', __FILE__) );
+			
 			wp_register_script( 'sailen_jquery_star', plugins_url('/js/jquery.rating.min.js', __FILE__) );
 			wp_register_script( 'sailen_toggle', plugins_url('/js/toggle.js', __FILE__) );
 		}
