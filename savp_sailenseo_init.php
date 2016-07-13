@@ -1,16 +1,16 @@
 <?php
 $meta_boxes = array();
-$meta_boxes = apply_filters ( 'sailen_meta_boxes' , $meta_boxes );
+$meta_boxes = apply_filters ( 'savp_sailen_meta_boxes' , $meta_boxes );
 foreach ( $meta_boxes as $meta_box ) {
-	$my_box = new sailen_Meta_Box( $meta_box );
+	$my_box = new savp_sailen_Meta_Box( $meta_box );
 }
 /**
  * Validate value of meta fields
  * Define ALL validation methods inside this class and use the names of these
  * methods in the definition of meta boxes (key 'validate_func' of each field)
  */
-class sailen_Meta_Box_Validate {
-	function sailen_check_text( $text ) {
+class savp_sailen_Meta_Box_Validate {
+	function savp_sailen_check_text( $text ) {
 		if ($text != 'hello') {
 			return false;
 		}
@@ -24,18 +24,18 @@ class sailen_Meta_Box_Validate {
  */
 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
        //winblows
-    define( 'sailen_META_BOX_URL', trailingslashit( str_replace( DIRECTORY_SEPARATOR, '/', str_replace( str_replace( '/', DIRECTORY_SEPARATOR, WP_CONTENT_DIR ), WP_CONTENT_URL, dirname(__FILE__) ) ) ) );
+    define( 'savp_sailen_META_BOX_URL', trailingslashit( str_replace( DIRECTORY_SEPARATOR, '/', str_replace( str_replace( '/', DIRECTORY_SEPARATOR, WP_CONTENT_DIR ), WP_CONTENT_URL, dirname(__FILE__) ) ) ) );
 } else {
-    define( 'sailen_META_BOX_URL', apply_filters( 'sailen_meta_box_url', trailingslashit( str_replace( WP_CONTENT_DIR, WP_CONTENT_URL, dirname( __FILE__ ) ) ) ) );
+    define( 'savp_sailen_META_BOX_URL', apply_filters( 'savp_sailen_meta_box_url', trailingslashit( str_replace( WP_CONTENT_DIR, WP_CONTENT_URL, dirname( __FILE__ ) ) ) ) );
 }
 /**
  * Create meta boxes
  */
-class sailen_Meta_Box {
+class savp_sailen_Meta_Box {
 	protected $_meta_box;
 	function __construct( $meta_box ) {
-		add_filter('language_attributes', array( &$this,'sailen_doctype_opengraph'));
-		add_action( 'wp_head', array( &$this, 'sailen_save_og' ) ,1);
+		add_filter('language_attributes', array( &$this,'savp_sailen_doctype_opengraph'));
+		add_action( 'wp_head', array( &$this, 'savp_sailen_save_og' ) ,1);
 		if ( !is_admin() ) return;
 		
 		$this->_meta_box = $meta_box;
@@ -49,15 +49,15 @@ class sailen_Meta_Box {
 
 		global $pagenow;
 		if ( $upload && in_array( $pagenow, array( 'page.php', 'page-new.php', 'post.php', 'post-new.php' ) ) ) {
-			add_action( 'admin_head', array( &$this, 'sailen_add_post_enctype' ) );
+			add_action( 'admin_head', array( &$this, 'savp_sailen_add_post_enctype' ) );
 		}
 
-		add_action( 'admin_menu', array( &$this, 'sailen_add' ) );
-		add_action( 'save_post', array( &$this, 'sailen_save' ) );
+		add_action( 'admin_menu', array( &$this, 'savp_sailen_add' ) );
+		add_action( 'save_post', array( &$this, 'savp_sailen_save' ) );
 
 		
-		add_filter( 'sailen_sailen_show_on', array( &$this, 'sailen_add_for_id' ), 10, 2 );
-		add_filter( 'sailen_sailen_show_on', array( &$this, 'sailen_add_for_page_template' ), 10, 2 );
+		add_filter( 'savp_sailen_savp_sailen_show_on', array( &$this, 'savp_sailen_add_for_id' ), 10, 2 );
+		add_filter( 'savp_sailen_savp_sailen_show_on', array( &$this, 'savp_sailen_add_for_page_template' ), 10, 2 );
 	}
 
 
@@ -66,7 +66,7 @@ class sailen_Meta_Box {
 
 
 
-function sailen_doctype_opengraph($output) {
+function savp_sailen_doctype_opengraph($output) {
     return $output . ' prefix="og: http://ogp.me/ns#"';
 }
 
@@ -76,7 +76,7 @@ function sailen_doctype_opengraph($output) {
 
 
 
-	function sailen_add_post_enctype() {
+	function savp_sailen_add_post_enctype() {
 		echo '
 		<script type="text/javascript">
 		jQuery(document).ready(function(){
@@ -86,40 +86,40 @@ function sailen_doctype_opengraph($output) {
 		</script>';
 	}
 	// Add metaboxes
-	function sailen_add() {
+	function savp_sailen_add() {
 		$this->_meta_box['context'] = empty($this->_meta_box['context']) ? 'normal' : $this->_meta_box['context'];
 		$this->_meta_box['priority'] = empty($this->_meta_box['priority']) ? 'high' : $this->_meta_box['priority'];
-		$this->_meta_box['sailen_show_on'] = empty( $this->_meta_box['sailen_show_on'] ) ? array('key' => false, 'value' => false) : $this->_meta_box['sailen_show_on'];
+		$this->_meta_box['savp_sailen_show_on'] = empty( $this->_meta_box['savp_sailen_show_on'] ) ? array('key' => false, 'value' => false) : $this->_meta_box['savp_sailen_show_on'];
 		foreach ( $this->_meta_box['pages'] as $page ) {
-			if( apply_filters( 'sailen_sailen_show_on', true, $this->_meta_box ) )
-				add_meta_box( $this->_meta_box['id'], $this->_meta_box['title'], array(&$this, 'sailen_show'), $page, $this->_meta_box['context'], $this->_meta_box['priority']) ;
+			if( apply_filters( 'savp_sailen_savp_sailen_show_on', true, $this->_meta_box ) )
+				add_meta_box( $this->_meta_box['id'], $this->_meta_box['title'], array(&$this, 'savp_sailen_show'), $page, $this->_meta_box['context'], $this->_meta_box['priority']) ;
 		}
 	}
 	/**
-	 * sailen_show On Filters
-	 * Use the 'sailen_sailen_show_on' filter to further refine the conditions under which a metabox is displayed.
+	 * savp_sailen_show On Filters
+	 * Use the 'savp_sailen_savp_sailen_show_on' filter to further refine the conditions under which a metabox is displayed.
 	 * Below you can limit it by ID and page template
 	 */
 	// Add for ID
-	function sailen_add_for_id( $display, $meta_box ) {
-		if ( 'id' !== $meta_box['sailen_show_on']['key'] )
+	function savp_sailen_add_for_id( $display, $meta_box ) {
+		if ( 'id' !== $meta_box['savp_sailen_show_on']['key'] )
 			return $display;
-		// If we're sailen_showing it based on ID, get the current ID
+		// If we're savp_sailen_showing it based on ID, get the current ID
 		if( isset( $_GET['post'] ) ) $post_id = $_GET['post'];
 		elseif( isset( $_POST['post_ID'] ) ) $post_id = $_POST['post_ID'];
 		if( !isset( $post_id ) )
 			return false;
 		// If value isn't an array, turn it into one
-		$meta_box['sailen_show_on']['value'] = !is_array( $meta_box['sailen_show_on']['value'] ) ? array( $meta_box['sailen_show_on']['value'] ) : $meta_box['sailen_show_on']['value'];
+		$meta_box['savp_sailen_show_on']['value'] = !is_array( $meta_box['savp_sailen_show_on']['value'] ) ? array( $meta_box['savp_sailen_show_on']['value'] ) : $meta_box['savp_sailen_show_on']['value'];
 		// If current page id is in the included array, display the metabox
-		if ( in_array( $post_id, $meta_box['sailen_show_on']['value'] ) )
+		if ( in_array( $post_id, $meta_box['savp_sailen_show_on']['value'] ) )
 			return true;
 		else
 			return false;
 	}
 	// Add for Page Template
-	function sailen_add_for_page_template( $display, $meta_box ) {
-		if( 'page-template' !== $meta_box['sailen_show_on']['key'] )
+	function savp_sailen_add_for_page_template( $display, $meta_box ) {
+		if( 'page-template' !== $meta_box['savp_sailen_show_on']['key'] )
 			return $display;
 		// Get the current ID
 		if( isset( $_GET['post'] ) ) $post_id = $_GET['post'];
@@ -128,19 +128,19 @@ function sailen_doctype_opengraph($output) {
 		// Get current template
 		$current_template = get_post_meta( $post_id, '_wp_page_template', true );
 		// If value isn't an array, turn it into one
-		$meta_box['sailen_show_on']['value'] = !is_array( $meta_box['sailen_show_on']['value'] ) ? array( $meta_box['sailen_show_on']['value'] ) : $meta_box['sailen_show_on']['value'];
+		$meta_box['savp_sailen_show_on']['value'] = !is_array( $meta_box['savp_sailen_show_on']['value'] ) ? array( $meta_box['savp_sailen_show_on']['value'] ) : $meta_box['savp_sailen_show_on']['value'];
 		// See if there's a match
-		if( in_array( $current_template, $meta_box['sailen_show_on']['value'] ) )
+		if( in_array( $current_template, $meta_box['savp_sailen_show_on']['value'] ) )
 			return true;
 		else
 			return false;
 	}
-	// sailen_show fields
-	function sailen_show() {
+	// savp_sailen_show fields
+	function savp_sailen_show() {
 		global $post;
 		// Use nonce for verification
 		echo '<input type="hidden" name="wp_meta_box_nonce" value="', wp_create_nonce( basename(__FILE__) ), '" />';
-		echo '<table class="form-table sailen_metabox">';
+		echo '<table class="form-table savp_sailen_metabox">';
 		foreach ( $this->_meta_box['fields'] as $field ) {
 			// Set up blank or default values for empty ones
 			if ( !isset( $field['name'] ) ) $field['name'] = '';
@@ -154,7 +154,7 @@ function sailen_doctype_opengraph($output) {
 			if ( $field['type'] == "title" ) {
 				echo '<td colspan="2">';
 			} else {
-				if( $this->_meta_box['sailen_show_names'] == true ) {
+				if( $this->_meta_box['savp_sailen_show_names'] == true ) {
 					echo '<th style="width:18%"><label class="', $field['class'],'" for="', $field['id'], '">', $field['name'], '</label></th>';
 				}
 				echo '<td>';
@@ -162,29 +162,29 @@ function sailen_doctype_opengraph($output) {
 			
 			switch ( $field['type'] ) {
 				case 'text':
-					echo '<input class="', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'],  '" value="', '' !== $meta ? $meta : $field['std'], '" />','<p class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
+					echo '<input class="', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'],  '" value="', '' !== $meta ? $meta : $field['std'], '" />','<p class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
 					break;
 				case 'text_small':
-					echo '<input class="sailen_text_small ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" /><span class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
+					echo '<input class="savp_sailen_text_small ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" /><span class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
 					break;
 				case 'text_medium':
-					echo '<input class="sailen_text_medium ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" /><span class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
+					echo '<input class="savp_sailen_text_medium ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" /><span class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
 					break;
 				case 'text_date':
-					echo '<input class="sailen_text_small sailen_datepicker ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" /><span class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
+					echo '<input class="savp_sailen_text_small savp_sailen_datepicker ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" /><span class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
 					break;
 				case 'text_date_timestamp':
-					echo '<input class="sailen_text_small sailen_datepicker ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? date( 'm\/d\/Y', $meta ) : $field['std'], '" /><span class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
+					echo '<input class="savp_sailen_text_small savp_sailen_datepicker ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? date( 'm\/d\/Y', $meta ) : $field['std'], '" /><span class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
 					break;
 				case 'text_datetime_timestamp':
-					echo '<input class="sailen_text_small sailen_datepicker ', $field['class'],'" type="text" name="', $field['id'], '[date]" id="', $field['id'], '_date" value="', '' !== $meta ? date( 'm\/d\/Y', $meta ) : $field['std'], '" />';
-					echo '<input class="sailen_timepicker text_time ', $field['class'],'" type="text" name="', $field['id'], '[time]" id="', $field['id'], '_time" value="', '' !== $meta ? date( 'h:i A', $meta ) : $field['std'], '" /><span class="sailen_metabox_description ', $field['class'],'" >', $field['desc'], '</span>';
+					echo '<input class="savp_sailen_text_small savp_sailen_datepicker ', $field['class'],'" type="text" name="', $field['id'], '[date]" id="', $field['id'], '_date" value="', '' !== $meta ? date( 'm\/d\/Y', $meta ) : $field['std'], '" />';
+					echo '<input class="savp_sailen_timepicker text_time ', $field['class'],'" type="text" name="', $field['id'], '[time]" id="', $field['id'], '_time" value="', '' !== $meta ? date( 'h:i A', $meta ) : $field['std'], '" /><span class="savp_sailen_metabox_description ', $field['class'],'" >', $field['desc'], '</span>';
 					break;
 				case 'text_time':
-					echo '<input class="sailen_timepicker text_time ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" /><span class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
+					echo '<input class="savp_sailen_timepicker text_time ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" /><span class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
 					break;
 				case 'text_money':
-					echo '$ <input class="sailen_text_money ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" /><span class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
+					echo '$ <input class="savp_sailen_text_money ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" /><span class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
 					break;
 				case 'colorpicker':
 					$meta = '' !== $meta ? $meta : $field['std'];
@@ -193,16 +193,16 @@ function sailen_doctype_opengraph($output) {
 						$meta = '#' . $meta;
 					elseif ( ! preg_match( '/^#' . $hex_color . '/i', $meta ) ) // Value doesn't match #123abc, so sanitize to just #.
 						$meta = "#";
-					echo '<input class="sailen_colorpicker sailen_text_small ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta, '" /><span class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
+					echo '<input class="savp_sailen_colorpicker savp_sailen_text_small ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta, '" /><span class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
 					break;
 				case 'textarea':
-					echo '<textarea class="', $field['class'],'" name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="10">', '' !== $meta ? $meta : $field['std'], '</textarea>','<p class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
+					echo '<textarea class="', $field['class'],'" name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="10">', '' !== $meta ? $meta : $field['std'], '</textarea>','<p class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
 					break;
 				case 'textarea_small':
-					echo '<textarea class="', $field['class'],'" name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4">', '' !== $meta ? $meta : $field['std'], '</textarea>','<p class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
+					echo '<textarea class="', $field['class'],'" name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4">', '' !== $meta ? $meta : $field['std'], '</textarea>','<p class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
 					break;
 				case 'textarea_code':
-					echo '<textarea class="', $field['class'],'" name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="10" class="sailen_textarea_code">', '' !== $meta ? $meta : $field['std'], '</textarea>','<p class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
+					echo '<textarea class="', $field['class'],'" name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="10" class="savp_sailen_textarea_code">', '' !== $meta ? $meta : $field['std'], '</textarea>','<p class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
 					break;
 				case 'select':
 					if( empty( $meta ) && !empty( $field['std'] ) ) $meta = $field['std'];
@@ -211,18 +211,18 @@ function sailen_doctype_opengraph($output) {
 						echo '<option class="', $field['class'],'" value="', $option['value'], '"', $meta == $option['value'] ? ' selected="selected"' : '', '>', $option['name'], '</option>';
 					}
 					echo '</select>';
-					echo '<p class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
+					echo '<p class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
 					break;
 				case 'radio_inline':
 					if( empty( $meta ) && !empty( $field['std'] ) ) $meta = $field['std'];
-					echo '<div class="sailen_radio_inline ', $field['class'],'">';
+					echo '<div class="savp_sailen_radio_inline ', $field['class'],'">';
 					$i = 1;
 					foreach ($field['options'] as $option) {
-						echo '<div class="sailen_radio_inline_option ', $field['class'],'"><input class="', $field['class'],'" type="radio" name="', $field['id'], '" id="', $field['id'], $i, '" value="', $option['value'], '"', $meta == $option['value'] ? ' checked="checked"' : '', ' /><label class="', $field['class'],'" for="', $field['id'], $i, '">', $option['name'], '</label></div>';
+						echo '<div class="savp_sailen_radio_inline_option ', $field['class'],'"><input class="', $field['class'],'" type="radio" name="', $field['id'], '" id="', $field['id'], $i, '" value="', $option['value'], '"', $meta == $option['value'] ? ' checked="checked"' : '', ' /><label class="', $field['class'],'" for="', $field['id'], $i, '">', $option['name'], '</label></div>';
 						$i++;
 					}
 					echo '</div>';
-					echo '<p class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
+					echo '<p class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
 					break;
 				case 'radio':
 					if( empty( $meta ) && !empty( $field['std'] ) ) $meta = $field['std'];
@@ -238,11 +238,11 @@ function sailen_doctype_opengraph($output) {
 						$i++;
 					}
 					echo '</ul></div>';
-					echo '<p class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
+					echo '<p class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
 					break;
 				case 'checkbox':
 					echo '<input type="checkbox" class="', $field['class'],'" name="', $field['id'], '" id="', $field['id'], '"', $meta ? ' checked="checked"' : '', ' />';
-					echo '<span class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
+					echo '<span class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
 					break;
 				case 'multicheck':
 					echo '<ul class="', $field['class'],'">';
@@ -254,15 +254,15 @@ function sailen_doctype_opengraph($output) {
 						$i++;
 					}
 					echo '</ul>';
-					echo '<span class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
+					echo '<span class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
 					break;
 				case 'title':
-					echo '<h5 class="sailen_metabox_title ', $field['class'],'">', $field['name'], '</h5>';
-					echo '<p class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
+					echo '<h5 class="savp_sailen_metabox_title ', $field['class'],'">', $field['name'], '</h5>';
+					echo '<p class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
 					break;
 				case 'wysiwyg':
 					wp_editor( $meta ? $meta : $field['std'], $field['id'], isset( $field['options'] ) ? $field['options'] : array() );
-			        echo '<p class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
+			        echo '<p class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
 					break;
 				case 'taxonomy_select':
 					echo '<select class="', $field['class'],'" name="', $field['id'], '" id="', $field['id'], '">';
@@ -276,7 +276,7 @@ function sailen_doctype_opengraph($output) {
 						}
 					}
 					echo '</select>';
-					echo '<p class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
+					echo '<p class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
 					break;
 				case 'taxonomy_radio':
 					$names= wp_get_object_terms( $post->ID, $field['taxonomy'] );
@@ -290,7 +290,7 @@ function sailen_doctype_opengraph($output) {
 						}
 					}
 					echo '</ul>';
-					echo '<p class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
+					echo '<p class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
 					break;
 				case 'taxonomy_multicheck':
 					echo '<ul>';
@@ -304,12 +304,12 @@ function sailen_doctype_opengraph($output) {
 						echo' /><label>', $term->name , '</label></li>';
 					}
 					echo '</ul>';
-					echo '<span class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
+					echo '<span class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</span>';
 				break;
 				case 'file_list':
-					echo '<input class="sailen_upload_file ', $field['class'],'" type="text" size="36" name="', $field['id'], '" value="" />';
-					echo '<input class="sailen_upload_button button ', $field['class'],'" type="button" value="Upload File" />';
-					echo '<p class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
+					echo '<input class="savp_sailen_upload_file ', $field['class'],'" type="text" size="36" name="', $field['id'], '" value="" />';
+					echo '<input class="savp_sailen_upload_button button ', $field['class'],'" type="button" value="Upload File" />';
+					echo '<p class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
 						$args = array(
 								'post_type' => 'attachment',
 								'numberposts' => null,
@@ -332,38 +332,38 @@ function sailen_doctype_opengraph($output) {
 					$input_type_url = "hidden";
 					if ( 'url' == $field['allow'] || ( is_array( $field['allow'] ) && in_array( 'url', $field['allow'] ) ) )
 						$input_type_url="text";
-					echo '<input class="sailen_upload_file ', $field['class'],' '.$field['id'].'" type="' . $input_type_url . '" size="45" id="', $field['id'], '" name="', $field['id'], '" value="', $meta, '" />';
-					echo '<input class="sailen_upload_button button ', $field['class'],'" id="', $field['id'], '_id" type="button" value="Upload File" />';
-					echo '<input class="sailen_upload_file_id ', $field['class'],'" type="hidden" id="', $field['id'], '" name="', $field['id'], '_id" value="', get_post_meta( $post->ID, $field['id'] . "_id",true), '" />';
-					echo '<p class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
-					echo '<div id="', $field['id'], '_status" class="sailen_media_status ', $field['class'],'">';
+					echo '<input class="savp_sailen_upload_file ', $field['class'],' '.$field['id'].'" type="' . $input_type_url . '" size="45" id="', $field['id'], '" name="', $field['id'], '" value="', $meta, '" />';
+					echo '<input class="savp_sailen_upload_button button ', $field['class'],'" id="', $field['id'], '_id" type="button" value="Upload File" />';
+					echo '<input class="savp_sailen_upload_file_id ', $field['class'],'" type="hidden" id="', $field['id'], '" name="', $field['id'], '_id" value="', get_post_meta( $post->ID, $field['id'] . "_id",true), '" />';
+					echo '<p class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
+					echo '<div id="', $field['id'], '_status" class="savp_sailen_media_status ', $field['class'],'">';
 						if ( $meta != '' ) {
 							$check_image = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico*)/i', $meta );
 							if ( $check_image ) {
 								echo '<div class="img_status">';
 								echo '<img src="', $meta, '" alt="" />';
-								echo '<a href="#" class="sailen_remove_file_button ', $field['class'],'" rel="', $field['id'], '">Remove Image</a>';
+								echo '<a href="#" class="savp_sailen_remove_file_button ', $field['class'],'" rel="', $field['id'], '">Remove Image</a>';
 								echo '</div>';
 							} else {
 								$parts = explode( '/', $meta );
 								for( $i = 0; $i < count( $parts ); ++$i ) {
 									$title = $parts[$i];
 								}
-								echo 'File: <strong>', $title, '</strong>&nbsp;&nbsp;&nbsp; (<a href="', $meta, '" target="_blank" rel="external">Download</a> / <a href="#" class="sailen_remove_file_button" rel="', $field['id'], '">Remove</a>)';
+								echo 'File: <strong>', $title, '</strong>&nbsp;&nbsp;&nbsp; (<a href="', $meta, '" target="_blank" rel="external">Download</a> / <a href="#" class="savp_sailen_remove_file_button" rel="', $field['id'], '">Remove</a>)';
 							}
 						}
 					echo '</div>';
 				break;
 				case 'oembed':
-					echo '<input class="sailen_oembed ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" />','<p class="sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
-					echo '<p class="sailen-spinner spinner ', $field['class'],'"></p>';
-					echo '<div id="', $field['id'], '_status" class="sailen_media_status ui-helper-clearfix embed_wrap ', $field['class'],'">';
+					echo '<input class="savp_sailen_oembed ', $field['class'],'" type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" />','<p class="savp_sailen_metabox_description ', $field['class'],'">', $field['desc'], '</p>';
+					echo '<p class="savp_sailen-spinner spinner ', $field['class'],'"></p>';
+					echo '<div id="', $field['id'], '_status" class="savp_sailen_media_status ui-helper-clearfix embed_wrap ', $field['class'],'">';
 						if ( $meta != '' ) {
 							$check_embed = $GLOBALS['wp_embed']->run_shortcode( '[embed]'. esc_url( $meta ) .'[/embed]' );
 							if ( $check_embed ) {
 								echo '<div class="embed_status ', $field['class'],'">';
 								echo $check_embed;
-								echo '<a href="#" class="sailen_remove_file_button ', $field['class'],'" rel="', $field['id'], '">Remove Embed</a>';
+								echo '<a href="#" class="savp_sailen_remove_file_button ', $field['class'],'" rel="', $field['id'], '">Remove Embed</a>';
 								echo '</div>';
 							} else {
 								echo 'URL is not a valid oEmbed URL.';
@@ -372,7 +372,7 @@ function sailen_doctype_opengraph($output) {
 					echo '</div>';
 					break;
 				default:
-					do_action('sailen_render_' . $field['type'] , $field, $meta);
+					do_action('savp_sailen_render_' . $field['type'] , $field, $meta);
 			}
 			echo '</td>','</tr>';
 		}
@@ -383,7 +383,7 @@ function sailen_doctype_opengraph($output) {
 
 
 
-function sailen_save_og($post_id)
+function savp_sailen_save_og($post_id)
 {
 
 		 
@@ -391,46 +391,46 @@ function sailen_save_og($post_id)
 
 		$post_id=get_the_ID();
 		
-		$sailen_temp_site_title=get_bloginfo ('name');
-		$sailen_temp_og_title=get_post_meta( get_the_ID(), '_sailen_og_title');
-		$sailen_temp_og_description=get_post_meta( get_the_ID(), '_sailen_og_description');
-		$sailen_temp_og_iamge=get_post_meta( get_the_ID(), '_sailen_og_image');
+		$savp_sailen_temp_site_title=get_bloginfo ('name');
+		$savp_sailen_temp_og_title=get_post_meta( get_the_ID(), '_savp_sailen_og_title');
+		$savp_sailen_temp_og_description=get_post_meta( get_the_ID(), '_savp_sailen_og_description');
+		$savp_sailen_temp_og_iamge=get_post_meta( get_the_ID(), '_savp_sailen_og_image');
 		
 
-		$sailen_post_object = get_post( $post_id );
+		$savp_sailen_post_object = get_post( $post_id );
 		 
-		$sailen_post_con=$sailen_post_object->post_content;
+		$savp_sailen_post_con=$savp_sailen_post_object->post_content;
 
 	 
-        $sailen_content = strip_tags($sailen_post_con);
-		$sailen_first_f=substr($sailen_content, 0, 100);
+        $savp_sailen_content = strip_tags($savp_sailen_post_con);
+		$savp_sailen_first_f=substr($savp_sailen_content, 0, 100);
 
 		
 		
 		?>
 
-		<!-- Sailenseo-->
+		<!-- savp_sailenseo-->
 
 	<link rel="canonical" href="<?php echo get_permalink(); ?>" />
 	<meta property="og:locale" content="<?php echo get_locale(); ?>" />
 	<meta property="og:type" content="<?php echo "article";//get_post_type ( $post_id ); ?>" />
 	<meta property="og:url" content="<?php echo get_permalink(); ?>"/>
-	<meta property="og:site_name" content="<?php echo htmlspecialchars($sailen_temp_site_title); ?>"/>
+	<meta property="og:site_name" content="<?php echo htmlspecialchars($savp_sailen_temp_site_title); ?>"/>
 
 
-			<?php if(trim($sailen_temp_og_title[0])===""){
+			<?php if(trim($savp_sailen_temp_og_title[0])===""){
 					
 
 						if(''===get_the_title()){
 						
-							$sailen_site_title_temp=$sailen_temp_site_title;
+							$savp_sailen_site_title_temp=$savp_sailen_temp_site_title;
 
 				?>
 
 
-	<meta property="og:title" content="<?php echo htmlspecialchars($sailen_site_title_temp); ?>" />
-	<meta itemprop="name" content="<?php echo htmlspecialchars($sailen_site_title_temp); ?>"/>
-	<meta name="twitter:title" content="<?php echo htmlspecialchars($sailen_site_title_temp); ?>" />
+	<meta property="og:title" content="<?php echo htmlspecialchars($savp_sailen_site_title_temp); ?>" />
+	<meta itemprop="name" content="<?php echo htmlspecialchars($savp_sailen_site_title_temp); ?>"/>
+	<meta name="twitter:title" content="<?php echo htmlspecialchars($savp_sailen_site_title_temp); ?>" />
 
 						<?php }else{?>
 	<meta property="og:title" content="<?php echo htmlspecialchars(get_the_title());?>"/>			
@@ -439,9 +439,9 @@ function sailen_save_og($post_id)
 
 						<?php }
 					}else{?>
-	<meta property="og:title" content="<?php echo htmlspecialchars($sailen_temp_og_title[0]);?>"/>
-	<meta itemprop="name" content="<?php echo htmlspecialchars($sailen_temp_og_title[0]); ?>"/>
-	<meta name="twitter:title" content="<?php echo htmlspecialchars($sailen_temp_og_title[0]);?>"/>
+	<meta property="og:title" content="<?php echo htmlspecialchars($savp_sailen_temp_og_title[0]);?>"/>
+	<meta itemprop="name" content="<?php echo htmlspecialchars($savp_sailen_temp_og_title[0]); ?>"/>
+	<meta name="twitter:title" content="<?php echo htmlspecialchars($savp_sailen_temp_og_title[0]);?>"/>
 
 					<?php }?>
 
@@ -449,49 +449,49 @@ function sailen_save_og($post_id)
 
 					<?php	
 
-					if(trim($sailen_temp_og_description[0])===""){
+					if(trim($savp_sailen_temp_og_description[0])===""){
 					
 
-						if(''===trim($sailen_first_f)){
+						if(''===trim($savp_sailen_first_f)){
 						
-							$sailen_site_title_temp=$sailen_temp_site_title; 
+							$savp_sailen_site_title_temp=$savp_sailen_temp_site_title; 
 
 
 							?>
 
-		<meta property="og:description" content="<?php echo htmlspecialchars($sailen_site_title_temp); ?>" />
-		<meta itemprop="description" content="<?php echo htmlspecialchars($sailen_site_title_temp); ?>" />
-		<meta name="description" content="<?php echo htmlspecialchars($sailen_site_title_temp) ; ?>" />
-		<meta name="twitter:description" content="<?php echo htmlspecialchars($sailen_site_title_temp); ?>" />
+		<meta property="og:description" content="<?php echo htmlspecialchars($savp_sailen_site_title_temp); ?>" />
+		<meta itemprop="description" content="<?php echo htmlspecialchars($savp_sailen_site_title_temp); ?>" />
+		<meta name="description" content="<?php echo htmlspecialchars($savp_sailen_site_title_temp) ; ?>" />
+		<meta name="twitter:description" content="<?php echo htmlspecialchars($savp_sailen_site_title_temp); ?>" />
 
 						<?php } else {?>
-		<meta property="og:description" content="<?php echo htmlspecialchars($sailen_first_f); ?>" />
-		<meta itemprop="description" content="<?php echo htmlspecialchars($sailen_first_f); ?>" />
-		<meta name="description" content="<?php echo htmlspecialchars($sailen_first_f) ; ?>" />
-		<meta name="twitter:description" content="<?php echo htmlspecialchars($sailen_first_f); ?>" />
+		<meta property="og:description" content="<?php echo htmlspecialchars($savp_sailen_first_f); ?>" />
+		<meta itemprop="description" content="<?php echo htmlspecialchars($savp_sailen_first_f); ?>" />
+		<meta name="description" content="<?php echo htmlspecialchars($savp_sailen_first_f) ; ?>" />
+		<meta name="twitter:description" content="<?php echo htmlspecialchars($savp_sailen_first_f); ?>" />
 
 						<?php }
 					} else {?>
 
-		<meta property="og:description" content="<?php echo htmlspecialchars($sailen_temp_og_description[0]); ?> " />
-		<meta itemprop="description" content="<?php echo htmlspecialchars($sailen_temp_og_description[0]);?> "/>
-		<meta name="description" content="<?php echo htmlspecialchars($sailen_temp_og_description[0]);?> " />
-		<meta name="twitter:description" content="<?php echo htmlspecialchars($sailen_temp_og_description[0]); ?>"/>
+		<meta property="og:description" content="<?php echo htmlspecialchars($savp_sailen_temp_og_description[0]); ?> " />
+		<meta itemprop="description" content="<?php echo htmlspecialchars($savp_sailen_temp_og_description[0]);?> "/>
+		<meta name="description" content="<?php echo htmlspecialchars($savp_sailen_temp_og_description[0]);?> " />
+		<meta name="twitter:description" content="<?php echo htmlspecialchars($savp_sailen_temp_og_description[0]); ?>"/>
 
 					<?php }
 
 					 
 
-					if(trim(''===$sailen_temp_og_iamge[0])){
+					if(trim(''===$savp_sailen_temp_og_iamge[0])){
 					
 						//code here for future
 						
 					}else{?>
 
-		<meta property="og:image" content="<?php echo esc_url($sailen_temp_og_iamge[0]); ?>" />			
-		<meta itemprop="image" content="<?php echo esc_url($sailen_temp_og_iamge[0]); ?>" />	
-		<meta name="twitter:card" content="<?php echo esc_url($sailen_temp_og_iamge[0]); ?>" />
-		<meta name="twitter:image:src" content="<?php echo esc_url($sailen_temp_og_iamge[0]); ?>" />		
+		<meta property="og:image" content="<?php echo esc_url($savp_sailen_temp_og_iamge[0]); ?>" />			
+		<meta itemprop="image" content="<?php echo esc_url($savp_sailen_temp_og_iamge[0]); ?>" />	
+		<meta name="twitter:card" content="<?php echo esc_url($savp_sailen_temp_og_iamge[0]); ?>" />
+		<meta name="twitter:image:src" content="<?php echo esc_url($savp_sailen_temp_og_iamge[0]); ?>" />		
 							
 					<?php } ?>
 
@@ -504,9 +504,9 @@ function sailen_save_og($post_id)
 
 
 						
-						$sailen_posttags = get_the_tags();
-							if ($sailen_posttags) {
-							  foreach($sailen_posttags as $tag) {?>
+						$savp_sailen_posttags = get_the_tags();
+							if ($savp_sailen_posttags) {
+							  foreach($savp_sailen_posttags as $tag) {?>
 		<meta property="article:tag" content="<?php echo htmlspecialchars($tag->name); ?>" />
 							  <?php }
 							  				
@@ -515,7 +515,7 @@ function sailen_save_og($post_id)
 
 						
 					}?>
-				<!-- Sailenseo data ends-->
+				<!-- savp_sailenseo data ends-->
 
 				<?php
 
@@ -543,7 +543,7 @@ function sailen_save_og($post_id)
 
 
 	// Save data from metabox
-	function sailen_save( $post_id)  {
+	function savp_sailen_save( $post_id)  {
 		// verify nonce
 		if ( ! isset( $_POST['wp_meta_box_nonce'] ) || !wp_verify_nonce( $_POST['wp_meta_box_nonce'], basename(__FILE__) ) ) {
 			return $post_id;
@@ -560,6 +560,7 @@ function sailen_save_og($post_id)
 		} elseif ( !current_user_can( 'edit_post', $post_id ) ) {
 			return $post_id;
 		}
+		
 		foreach ( $this->_meta_box['fields'] as $field ) {
 			$name = $field['id'];
 			if ( ! isset( $field['multiple'] ) )
@@ -582,10 +583,10 @@ function sailen_save_og($post_id)
 				$string = $new['date'] . ' ' . $new['time'];
 				$new = strtotime( $string );
 			}
-			$new = apply_filters('sailen_validate_' . $field['type'], $new, $post_id, $field);
+			$new = apply_filters('savp_sailen_validate_' . $field['type'], $new, $post_id, $field);
 			// validate meta value
 			if ( isset( $field['validate_func']) ) {
-				$ok = call_user_func( array( 'sailen_Meta_Box_Validate', $field['validate_func']), $new );
+				$ok = call_user_func( array( 'savp_sailen_Meta_Box_Validate', $field['validate_func']), $new );
 				if ( $ok === false ) { // pass away when meta value is invalid
 					continue;
 				}
@@ -624,37 +625,37 @@ function sailen_save_og($post_id)
 /**
  * Adding scripts and styles
  */
-function sailen_scripts( $hook ) {
+function savp_sailen_scripts( $hook ) {
 	global $wp_version;
 	// only enqueue our scripts/styles on the proper pages
 	if ( $hook == 'post.php' || $hook == 'post-new.php' || $hook == 'page-new.php' || $hook == 'page.php') {
 		// scripts required for cmb
-		$sailen_script_array = array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'media-upload', 'thickbox' );
+		$savp_sailen_script_array = array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'media-upload', 'thickbox' );
 		// styles required for cmb
-		$sailen_style_array = array( 'thickbox' );
+		$savp_sailen_style_array = array( 'thickbox' );
 		// if we're 3.5 or later, user wp-color-picker
 		if ( 3.5 <= $wp_version ) {
-			$sailen_script_array[] = 'wp-color-picker';
-			$sailen_style_array[] = 'wp-color-picker';
+			$savp_sailen_script_array[] = 'wp-color-picker';
+			$savp_sailen_style_array[] = 'wp-color-picker';
 		} else {
 			// otherwise use the older 'farbtastic'
-			$sailen_script_array[] = 'farbtastic';
-			$sailen_style_array[] = 'farbtastic';
+			$savp_sailen_script_array[] = 'farbtastic';
+			$savp_sailen_style_array[] = 'farbtastic';
 		}
-		wp_register_script( 'sailen-timepicker', sailen_META_BOX_URL . 'js/jquery.timePicker.min.js' );
-		wp_register_script( 'sailen-scripts', sailen_META_BOX_URL . 'js/cmb.js', $sailen_script_array, '0.9.1' );
-		wp_localize_script( 'sailen-scripts', 'sailen_ajax_data', array( 'ajax_nonce' => wp_create_nonce( 'ajax_nonce' ), 'post_id' => get_the_ID() ) );
-		wp_enqueue_script( 'sailen-timepicker' );
-		wp_enqueue_script( 'sailen-scripts' );
-		wp_register_style( 'sailen-styles', sailen_META_BOX_URL . 'admin/css/style.css', $sailen_style_array );
-		wp_enqueue_style( 'sailen-styles' );
+		wp_register_script( 'savp_sailen-timepicker', savp_sailen_META_BOX_URL . 'js/jquery.timePicker.min.js' );
+		wp_register_script( 'savp_sailen-scripts', savp_sailen_META_BOX_URL . 'js/cmb.js', $savp_sailen_script_array, '0.9.1' );
+		wp_localize_script( 'savp_sailen-scripts', 'savp_sailen_ajax_data', array( 'ajax_nonce' => wp_create_nonce( 'ajax_nonce' ), 'post_id' => get_the_ID() ) );
+		wp_enqueue_script( 'savp_sailen-timepicker' );
+		wp_enqueue_script( 'savp_sailen-scripts' );
+		wp_register_style( 'savp_sailen-styles', savp_sailen_META_BOX_URL . 'admin/css/style.css', $savp_sailen_style_array );
+		wp_enqueue_style( 'savp_sailen-styles' );
 	}
 }
-add_action( 'admin_enqueue_scripts', 'sailen_scripts', 10 );
-function sailen_editor_footer_scripts() { ?>
+add_action( 'admin_enqueue_scripts', 'savp_sailen_scripts', 10 );
+function savp_sailen_editor_footer_scripts() { ?>
 	<?php
-	if ( isset( $_GET['sailen_force_send'] ) && 'true' == $_GET['sailen_force_send'] ) {
-		$label = $_GET['sailen_send_label'];
+	if ( isset( $_GET['savp_sailen_force_send'] ) && 'true' == $_GET['savp_sailen_force_send'] ) {
+		$label = $_GET['savp_sailen_send_label'];
 		if ( empty( $label ) ) $label="Select File";
 		?>
 		<script type="text/javascript">
@@ -675,12 +676,12 @@ function sailen_editor_footer_scripts() { ?>
 
 
 
-add_action( 'admin_print_footer_scripts', 'sailen_editor_footer_scripts', 99 );
+add_action( 'admin_print_footer_scripts', 'savp_sailen_editor_footer_scripts', 99 );
 // Force 'Insert into Post' button from Media Library
-add_filter( 'get_media_item_args', 'sailen_force_send' );
-function sailen_force_send( $args ) {
+add_filter( 'get_media_item_args', 'savp_sailen_force_send' );
+function savp_sailen_force_send( $args ) {
 	// if the Gallery tab is opened from a custom meta box field, add Insert Into Post button
-	if ( isset( $_GET['sailen_force_send'] ) && 'true' == $_GET['sailen_force_send'] )
+	if ( isset( $_GET['savp_sailen_force_send'] ) && 'true' == $_GET['savp_sailen_force_send'] )
 		$args['send'] = true;
 	// if the From Computer tab is opened AT ALL, add Insert Into Post button after an image is uploaded
 	if ( isset( $_POST['attachment_id'] ) && '' != $_POST["attachment_id"] ) {
@@ -708,9 +709,9 @@ function sailen_force_send( $args ) {
 						return decodeURIComponent(results[1].replace(/\+/g, " "));
 				}
 				jQuery(function($) {
-					if (cmbGetParameterByNameInline("sailen_force_send")=="true") {
-						var sailen_send_label = cmbGetParameterByNameInline("sailen_send_label");
-						$("td.savesend input").val(sailen_send_label);
+					if (cmbGetParameterByNameInline("savp_sailen_force_send")=="true") {
+						var savp_sailen_send_label = cmbGetParameterByNameInline("savp_sailen_send_label");
+						$("td.savesend input").val(savp_sailen_send_label);
 					}
 				});
 			</script>
@@ -718,13 +719,13 @@ function sailen_force_send( $args ) {
 	}
     return $args;
 }
-add_action( 'wp_ajax_sailen_oembed_handler', 'sailen_oembed_ajax_results' );
+add_action( 'wp_ajax_savp_sailen_oembed_handler', 'savp_sailen_oembed_ajax_results' );
 /**
  * Handles our oEmbed ajax request
  */
-function sailen_oembed_ajax_results() {
+function savp_sailen_oembed_ajax_results() {
 	// verify our nonce
-	if ( ! ( isset( $_REQUEST['sailen_ajax_nonce'], $_REQUEST['oembed_url'] ) && wp_verify_nonce( $_REQUEST['sailen_ajax_nonce'], 'ajax_nonce' ) ) )
+	if ( ! ( isset( $_REQUEST['savp_sailen_ajax_nonce'], $_REQUEST['oembed_url'] ) && wp_verify_nonce( $_REQUEST['savp_sailen_ajax_nonce'], 'ajax_nonce' ) ) )
 		die();
 	// sanitize our search string
 	$oembed_string = sanitize_text_field( $_REQUEST['oembed_url'] );
@@ -743,7 +744,7 @@ function sailen_oembed_ajax_results() {
 		$fallback = $wp_embed->maybe_make_link( $oembed_url );
 		if ( $check_embed && $check_embed != $fallback ) {
 			// Embed data
-			$return = '<div class="embed_status">'. $check_embed .'<a href="#" class="sailen_remove_file_button" rel="'. $_REQUEST['field_id'] .'">'. __( 'Remove Embed', 'cmb' ) .'</a></div>';
+			$return = '<div class="embed_status">'. $check_embed .'<a href="#" class="savp_sailen_remove_file_button" rel="'. $_REQUEST['field_id'] .'">'. __( 'Remove Embed', 'cmb' ) .'</a></div>';
 			// set our response id
 			$found = 'found';
 		} else {

@@ -9,20 +9,20 @@ html{ display:block !important;}
 .tab-container { background: #fff; padding: 10px; -moz-border-radius: 0 4px 4px 4px; -webkit-border-radius: 0 4px 4px 4px; float:left; width: 60%; }
 .panel-container { margin-bottom: 10px; border-top:1px solid #999; padding: 10px; margin-top: -6px; float:left; width: 98%;}
 .get_in_touch { padding-left: 15px; }
-.panel-container.sailen-panel #poststuff {
+.panel-container.savp_sailen-panel #poststuff {
     width: 100%;
     min-width: 100%;
     float: left;
 }
-.panel-container.sailen-panel .postbox-container {
+.panel-container.savp_sailen-panel .postbox-container {
     width: 98% !important;
 }
 
-.sailen-contact table.sailen_metabox input.sailen_text_medium { 
+.savp_sailen-contact table.savp_sailen_metabox input.savp_sailen_text_medium { 
 	width: 100% !important;
 }
 
-.sailen-contact table.sailen_metabox select{
+.savp_sailen-contact table.savp_sailen_metabox select{
 		width: 100% !important;
 
 }

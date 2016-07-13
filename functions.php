@@ -3,68 +3,69 @@
  * Template Name: Plugin Functions
  *
  */
-//add_filter( 'sailen_meta_boxes', 'sailen_review_metaboxes' );
+//add_filter( 'savp_sailen_meta_boxes', 'savp_sailen_review_metaboxes' );
 /**
  * Define the metabox and field configurations.
  *
  * @param  array $meta_boxes
  * @return array
  */
-add_action( 'init', 'sailen_initialize_sailen_meta_boxes', 9999 );
+add_action( 'init', 'savp_sailen_initialize_savp_sailen_meta_boxes', 9999 );
 // Register an action for submitting rating
-add_action( 'wp_ajax_nopriv_sailen_submit_rating', 'sailen_add_rating' );
-add_action( 'wp_ajax_sailen_submit_rating', 'sailen_add_rating' );
+add_action( 'wp_ajax_nopriv_savp_sailen_submit_rating', 'savp_sailen_add_rating' );
+add_action( 'wp_ajax_savp_sailen_submit_rating', 'savp_sailen_add_rating' );
 // Register an action for updating rating
-add_action( 'wp_ajax_nopriv_sailen_update_rating', 'sailen_update_rating' );
-add_action( 'wp_ajax_sailen_update_rating', 'sailen_update_rating' );
+add_action( 'wp_ajax_nopriv_savp_sailen_update_rating', 'savp_sailen_update_rating' );
+add_action( 'wp_ajax_savp_sailen_update_rating', 'savp_sailen_update_rating' );
 // Include the Ajax library on the front end
-add_action( 'wp_head', 'sailen_add_ajax_library' );
+add_action( 'wp_head', 'savp_sailen_add_ajax_library' );
 /**
  * Initialize the metabox class.
  */
 /* FUNCTION to check for posts having snippets */
-add_action('wp_head','sailen_check_snippet_existence','',7);
-function sailen_check_snippet_existence(){	
+add_action('wp_head','savp_sailen_check_snippet_existence','',7);
+function savp_sailen_check_snippet_existence(){	
 	global $post;	
-	$type = get_post_meta($post->ID, '_sailen_post_type', true);
+	$type = get_post_meta($post->ID, '_savp_sailen_post_type', true);
 	if($type){		
-		add_action( 'wp_head',  'frontend_style' );
-		add_action('wp_enqueue_scripts', 'sailen_enque');
+		add_action( 'wp_head',  'savp_sailen_frontend_style' );
+		add_action('wp_enqueue_scripts', 'savp_sailen_enque');
 	}	
 }
-function sailen_enque() {
+function savp_sailen_enque() {
 	wp_enqueue_style('rating_style', plugin_dir_url(__FILE__) . 'css/jquery.rating.css');
 	wp_enqueue_script('jquery_rating', plugin_dir_url(__FILE__) . 'js/jquery.rating.min.js', array('jquery'));
 }
-function frontend_style() {
-		wp_register_style( 'sailen_style', plugins_url('/css/style.css', __FILE__) );
-		wp_enqueue_style('sailen_style');
+function savp_sailen_frontend_style() {
+		wp_register_style( 'savp_sailen_style', plugins_url('/css/style.css', __FILE__) );
+		wp_enqueue_style('savp_sailen_style');
 	}
-function sailen_initialize_sailen_meta_boxes() {
-	if ( ! class_exists( 'sailen_Meta_Box' ) )
-		require_once plugin_dir_path( __FILE__ ).'init.php';
+function savp_sailen_initialize_savp_sailen_meta_boxes() {
+	if ( ! class_exists( 'savp_sailen_Meta_Box' ) )
+		require_once plugin_dir_path( __FILE__ ).'savp_sailenseo_init.php';
 }
 //Function to display the rich snippet output below the content
-function sailen_display_rich_snippet($content) {
+function savp_sailen_display_rich_snippet($content) {
 	global $post;
 	
-	$args_color = get_option('sailen_custom');
+	$args_color = get_option('savp_sailen_custom');
 	$id = $post->ID;
-	$type = get_post_meta($id, '_sailen_post_type', true);
+	$type = get_post_meta($id, '_savp_sailen_post_type', true);
+	
 	if($type == '1')
 	{
 		global $post;
 	
-		$args_review = get_option('sailen_review');		
+		$args_review = get_option('savp_sailen_review');		
 		$review = $content;
 		$review .= '<div id="snippet-box" style="background:'.$args_color["snippet_box_bg"].'; color:'.$args_color["snippet_box_color"].'; border:1px solid '.$args_color["snippet_border"].';">';
 				
 		if($args_review['review_title'] != "")
 			$review .= '<div class="snippet-title" style="background:'.$args_color["snippet_title_bg"].'; color:'.$args_color["snippet_title_color"].'; border-bottom:1px solid '.$args_color["snippet_border"].';">'.$args_review['review_title'].'</div>';
 		$review .= '<div class="snippet-markup" itemscope itemtype="http://schema.org/Review">';
-		$item = get_post_meta( $post->ID, '_sailen_item_name', true );
-		$rating = get_post_meta( $post->ID, '_sailen_rating', true );
-		$reviewer = get_post_meta( $post->ID, '_sailen_item_reviewer', true);
+		$item = get_post_meta( $post->ID, '_savp_sailen_item_name', true );
+		$rating = get_post_meta( $post->ID, '_savp_sailen_rating', true );
+		$reviewer = get_post_meta( $post->ID, '_savp_sailen_item_reviewer', true);
 		$post_date = get_the_date('Y-m-d');
 		if(trim($reviewer) != "")
 		{
@@ -111,7 +112,7 @@ function sailen_display_rich_snippet($content) {
 	else if($type == '2')
 	{
 		global $post;
-		$args_event = get_option('sailen_event');
+		$args_event = get_option('savp_sailen_event');
 		
 		$event = $content;
 		
@@ -120,22 +121,22 @@ function sailen_display_rich_snippet($content) {
 		if($args_event['snippet_title'] != "")
 			$event .= '<div class="snippet-title" style="background:'.$args_color["snippet_title_bg"].'; color:'.$args_color["snippet_title_color"].'; border-bottom:1px solid '.$args_color["snippet_border"].';">'.$args_event['snippet_title'].'</div>';
 		$event .= '<div itemscope itemtype="http://schema.org/Event">';
-		$event_title = get_post_meta( $post->ID, '_sailen_event_title', true );
-		$event_org = get_post_meta( $post->ID, '_sailen_event_organization', true );
-		$event_street = get_post_meta( $post->ID, '_sailen_event_street', true );	
-		$event_local = get_post_meta( $post->ID, '_sailen_event_local', true );	
-		$event_region = get_post_meta( $post->ID, '_sailen_event_region', true );
-		$event_postal_code = get_post_meta( $post->ID, '_sailen_event_postal_code', true );
-		$event_start_date = get_post_meta( $post->ID, '_sailen_event_start_date', true );	
-		$event_end_date = get_post_meta( $post->ID, '_sailen_event_end_date', true );	
+		$event_title = get_post_meta( $post->ID, '_savp_sailen_event_title', true );
+		$event_org = get_post_meta( $post->ID, '_savp_sailen_event_organization', true );
+		$event_street = get_post_meta( $post->ID, '_savp_sailen_event_street', true );	
+		$event_local = get_post_meta( $post->ID, '_savp_sailen_event_local', true );	
+		$event_region = get_post_meta( $post->ID, '_savp_sailen_event_region', true );
+		$event_postal_code = get_post_meta( $post->ID, '_savp_sailen_event_postal_code', true );
+		$event_start_date = get_post_meta( $post->ID, '_savp_sailen_event_start_date', true );	
+		$event_end_date = get_post_meta( $post->ID, '_savp_sailen_event_end_date', true );	
 
-		$event_ticket_url = get_post_meta( $post->ID, '_sailen_event_ticket_url', true );	
-		$event_price = get_post_meta( $post->ID, '_sailen_event_price', true );	
-		$event_cur = get_post_meta( $post->ID, '_sailen_event_cur', true );	
+		$event_ticket_url = get_post_meta( $post->ID, '_savp_sailen_event_ticket_url', true );	
+		$event_price = get_post_meta( $post->ID, '_savp_sailen_event_price', true );	
+		$event_cur = get_post_meta( $post->ID, '_savp_sailen_event_cur', true );	
 
-		//$event_geo_latitude = get_post_meta( $post->ID, '_sailen_event_geo_latitude', true );	
-		//$event_geo_longitude = get_post_meta( $post->ID, '_sailen_event_geo_longitude', true );	
-		/*$event_photo = get_post_meta( $post->ID, '_sailen_event_photo', true );	
+		//$event_geo_latitude = get_post_meta( $post->ID, '_savp_sailen_event_geo_latitude', true );	
+		//$event_geo_longitude = get_post_meta( $post->ID, '_savp_sailen_event_geo_longitude', true );	
+		/*$event_photo = get_post_meta( $post->ID, '_savp_sailen_event_photo', true );	
 		if(trim($event_photo) != "")
 		{
 			$event .= '<div class="snippet-image"><img width="180" itemprop="photo" src="'.$event_photo.'"></div>';
@@ -216,16 +217,16 @@ function sailen_display_rich_snippet($content) {
 		$organization = $content;
 		$organization .= '<div class="snippet-title">Organization Brief :</div>';
 		$organization .= '<div xmlns:v="http://rdf.data-vocabulary.org/#" typeof="v:Organization">';
-		$org_name = get_post_meta( $post->ID,'_sailen_organization_name', true );
-		$org_url = get_post_meta( $post->ID,'_sailen_organization_url', true );
-		$org_tel = get_post_meta( $post->ID,'_sailen_organization_tel', true );
-		$org_street = get_post_meta( $post->ID,'_sailen_organization_street', true );
-		$org_local = get_post_meta( $post->ID,'_sailen_organization_local', true );
-		$org_region = get_post_meta( $post->ID,'_sailen_organization_region', true );
-		$org_zip = get_post_meta( $post->ID,'_sailen_organization_zip', true );
-		$org_country = get_post_meta( $post->ID,'_sailen_organization_country', true );
-		$org_latitude = get_post_meta( $post->ID,'_sailen_organization_latitude', true );
-		$org_longitude = get_post_meta( $post->ID,'_sailen_organization_longitude', true );
+		$org_name = get_post_meta( $post->ID,'_savp_sailen_organization_name', true );
+		$org_url = get_post_meta( $post->ID,'_savp_sailen_organization_url', true );
+		$org_tel = get_post_meta( $post->ID,'_savp_sailen_organization_tel', true );
+		$org_street = get_post_meta( $post->ID,'_savp_sailen_organization_street', true );
+		$org_local = get_post_meta( $post->ID,'_savp_sailen_organization_local', true );
+		$org_region = get_post_meta( $post->ID,'_savp_sailen_organization_region', true );
+		$org_zip = get_post_meta( $post->ID,'_savp_sailen_organization_zip', true );
+		$org_country = get_post_meta( $post->ID,'_savp_sailen_organization_country', true );
+		$org_latitude = get_post_meta( $post->ID,'_savp_sailen_organization_latitude', true );
+		$org_longitude = get_post_meta( $post->ID,'_savp_sailen_organization_longitude', true );
 		if(trim($org_name) != "")
 			$organization .= 'Organization Name : <span property="v:name">'.$org_name.'</span></div>';
 		if(trim($org_url) != "")
@@ -263,7 +264,7 @@ function sailen_display_rich_snippet($content) {
 	{
 		global $post;
 		
-		$args_person = get_option('sailen_person');
+		$args_person = get_option('savp_sailen_person');
 		
 		$people = $content;
 		
@@ -272,17 +273,17 @@ function sailen_display_rich_snippet($content) {
 		if($args_person['snippet_title'] != "")
 			$people .= '<div class="snippet-title" style="background:'.$args_color["snippet_title_bg"].'; color:'.$args_color["snippet_title_color"].'; border-bottom:1px solid '.$args_color["snippet_border"].';">'.$args_person['snippet_title'].'</div>';
 		$people .= '<div itemscope itemtype="http://schema.org/Person"">';
-		$people_fn = get_post_meta( $post->ID, '_sailen_people_fn', true );
-		$people_nickname = get_post_meta( $post->ID, '_sailen_people_nickname', true );
-		$people_photo = get_post_meta( $post->ID, '_sailen_people_photo', true );
-		$people_job_title = get_post_meta( $post->ID, '_sailen_people_job_title', true );
-		$people_website = get_post_meta( $post->ID, '_sailen_people_website', true );
-		$people_company = get_post_meta( $post->ID, '_sailen_people_company', true );
-		$people_local = get_post_meta( $post->ID, '_sailen_people_local', true );
-		$people_region = get_post_meta( $post->ID, '_sailen_people_region', true );
+		$people_fn = get_post_meta( $post->ID, '_savp_sailen_people_fn', true );
+		$people_nickname = get_post_meta( $post->ID, '_savp_sailen_people_nickname', true );
+		$people_photo = get_post_meta( $post->ID, '_savp_sailen_people_photo', true );
+		$people_job_title = get_post_meta( $post->ID, '_savp_sailen_people_job_title', true );
+		$people_website = get_post_meta( $post->ID, '_savp_sailen_people_website', true );
+		$people_company = get_post_meta( $post->ID, '_savp_sailen_people_company', true );
+		$people_local = get_post_meta( $post->ID, '_savp_sailen_people_local', true );
+		$people_region = get_post_meta( $post->ID, '_savp_sailen_people_region', true );
 
-		$people_street = get_post_meta( $post->ID, '_sailen_people_street', true );
-		$people_postal = get_post_meta( $post->ID, '_sailen_people_postal', true );
+		$people_street = get_post_meta( $post->ID, '_savp_sailen_people_street', true );
+		$people_postal = get_post_meta( $post->ID, '_savp_sailen_people_postal', true );
 		
 		if(trim($people_photo) != "")
 		{
@@ -364,23 +365,23 @@ function sailen_display_rich_snippet($content) {
 	else if($type == '6')
 	{
 		global $post;
-		$args_product = get_option('sailen_product');
+		$args_product = get_option('savp_sailen_product');
 		$product = $content;
 		$product .= '<div id="snippet-box" style="background:'.$args_color["snippet_box_bg"].'; color:'.$args_color["snippet_box_color"].'; border:1px solid '.$args_color["snippet_border"].';">';
 		if($args_product['snippet_title'] != "")
 			$product .= '<div class="snippet-title" style="background:'.$args_color["snippet_title_bg"].'; color:'.$args_color["snippet_title_color"].'; border-bottom:1px solid '.$args_color["snippet_border"].';">'.$args_product['snippet_title'];
-		$product .= sailen_do_rating();
+		$product .= savp_sailen_do_rating();
 		
 		$product .= '</div>';
 		$product .= '<div  itemscope itemtype="http://schema.org/Product">';
-		$product_rating = get_post_meta( $post->ID, '_sailen_product_rating', true);
-		$product_brand = get_post_meta( $post->ID, '_sailen_product_brand', true);
-		$product_name = get_post_meta( $post->ID, '_sailen_product_name', true);
-		$product_image = get_post_meta($post->ID, '_sailen_product_image', true);
-		$product_cat = get_post_meta($post->ID, '_sailen_product_cat', true);
-		$product_price = get_post_meta($post->ID, '_sailen_product_price', true);
-		$product_cur = get_post_meta($post->ID, '_sailen_product_cur', true);
-		$product_status = get_post_meta($post->ID, '_sailen_product_status', true);
+		$product_rating = get_post_meta( $post->ID, '_savp_sailen_product_rating', true);
+		$product_brand = get_post_meta( $post->ID, '_savp_sailen_product_brand', true);
+		$product_name = get_post_meta( $post->ID, '_savp_sailen_product_name', true);
+		$product_image = get_post_meta($post->ID, '_savp_sailen_product_image', true);
+		$product_cat = get_post_meta($post->ID, '_savp_sailen_product_cat', true);
+		$product_price = get_post_meta($post->ID, '_savp_sailen_product_price', true);
+		$product_cur = get_post_meta($post->ID, '_savp_sailen_product_cur', true);
+		$product_status = get_post_meta($post->ID, '_savp_sailen_product_status', true);
 		if(trim($product_status) == "out_of_stock")
 			$availability = "Out of Stock";
 		else if(trim($product_status) == "in_stock")
@@ -426,8 +427,8 @@ function sailen_display_rich_snippet($content) {
 		}
 		$product .= '<div class="snippet-data-img">';
 		$product .= '<span itemprop="ratingValue">'.$product_rating.'</span>'; 
-		//$product .= '<span itemprop="ratingValue">'.sailen_average_rating() >= 0 ? sailen_average_rating() : $product_rating.'</span>';						
-		$product .= ' based on <span class="rating-count" itemprop="reviewCount">'.sailen_rating_count().'</span> votes </span></div></div><div class="snippet-clear"></div>';
+		//$product .= '<span itemprop="ratingValue">'.savp_sailen_average_rating() >= 0 ? savp_sailen_average_rating() : $product_rating.'</span>';						
+		$product .= ' based on <span class="rating-count" itemprop="reviewCount">'.savp_sailen_rating_count().'</span> votes </span></div></div><div class="snippet-clear"></div>';
 		
 
 		if(trim($product_brand) != "")
@@ -478,24 +479,24 @@ function sailen_display_rich_snippet($content) {
 		
 		$recipe .= '<div id="snippet-box" style="background:'.$args_color["snippet_box_bg"].'; color:'.$args_color["snippet_box_color"].'; border:1px solid '.$args_color["snippet_border"].';">';
 		
-		$args_recipe = get_option('sailen_recipe');
+		$args_recipe = get_option('savp_sailen_recipe');
 		
 		if($args_recipe['snippet_title'] != "" )
 		{
 			$recipe .= '<div class="snippet-title" style="background:'.$args_color["snippet_title_bg"].'; color:'.$args_color["snippet_title_color"].'; border-bottom:1px solid '.$args_color["snippet_border"].';">'.$args_recipe['snippet_title'];
-			$recipe .= sailen_do_rating();
+			$recipe .= savp_sailen_do_rating();
 		}
 		$recipe .= '</div>';
 		$recipe .= '<div itemscope itemtype="http://schema.org/Recipe">';
-		$recipes_name = get_post_meta( $post->ID, '_sailen_recipes_name', true );
-		$recipes_preptime = get_post_meta( $post->ID, '_sailen_recipes_preptime', true );
-		$recipes_cooktime = get_post_meta( $post->ID, '_sailen_recipes_cooktime', true );
-		$recipes_totaltime = get_post_meta( $post->ID, '_sailen_recipes_totaltime', true );
-		$recipes_photo = get_post_meta( $post->ID, '_sailen_recipes_photo', true );
-		$recipes_desc = get_post_meta( $post->ID, '_sailen_recipes_desc', true );
-		$recipes_ingredient = get_post_meta( $post->ID, '_sailen_recipes_ingredient', true );
-		$count = sailen_rating_count();
-		$agregate = sailen_average_rating();
+		$recipes_name = get_post_meta( $post->ID, '_savp_sailen_recipes_name', true );
+		$recipes_preptime = get_post_meta( $post->ID, '_savp_sailen_recipes_preptime', true );
+		$recipes_cooktime = get_post_meta( $post->ID, '_savp_sailen_recipes_cooktime', true );
+		$recipes_totaltime = get_post_meta( $post->ID, '_savp_sailen_recipes_totaltime', true );
+		$recipes_photo = get_post_meta( $post->ID, '_savp_sailen_recipes_photo', true );
+		$recipes_desc = get_post_meta( $post->ID, '_savp_sailen_recipes_desc', true );
+		$recipes_ingredient = get_post_meta( $post->ID, '_savp_sailen_recipes_ingredient', true );
+		$count = savp_sailen_rating_count();
+		$agregate = savp_sailen_average_rating();
 		if(trim($recipes_photo) != "")
 		{
 			$recipe .= '<div class="snippet-image"><img width="180" itemprop="image" src="'.$recipes_photo.'"/></div>';
@@ -555,26 +556,26 @@ function sailen_display_rich_snippet($content) {
 	else if($type == '8')
 	{
 		global $post;
-		$args_soft = get_option('sailen_software');	
+		$args_soft = get_option('savp_sailen_software');	
 		$software = $content;
 		
 		$software .= '<div id="snippet-box" style="background:'.$args_color["snippet_box_bg"].'; color:'.$args_color["snippet_box_color"].'; border:1px solid '.$args_color["snippet_border"].';">';
 		if($args_soft['snippet_title'] != "" )
 			$software .= '<div class="snippet-title" style="background:'.$args_color["snippet_title_bg"].'; color:'.$args_color["snippet_title_color"].'; border-bottom:1px solid '.$args_color["snippet_border"].';">'.$args_soft['snippet_title'];
 		
-		$software .= sailen_do_rating();
+		$software .= savp_sailen_do_rating();
 		$software .= '</div>';
 
 		$software .= '<div itemscope itemtype="http://schema.org/SoftwareApplication">';
-		$software_rating = get_post_meta( $post->ID, '_sailen_software_rating', true);
-		$software_name = get_post_meta( $post->ID, '_sailen_software_name', true );
-		$software_desc = get_post_meta( $post->ID, '_sailen_software_desc', true );
-		$software_landing = get_post_meta( $post->ID, '_sailen_software_landing', true );
-		$software_image = get_post_meta( $post->ID, '_sailen_software_image', true );
-		$software_price = get_post_meta( $post->ID, '_sailen_software_price', true );
-		$software_cur = get_post_meta($post->ID, '_sailen_software_cur', true);		
-		$software_os = get_post_meta( $post->ID, '_sailen_software_os', true );
-		$software_cat = get_post_meta( $post->ID, '_sailen_software_cat', true );
+		$software_rating = get_post_meta( $post->ID, '_savp_sailen_software_rating', true);
+		$software_name = get_post_meta( $post->ID, '_savp_sailen_software_name', true );
+		$software_desc = get_post_meta( $post->ID, '_savp_sailen_software_desc', true );
+		$software_landing = get_post_meta( $post->ID, '_savp_sailen_software_landing', true );
+		$software_image = get_post_meta( $post->ID, '_savp_sailen_software_image', true );
+		$software_price = get_post_meta( $post->ID, '_savp_sailen_software_price', true );
+		$software_cur = get_post_meta($post->ID, '_savp_sailen_software_cur', true);		
+		$software_os = get_post_meta( $post->ID, '_savp_sailen_software_os', true );
+		$software_cat = get_post_meta( $post->ID, '_savp_sailen_software_cat', true );
 
 
 		if(trim($software_image) != "")
@@ -619,8 +620,8 @@ function sailen_display_rich_snippet($content) {
 		$software .= '<div class="snippet-data-img">';
 		
 		$software .= '<span itemprop="ratingValue">'.$software_rating.'</span>';						
-		//$software .= '<span itemprop="ratingValue">'.sailen_average_rating().'</span>';						
-		$software .= ' based on <span class="rating-count" itemprop="reviewCount">'.sailen_rating_count().'</span> votes </span></div></div><div class="snippet-clear"></div>';
+		//$software .= '<span itemprop="ratingValue">'.savp_sailen_average_rating().'</span>';						
+		$software .= ' based on <span class="rating-count" itemprop="reviewCount">'.savp_sailen_rating_count().'</span> votes </span></div></div><div class="snippet-clear"></div>';
 		
 //////////////////////////////////////////////////////////////////////
 
@@ -687,7 +688,7 @@ function sailen_display_rich_snippet($content) {
 	else if($type == '9')
 	{
 		global $post;
-		$args_video = get_option('sailen_video');
+		$args_video = get_option('savp_sailen_video');
 		$video = $content;
 		
 		$video .= '<div id="snippet-box" style="background:'.$args_color["snippet_box_bg"].'; color:'.$args_color["snippet_box_color"].'; border:1px solid '.$args_color["snippet_border"].';">';
@@ -695,14 +696,14 @@ function sailen_display_rich_snippet($content) {
 		if($args_video['snippet_title'] != "" )
 			$video .= '<div class="snippet-title" style="background:'.$args_color["snippet_title_bg"].'; color:'.$args_color["snippet_title_color"].'; border-bottom:1px solid '.$args_color["snippet_border"].';">'.$args_video['snippet_title'].'</div>';
 		$video .= '<div itemprop="video" itemscope itemtype="http://schema.org/VideoObject">';
-		$video_title = get_post_meta( $post->ID, '_sailen_video_title', true );
-		$video_desc = get_post_meta( $post->ID, '_sailen_video_desc', true );
-		$video_thumb = get_post_meta( $post->ID, '_sailen_video_thumb', true );
-		$video_url = get_post_meta( $post->ID, '_sailen_video_url', true );
-		$video_emb_url = get_post_meta( $post->ID, '_sailen_video_emb_url', true );
+		$video_title = get_post_meta( $post->ID, '_savp_sailen_video_title', true );
+		$video_desc = get_post_meta( $post->ID, '_savp_sailen_video_desc', true );
+		$video_thumb = get_post_meta( $post->ID, '_savp_sailen_video_thumb', true );
+		$video_url = get_post_meta( $post->ID, '_savp_sailen_video_url', true );
+		$video_emb_url = get_post_meta( $post->ID, '_savp_sailen_video_emb_url', true );
 
-		$video_duration = get_post_meta( $post->ID, '_sailen_video_duration', true );
-		$video_date = get_post_meta( $post->ID, '_sailen_video_date', true );
+		$video_duration = get_post_meta( $post->ID, '_savp_sailen_video_duration', true );
+		$video_date = get_post_meta( $post->ID, '_savp_sailen_video_date', true );
 		if(trim($video_url) != "")
 		{
 			$video .= '<div class="snippet-image"><a href="'.$video_url.'"><img height="180" src="'.$video_thumb.'" alt="'.$video_title.'"></a></div>';	
@@ -752,14 +753,14 @@ function sailen_display_rich_snippet($content) {
 	{
 		global $post;
 		$article = $content;
-		$args_article = get_option('sailen_article');
-		$article_title = get_post_meta( $post->ID, '_sailen_article_title', true );
-		$article_name = get_post_meta( $post->ID, '_sailen_article_name', true );
-		$article_desc = get_post_meta( $post->ID, '_sailen_article_desc', true );
-		$article_image = get_post_meta( $post->ID, '_sailen_article_image', true );
-		$article_author = get_post_meta( $post->ID, '_sailen_article_author', true );
-		$article_publisher = get_post_meta( $post->ID, '_sailen_article_publisher', true );
-		$article_publisher_logo = get_post_meta( $post->ID, '_sailen_article_publisher_logo', true );
+		$args_article = get_option('savp_sailen_article');
+		$article_title = get_post_meta( $post->ID, '_savp_sailen_article_title', true );
+		$article_name = get_post_meta( $post->ID, '_savp_sailen_article_name', true );
+		$article_desc = get_post_meta( $post->ID, '_savp_sailen_article_desc', true );
+		$article_image = get_post_meta( $post->ID, '_savp_sailen_article_image', true );
+		$article_author = get_post_meta( $post->ID, '_savp_sailen_article_author', true );
+		$article_publisher = get_post_meta( $post->ID, '_savp_sailen_article_publisher', true );
+		$article_publisher_logo = get_post_meta( $post->ID, '_savp_sailen_article_publisher_logo', true );
 
 
 			$article .= '<div id="snippet-box" style="background:'.$args_color["snippet_box_bg"].'; color:'.$args_color["snippet_box_color"].'; border:1px solid '.$args_color["snippet_border"].';">';
@@ -855,14 +856,14 @@ function sailen_display_rich_snippet($content) {
 	{
 		global $post;
 		$service = $content;
-		$args_service = get_option('sailen_service');
-		$service_type = get_post_meta( $post->ID, '_sailen_service_type', true );
-		$service_area = get_post_meta( $post->ID, '_sailen_service_area', true );
-		$service_desc = get_post_meta( $post->ID, '_sailen_service_desc', true );
-		$service_image = get_post_meta( $post->ID, '_sailen_service_image', true );
-		$service_provider_name = get_post_meta( $post->ID, '_sailen_service_provider', true );
-		$service_rating = get_post_meta( $post->ID, '_sailen_service_rating', true );
-		$service_rating_switch = get_post_meta( $post->ID, '_sailen_service_rating_switch', true );
+		$args_service = get_option('savp_sailen_service');
+		$service_type = get_post_meta( $post->ID, '_savp_sailen_service_type', true );
+		$service_area = get_post_meta( $post->ID, '_savp_sailen_service_area', true );
+		$service_desc = get_post_meta( $post->ID, '_savp_sailen_service_desc', true );
+		$service_image = get_post_meta( $post->ID, '_savp_sailen_service_image', true );
+		$service_provider_name = get_post_meta( $post->ID, '_savp_sailen_service_provider', true );
+		$service_rating = get_post_meta( $post->ID, '_savp_sailen_service_rating', true );
+		$service_rating_switch = get_post_meta( $post->ID, '_savp_sailen_service_rating_switch', true );
 		$service_channel = get_permalink( $post->ID );
 		$service_url_link = $args_service['service_url_link'] != ''? $args_service['service_url_link'] : "Click Here For More Info";
 
@@ -872,7 +873,7 @@ function sailen_display_rich_snippet($content) {
 			{
 				$service .= '<div class="snippet-title" style="background:'.$args_color["snippet_title_bg"].'; color:'.$args_color["snippet_title_color"].'; border-bottom:1px solid '.$args_color["snippet_border"].';">'.$args_service['snippet_title'];
 				if ( $service_rating_switch == 'enable' ) {
-					$service .= sailen_do_rating();
+					$service .= savp_sailen_do_rating();
 				}
 				$service .= '</div>';
 			}
@@ -893,14 +894,14 @@ function sailen_display_rich_snippet($content) {
 			}
 			$service .= '<div class="aio-info">';
 			
-			if( sailen_average_rating() > 0 ){
+			if( savp_sailen_average_rating() > 0 ){
 				if($args_service['service_rating'] != "")
 				{	
 					$service .= '<div class="aggregate_sec" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
 					$service .= '<div class="snippet-label-img">'.$args_service['service_rating'].'</div>';
 					$service .= '<div class="snippet-data-img">';
-					$service .= '<span itemprop="ratingValue">'.sailen_average_rating().'</span>';						
-					$service .= ' based on <span class="rating-count" itemprop="reviewCount">'.sailen_rating_count().'</span> votes </span></div></div><div class="snippet-clear"></div>';
+					$service .= '<span itemprop="ratingValue">'.savp_sailen_average_rating().'</span>';						
+					$service .= ' based on <span class="rating-count" itemprop="reviewCount">'.savp_sailen_rating_count().'</span> votes </span></div></div><div class="snippet-clear"></div>';
 				}
 			}
 			
@@ -964,9 +965,9 @@ function sailen_display_rich_snippet($content) {
 	}
 }
 //Filter the content and return with rich snippet output
-add_filter('the_content','sailen_display_rich_snippet');
-require_once(plugin_dir_path( __FILE__ ).'sailenseo_metabox.php');
-function get_the_ip() {
+add_filter('the_content','savp_sailen_display_rich_snippet');
+require_once(plugin_dir_path( __FILE__ ).'savp_sailenseo_metabox.php');
+function savp_sailen_get_the_ip() {
     if (isset($_SERVER["HTTP_X_FORWARDED_FOR"])) {
         return $_SERVER["HTTP_X_FORWARDED_FOR"];
     }
@@ -977,7 +978,7 @@ function get_the_ip() {
         return $_SERVER["REMOTE_ADDR"];
     }
 }
-function sailen_average_rating() {
+function savp_sailen_average_rating() {
 //	global $wpdb;
 	global $post;
 	
@@ -987,35 +988,35 @@ function sailen_average_rating() {
 	{
 		$counter = 0;
 	
-		$sailen_average_rating = 0;    
+		$savp_sailen_average_rating = 0;    
 		foreach($data as $d)
 		{
 			$rating = $d['user_rating'];
 	
-			$sailen_average_rating = $sailen_average_rating + $rating;
+			$savp_sailen_average_rating = $savp_sailen_average_rating + $rating;
 	
 			$counter++;
 		
 		} 
 		//round the average to the nearast 1/2 point
-		return (round(($sailen_average_rating/$counter)*2,0)/2);  
+		return (round(($savp_sailen_average_rating/$counter)*2,0)/2);  
 	
 	} else {
 		//no ratings
 		return 'no rating';
 	}
 }
-function sailen_rating_count()
+function savp_sailen_rating_count()
 {
 	global $post;
 	
 	$data = get_post_meta($post->ID, 'post-rating', false);
 	return count($data);
 }
-function sailen_do_rating()
+function savp_sailen_do_rating()
 { 
 	global $post;
-	$ip = get_the_ip();	
+	$ip = savp_sailen_get_the_ip();	
 	
 	$ip_array = array();
 	
@@ -1028,30 +1029,30 @@ function sailen_do_rating()
 		}
 		if(!in_array($ip,$ip_array) )
 		{
-			return sailen_display_ratingargs();
+			return savp_sailen_display_ratingargs();
 		}
 		else if(in_array($ip,$ip_array) )
 		{
-			$rating = sailen_get_previous_rating($ip, $data);
+			$rating = savp_sailen_get_previous_rating($ip, $data);
 			
-			$stars = sailen_display_rating($rating);
+			$stars = savp_sailen_display_rating($rating);
 			return $stars;
 		}
 	}
 	else
 	{
-		return sailen_display_ratingargs();
+		return savp_sailen_display_ratingargs();
 	}
 }
-function sailen_get_previous_rating($needle, $haystack, $strict = false) {
+function savp_sailen_get_previous_rating($needle, $haystack, $strict = false) {
     foreach ($haystack as $item) {
-        if (($strict ? $item === $needle : $item == $needle) || (is_array($item) && sailen_get_previous_rating($needle, $item, $strict))) {
+        if (($strict ? $item === $needle : $item == $needle) || (is_array($item) && savp_sailen_get_previous_rating($needle, $item, $strict))) {
             return @$item['user_rating'];
         }
     }
     return false;
 }
-function sailen_add_ajax_library() {
+function savp_sailen_add_ajax_library() {
  
     $html = '<script type="text/javascript">';
         $html .= 'var ajaxurl = "' . admin_url( 'admin-ajax.php' ) . '"';
@@ -1059,7 +1060,7 @@ function sailen_add_ajax_library() {
  
     echo $html;
 }
-function sailen_add_rating()
+function savp_sailen_add_rating()
 {
 //	ob_clean();
 	
@@ -1077,7 +1078,7 @@ function sailen_add_rating()
 	echo false ==  add_post_meta($postid, 'post-rating', $user_rating) ? 'Error adding your rating' : 'Ratings added successfully !';
 	die();
 }
-function sailen_update_rating()
+function savp_sailen_update_rating()
 {
 //	ob_clean();
 	if(isset($_POST['star-review']))
@@ -1096,25 +1097,25 @@ function sailen_update_rating()
 	echo false ==  update_post_meta($postid, 'post-rating', $user_rating, $prev_data) ? 'Error updating your rating' : 'Ratings updated successfully !';
 	die();
 }
-function sailen_display_ratingargs() {
+function savp_sailen_display_ratingargs() {
 	
 		global $post;
         $rating = '<span class="ratings"><div class="star-blocks">';
-		$rating .= '<form name="rating" method="post" action="'. get_permalink() .'" id="sailen-rating" onsubmit="return false;">';
+		$rating .= '<form name="rating" method="post" action="'. get_permalink() .'" id="savp_sailen-rating" onsubmit="return false;">';
         $rating .= '<input type="radio" name="star-review" class="star star-1" value="1"/>';
 		$rating .= '<input type="radio" name="star-review" class="star star-2" value="2"/>';
 		$rating .= '<input type="radio" name="star-review" class="star star-3" value="3"/>';
 		$rating .= '<input type="radio" name="star-review" class="star star-4" value="4"/>';
 		$rating .= '<input type="radio" name="star-review" class="star star-5" value="5"/>';
-		$rating .= '<input type="hidden" name="ip" value="'.get_the_ip().'" />';
+		$rating .= '<input type="hidden" name="ip" value="'.savp_sailen_get_the_ip().'" />';
 		$rating .= '<input type="hidden" name="post_id" value="'.$post->ID.'" />';		
 		$rating .= '</form>';
         $rating .= '</div></span>';
 		$script = '<script type="text/javascript">
-				jQuery("#sailen-rating").click(function()
+				jQuery("#savp_sailen-rating").click(function()
 				{
-					var data = jQuery("#sailen-rating").serialize();
-					var form_data = "action=sailen_submit_rating&" + data;
+					var data = jQuery("#savp_sailen-rating").serialize();
+					var form_data = "action=savp_sailen_submit_rating&" + data;
 				//	alert(form_data);
 					jQuery.post(ajaxurl, form_data,
 						function (response) {
@@ -1128,25 +1129,25 @@ function sailen_display_ratingargs() {
 	$rating .= $script;
     return $rating;
 }
-function sailen_display_rating($n) {
+function savp_sailen_display_rating($n) {
 	
 		global $post;
         $rating = '<span class="ratings"><div class="star-blocks">';
-		$rating .= '<form name="rating" method="post" action="'. get_permalink() .'" id="sailen-rating" onsubmit="return false;">';
+		$rating .= '<form name="rating" method="post" action="'. get_permalink() .'" id="savp_sailen-rating" onsubmit="return false;">';
         $rating .= '<input type="radio" name="star-review" class="star star-1" value="1" '; $n == 1 ? $rating .=' checked="checked"/>' : $rating .='/>';
 		$rating .= '<input type="radio" name="star-review" class="star star-2" value="2" '; $n == 2 ? $rating .=' checked="checked"/>' : $rating .='/>';
 		$rating .= '<input type="radio" name="star-review" class="star star-3" value="3" '; $n == 3 ? $rating .=' checked="checked"/>' : $rating .='/>';
 		$rating .= '<input type="radio" name="star-review" class="star star-4" value="4" '; $n == 4 ? $rating .=' checked="checked"/>' : $rating .='/>';
 		$rating .= '<input type="radio" name="star-review" class="star star-5" value="5" '; $n == 5 ? $rating .=' checked="checked"/>' : $rating .='/>';
-		$rating .= '<input type="hidden" name="ip" value="'.get_the_ip().'" />';
+		$rating .= '<input type="hidden" name="ip" value="'.savp_sailen_get_the_ip().'" />';
 		$rating .= '<input type="hidden" name="post_id" value="'.$post->ID.'" />';		
 		$rating .= '</form>';
         $rating .= '</div></span>';
 		$script = '<script type="text/javascript">
-				jQuery("#sailen-rating").click(function()
+				jQuery("#savp_sailen-rating").click(function()
 				{
-					var data = jQuery("#sailen-rating").serialize();
-					var form_data = "action=sailen_update_rating&" + data;
+					var data = jQuery("#savp_sailen-rating").serialize();
+					var form_data = "action=savp_sailen_update_rating&" + data;
 				//	alert(form_data);
 					jQuery.post(ajaxurl, form_data,
 						function (response) {

@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-	var selected = jQuery("#_sailen_post_type").val();
+	var selected = jQuery("#_savp_sailen_post_type").val();
 	if(selected == "0")
 		hidden();
 	else
@@ -67,7 +67,7 @@ function expand_default(selected) {
 		jQuery(".service").show(500);
 	}
 }
-    jQuery("#_sailen_post_type").change(function() {
+    jQuery("#_savp_sailen_post_type").change(function() {
 		hidden();
 		var type=jQuery(this).val();
 		if(type == '1')

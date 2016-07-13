@@ -1,6 +1,6 @@
 <?php
 // Function to add review option for settings
-function sailen_add_review_option()
+function savp_sailen_add_review_option()
 {
 	$review_opt = array(
 		'review_title'	 =>	__('Summary','rich-snippets'),
@@ -10,10 +10,10 @@ function sailen_add_review_option()
 		//		'item_description' =>	__('Description','rich-snippets'),
 		'item_rating'	  =>	__('Author Rating','rich-snippets')
 	);
-	add_option('sailen_review',$review_opt);
+	add_option('savp_sailen_review',$review_opt);
 }
 // Function to add event option for settings
-function sailen_add_event_option()
+function savp_sailen_add_event_option()
 {
 	$event_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -26,10 +26,10 @@ function sailen_add_event_option()
 
 //		'geo_location'	 =>	__('GEO Location','rich-snippets')
 	);
-	add_option('sailen_event',$event_opt);
+	add_option('savp_sailen_event',$event_opt);
 }
 // Function to add person option for settings
-function sailen_add_person_option()
+function savp_sailen_add_person_option()
 {
 	$person_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -40,10 +40,10 @@ function sailen_add_person_option()
 		'person_company'   =>	__('Company','rich-snippets'),
 		'person_address'   =>	__('Address','rich-snippets')
 	);
-	add_option('sailen_person',$person_opt);
+	add_option('savp_sailen_person',$person_opt);
 }
 // Function to add product option for settings
-function sailen_add_product_option()
+function savp_sailen_add_product_option()
 {
 	$product_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -54,10 +54,10 @@ function sailen_add_product_option()
 		'product_price'	=>	__('Price','rich-snippets'),
 		'product_avail'	=>	__('Product Availability','rich-snippets')
 	);
-	add_option('sailen_product',$product_opt);
+	add_option('savp_sailen_product',$product_opt);
 }
 // Function to add recipe option for settings
-function sailen_add_recipe_option()
+function savp_sailen_add_recipe_option()
 {
 	$recipe_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -70,10 +70,10 @@ function sailen_add_recipe_option()
 //		'recipe_summary'   =>	__('Brief Summary','rich-snippets'),
 		'recipe_rating'	=>	__('Average Rating','rich-snippets')
 	);
-	add_option('sailen_recipe',$recipe_opt);
+	add_option('savp_sailen_recipe',$recipe_opt);
 }
 // Function to add software option for settings
-function sailen_add_software_option()
+function savp_sailen_add_software_option()
 {	
 	$software_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -87,10 +87,10 @@ function sailen_add_software_option()
 
 //		'software_desc'	=>	__('Brief Description','rich-snippets')
 	);
-	add_option('sailen_software',$software_opt);
+	add_option('savp_sailen_software',$software_opt);
 }
 // Function to add video option for settings
-function sailen_add_video_option()
+function savp_sailen_add_video_option()
 {
 	$video_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -99,10 +99,10 @@ function sailen_add_video_option()
 		'video_time'	   =>	__('Duration','rich-snippets'),
 		'video_date'	   =>	__('Upload Date','rich-snippets')
 	);
-	add_option('sailen_video',$video_opt);
+	add_option('savp_sailen_video',$video_opt);
 }
 // Function to add article option for settings
-function sailen_add_article_option()
+function savp_sailen_add_article_option()
 {
 	$article_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -114,10 +114,10 @@ function sailen_add_article_option()
 		'article_publisher_logo'	  =>	__('Publisher Logo','rich-snippets')
 
 	);
-	add_option('sailen_article',$article_opt);
+	add_option('savp_sailen_article',$article_opt);
 }
 // Function to add article option for settings
-function sailen_add_service_option()
+function savp_sailen_add_service_option()
 {
 	$service_opt = array(
 		'snippet_title'	=>	__('Summary','rich-snippets'),
@@ -130,10 +130,10 @@ function sailen_add_service_option()
 		'service_provider_name'	  =>	__('Provider Name','rich-snippets')
 
 	);
-	add_option('sailen_service',$service_opt);
+	add_option('savp_sailen_service',$service_opt);
 }
 // Function for customization
-function sailen_add_color_option()
+function savp_sailen_add_color_option()
 {
 	$color_opt = array(
 		'snippet_box_bg'	   =>	'#F5F5F5',
@@ -142,6 +142,6 @@ function sailen_add_color_option()
 		'snippet_title_color'  =>	'#333333',
 		'snippet_box_color'  	=>	'#333333',
 	);
-	add_option('sailen_custom',$color_opt);
+	add_option('savp_sailen_custom',$color_opt);
 }
 ?>

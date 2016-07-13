@@ -8,8 +8,7 @@
 **Stable tag:** 4.3   
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
-Sailenseo  help search engines (google, yahoo, yandex, bing) to read and display posts/pages content in a better and more user friendly way using Rich Snippets. Thus helping your content to get more visibility and increase the probability of being clicked. It also help posts/page to become a rich object in a social graph with the help of Open Graph , Twitter Cards and more.
-
+Search engine optimisation tool to get more visibility & optimise content to display it as rich object using Rich snippets open graph & twitter cards
 ## Sailenseo makes use of  Rich Snippets, OG for better performance ##
 
 ### What is a Rich Snippet? ###

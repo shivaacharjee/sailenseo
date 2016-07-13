@@ -1,46 +1,46 @@
 /**
  * Metabox Styling
  */
-table.sailen_metabox td, table.sailen_metabox th { border-bottom: 0px solid #E9E9E9; padding-top:5px; padding-right: 12px;}
-table.sailen_metabox th { text-align: right; font-weight:bold;}
-table.sailen_metabox th label { margin-top:5px; display:block;}
-p.sailen_metabox_description { color: #AAA; font-style: italic; margin: 2px 0 !important;}
-span.sailen_metabox_description { color: #AAA; font-style: italic;}
-table.sailen_metabox input, table.sailen_metabox textarea { font-size:12px; padding: 5px; }
-table.sailen_metabox input[type=text], table.sailen_metabox textarea { width: 97%; }
-table.sailen_metabox textarea.sailen_textarea_code { font-family: Consolas,Monaco,monospace; line-height: 16px; }
-table.sailen_metabox input.sailen_text_small { width: 100px; margin-right: 15px;}
-table.sailen_metabox input.sailen_timepicker { width: 100px; margin-right: 15px;}
-table.sailen_metabox input.sailen_text_money { width: 90px; margin-right: 15px;}
-table.sailen_metabox input.sailen_text_medium { width: 230px;}
-table.sailen_metabox input.sailen_upload_file { width: 65%; }
-table.sailen_metabox li { font-size:12px; margin: 1px 0 5px 0; line-height: 16px; }
-table.sailen_metabox ul { padding-top:5px; margin: 0; }
-table.sailen_metabox select { font-size:12px; margin-top: 3px; width: 230px;}
-table.sailen_metabox input:focus, table.sailen_metabox textarea:focus { background: #fffff8;}
-.sailen_metabox_title { margin: 0 0 5px 0; padding: 5px 0 0 0; font: italic 24px/35px Georgia,"Times New Roman","Bitstream Charter",Times,serif;}
-.sailen_radio_inline { padding: 4px 0 0 0;}
-.sailen_radio_inline_option {display: inline; padding-right: 18px;}
-table.sailen_metabox input[type="radio"] { margin: 0 5px 0 0; padding: 0;}
-table.sailen_metabox input[type="checkbox"] { margin: 0 5px 0 0; padding: 0;}
-table.sailen_metabox .mceLayout {border:1px solid #DFDFDF !important;}
-table.sailen_metabox .mceIframeContainer {background:#FFF;}
-table.sailen_metabox .meta_mce {width:97%;}
-table.sailen_metabox .meta_mce textarea {width:100%;}
-table.sailen_metabox .sailen_media_status {  margin: 10px 0 0 0;}
-table.sailen_metabox .sailen_media_status .img_status, table.sailen_metabox .sailen_media_status .embed_status {  position: relative; }
-table.sailen_metabox .sailen_media_status .img_status img, table.sailen_metabox .sailen_media_status .embed_status { border:1px solid #DFDFDF; background: #FAFAFA; max-width:350px; padding: 5px; -moz-border-radius: 2px; border-radius: 2px;}
-table.sailen_metabox .sailen_media_status .embed_status { float: left; max-width:800px;}
-table.sailen_metabox .sailen_media_status .img_status .sailen_remove_file_button, table.sailen_metabox .sailen_media_status .embed_status .sailen_remove_file_button { text-indent: -9999px; width: 16px; height: 16px; position: absolute; top: -5px; left: -5px;}
+table.savp_sailen_metabox td, table.savp_sailen_metabox th { border-bottom: 0px solid #E9E9E9; padding-top:5px; padding-right: 12px;}
+table.savp_sailen_metabox th { text-align: right; font-weight:bold;}
+table.savp_sailen_metabox th label { margin-top:5px; display:block;}
+p.savp_sailen_metabox_description { color: #AAA; font-style: italic; margin: 2px 0 !important;}
+span.savp_sailen_metabox_description { color: #AAA; font-style: italic;}
+table.savp_sailen_metabox input, table.savp_sailen_metabox textarea { font-size:12px; padding: 5px; }
+table.savp_sailen_metabox input[type=text], table.savp_sailen_metabox textarea { width: 97%; }
+table.savp_sailen_metabox textarea.savp_sailen_textarea_code { font-family: Consolas,Monaco,monospace; line-height: 16px; }
+table.savp_sailen_metabox input.savp_sailen_text_small { width: 100px; margin-right: 15px;}
+table.savp_sailen_metabox input.savp_sailen_timepicker { width: 100px; margin-right: 15px;}
+table.savp_sailen_metabox input.savp_sailen_text_money { width: 90px; margin-right: 15px;}
+table.savp_sailen_metabox input.savp_sailen_text_medium { width: 230px;}
+table.savp_sailen_metabox input.savp_sailen_upload_file { width: 65%; }
+table.savp_sailen_metabox li { font-size:12px; margin: 1px 0 5px 0; line-height: 16px; }
+table.savp_sailen_metabox ul { padding-top:5px; margin: 0; }
+table.savp_sailen_metabox select { font-size:12px; margin-top: 3px; width: 230px;}
+table.savp_sailen_metabox input:focus, table.savp_sailen_metabox textarea:focus { background: #fffff8;}
+.savp_sailen_metabox_title { margin: 0 0 5px 0; padding: 5px 0 0 0; font: italic 24px/35px Georgia,"Times New Roman","Bitstream Charter",Times,serif;}
+.savp_sailen_radio_inline { padding: 4px 0 0 0;}
+.savp_sailen_radio_inline_option {display: inline; padding-right: 18px;}
+table.savp_sailen_metabox input[type="radio"] { margin: 0 5px 0 0; padding: 0;}
+table.savp_sailen_metabox input[type="checkbox"] { margin: 0 5px 0 0; padding: 0;}
+table.savp_sailen_metabox .mceLayout {border:1px solid #DFDFDF !important;}
+table.savp_sailen_metabox .mceIframeContainer {background:#FFF;}
+table.savp_sailen_metabox .meta_mce {width:97%;}
+table.savp_sailen_metabox .meta_mce textarea {width:100%;}
+table.savp_sailen_metabox .savp_sailen_media_status {  margin: 10px 0 0 0;}
+table.savp_sailen_metabox .savp_sailen_media_status .img_status, table.savp_sailen_metabox .savp_sailen_media_status .embed_status {  position: relative; }
+table.savp_sailen_metabox .savp_sailen_media_status .img_status img, table.savp_sailen_metabox .savp_sailen_media_status .embed_status { border:1px solid #DFDFDF; background: #FAFAFA; max-width:350px; padding: 5px; -moz-border-radius: 2px; border-radius: 2px;}
+table.savp_sailen_metabox .savp_sailen_media_status .embed_status { float: left; max-width:800px;}
+table.savp_sailen_metabox .savp_sailen_media_status .img_status .savp_sailen_remove_file_button, table.savp_sailen_metabox .savp_sailen_media_status .embed_status .savp_sailen_remove_file_button { text-indent: -9999px; width: 16px; height: 16px; position: absolute; top: -5px; left: -5px;}
 /* Sidebar placement adjustments */
-.inner-sidebar table.sailen_metabox input[type=text], table.sailen_metabox textarea { width: 100%; }
-.inner-sidebar table.sailen_metabox .sailen_media_status .img_status img, .inner-sidebar table.sailen_metabox .sailen_media_status .embed_status img { width: 90%; }
-.postbox table.sailen_metabox .cmb-spinner { float: left; }
+.inner-sidebar table.savp_sailen_metabox input[type=text], table.savp_sailen_metabox textarea { width: 100%; }
+.inner-sidebar table.savp_sailen_metabox .savp_sailen_media_status .img_status img, .inner-sidebar table.savp_sailen_metabox .savp_sailen_media_status .embed_status img { width: 90%; }
+.postbox table.savp_sailen_metabox .cmb-spinner { float: left; }
 /**
  * Color picker
  */
-table.sailen_metabox .wp-color-result, table.sailen_metabox .wp-picker-input-wrap { vertical-align: middle; }
-table.sailen_metabox .wp-color-result, table.sailen_metabox .wp-picker-container { margin: 0 10px 0 0; width: 80px; height: 22px; display: block; box-shadow: none;}
+table.savp_sailen_metabox .wp-color-result, table.savp_sailen_metabox .wp-picker-input-wrap { vertical-align: middle; }
+table.savp_sailen_metabox .wp-color-result, table.savp_sailen_metabox .wp-picker-container { margin: 0 10px 0 0; width: 80px; height: 22px; display: block; box-shadow: none;}
 /**
  * Timepicker
  */
@@ -58,88 +58,88 @@ div.time-picker li.selected { background: #0063CE; color: #fff; }
  *
  * http://docs.jquery.com/UI/Theming/API
  */
- .sailen_element .ui-helper-hidden { display: none; }
- .sailen_element .ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
- .sailen_element .ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
- .sailen_element .ui-helper-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
- .sailen_element .ui-helper-clearfix { display: inline-block; }
+ .savp_sailen_element .ui-helper-hidden { display: none; }
+ .savp_sailen_element .ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
+ .savp_sailen_element .ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+ .savp_sailen_element .ui-helper-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+ .savp_sailen_element .ui-helper-clearfix { display: inline-block; }
  * html .ui-helper-clearfix { height:1%; }
- .sailen_element .ui-helper-clearfix { display:block; }
- .sailen_element .ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
- .sailen_element .ui-state-disabled { cursor: default !important; }
- .sailen_element .ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
- .sailen_element .ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
- .sailen_element .ui-widget { font-family: Verdana,Arial,sans-serif; font-size: 1.1em; }
- .sailen_element .ui-widget .ui-widget { font-size: 1em; }
- .sailen_element .ui-widget input, .sailen_element .ui-widget select, .sailen_element .ui-widget textarea, .sailen_element .ui-widget button { font-family: Verdana,Arial,sans-serif; font-size: 1em; }
- .sailen_element .ui-widget-content { border: 1px solid #aaaaaa; background: #ffffff 50% 50% repeat-x; color: #222222; }
- .sailen_element .ui-widget-content a { color: #222222; }
- .sailen_element .ui-widget-header { border: 1px solid #aaaaaa; background: #cccccc; color: #222222; font-weight: bold; }
- .sailen_element .ui-widget-header a { color: #222222; }
- .sailen_element .ui-state-default, .sailen_element .ui-widget-content .ui-state-default, .sailen_element .ui-widget-header .ui-state-default { border: 1px solid #d3d3d3; background: #e6e6e6; font-weight: normal; color: #555555; }
- .sailen_element .ui-state-default a, .sailen_element .ui-state-default a:link, .sailen_element .ui-state-default a:visited { color: #555555; text-decoration: none; }
- .sailen_element .ui-state-hover, .sailen_element .ui-widget-content .ui-state-hover, .sailen_element .ui-widget-header .ui-state-hover, .sailen_element .ui-state-focus, .sailen_element .ui-widget-content .ui-state-focus, .sailen_element .ui-widget-header .ui-state-focus { border: 1px solid #999999; background: #dadada; font-weight: normal; color: #212121; }
- .sailen_element .ui-state-hover a, .sailen_element .ui-state-hover a:hover { color: #212121; text-decoration: none; }
- .sailen_element .ui-state-active, .sailen_element .ui-widget-content .ui-state-active, .sailen_element .ui-widget-header .ui-state-active { border: 1px solid #aaaaaa; background: #ffffff; font-weight: normal; color: #212121; }
- .sailen_element .ui-state-active a, .sailen_element .ui-state-active a:link, .sailen_element .ui-state-active a:visited { color: #212121; text-decoration: none; }
- .sailen_element .ui-widget :active { outline: none; }
- .sailen_element .ui-state-highlight, .sailen_element .ui-widget-content .ui-state-highlight, .sailen_element .ui-widget-header .ui-state-highlight  {border: 1px solid #fcefa1; background: #fbf9ee; color: #363636; }
- .sailen_element .ui-state-highlight a, .sailen_element .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #363636; }
- .sailen_element .ui-state-error, .sailen_element .ui-widget-content .ui-state-error, .sailen_element .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #fef1ec; color: #cd0a0a; }
- .sailen_element .ui-state-error a, .sailen_element .ui-widget-content .ui-state-error a, .sailen_element .ui-widget-header .ui-state-error a { color: #cd0a0a; }
- .sailen_element .ui-state-error-text, .sailen_element .ui-widget-content .ui-state-error-text, .sailen_element .ui-widget-header .ui-state-error-text { color: #cd0a0a; }
- .sailen_element .ui-priority-primary, .sailen_element .ui-widget-content .ui-priority-primary, .sailen_element .ui-widget-header .ui-priority-primary { font-weight: bold; }
- .sailen_element .ui-priority-secondary, .sailen_element .ui-widget-content .ui-priority-secondary,  .ui-widget-header .ui-priority-secondary { opacity: .7; filter:Alpha(Opacity=70); font-weight: normal; }
- .sailen_element .ui-state-disabled, .sailen_element .ui-widget-content .ui-state-disabled, .sailen_element .ui-widget-header .ui-state-disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }
- .sailen_element .ui-corner-all, .sailen_element .ui-corner-top, .sailen_element .ui-corner-left, .sailen_element .ui-corner-tl { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; -khtml-border-top-left-radius: 4px; border-top-left-radius: 4px; }
- .sailen_element .ui-corner-all, .sailen_element .ui-corner-top, .sailen_element .ui-corner-right, .sailen_element .ui-corner-tr { -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; -khtml-border-top-right-radius: 4px; border-top-right-radius: 4px; }
- .sailen_element .ui-corner-all, .sailen_element .ui-corner-bottom, .sailen_element .ui-corner-left, .sailen_element .ui-corner-bl { -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; -khtml-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; }
- .sailen_element .ui-corner-all, .sailen_element .ui-corner-bottom, .sailen_element .ui-corner-right, .sailen_element .ui-corner-br { -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; -khtml-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; }
- .sailen_element .ui-widget-overlay { background: #aaaaaa; opacity: .30;filter:Alpha(Opacity=30); }
- .sailen_element .ui-widget-shadow { margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa; opacity: .30;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -khtml-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
- .sailen_element .ui-datepicker { width: 17em; padding: .2em .2em 0; display: none; }
- .sailen_element .ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; }
- .sailen_element .ui-datepicker .ui-datepicker-prev, .sailen_element .ui-datepicker .ui-datepicker-next { position:absolute; top: 2px; width: 1.8em; height: 1.8em; }
- .sailen_element .ui-datepicker .ui-datepicker-prev-hover, .sailen_element .ui-datepicker .ui-datepicker-next-hover { top: 1px; }
- .sailen_element .ui-datepicker .ui-datepicker-prev { left:2px; }
- .sailen_element .ui-datepicker .ui-datepicker-next { right:2px; }
- .sailen_element .ui-datepicker .ui-datepicker-prev-hover { left:1px; }
- .sailen_element .ui-datepicker .ui-datepicker-next-hover { right:1px; }
- .sailen_element .ui-datepicker .ui-datepicker-prev span, .sailen_element .ui-datepicker .ui-datepicker-next span { display: block; position: absolute; left: 50%; margin-left: -8px; top: 50%; margin-top: -8px;  }
- .sailen_element .ui-datepicker .ui-datepicker-title { margin: 0 2.3em; line-height: 1.8em; text-align: center; }
- .sailen_element .ui-datepicker .ui-datepicker-title select { font-size:1em; margin:1px 0; }
- .sailen_element .ui-datepicker select.ui-datepicker-month-year {width: 100%;}
- .sailen_element .ui-datepicker select.ui-datepicker-month,
- .sailen_element .ui-datepicker select.ui-datepicker-year { width: 49%;}
- .sailen_element .ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; }
- .sailen_element .ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
- .sailen_element .ui-datepicker td { border: 0; padding: 1px; }
- .sailen_element .ui-datepicker td span, .sailen_element .ui-datepicker td a { display: block; padding: .2em; text-align: right; text-decoration: none; }
- .sailen_element .ui-datepicker .ui-datepicker-buttonpane { background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0; }
- .sailen_element .ui-datepicker .ui-datepicker-buttonpane button { float: right; margin: .5em .2em .4em; cursor: pointer; padding: .2em .6em .3em .6em; width:auto; overflow:visible; }
- .sailen_element .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
- .sailen_element .ui-datepicker.ui-datepicker-multi { width:auto; }
- .sailen_element .ui-datepicker-multi .ui-datepicker-group { float:left; }
- .sailen_element .ui-datepicker-multi .ui-datepicker-group table { width:95%; margin:0 auto .4em; }
- .sailen_element .ui-datepicker-multi-2 .ui-datepicker-group { width:50%; }
- .sailen_element .ui-datepicker-multi-3 .ui-datepicker-group { width:33.3%; }
- .sailen_element .ui-datepicker-multi-4 .ui-datepicker-group { width:25%; }
- .sailen_element .ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header { border-left-width:0; }
- .sailen_element .ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header { border-left-width:0; }
- .sailen_element .ui-datepicker-multi .ui-datepicker-buttonpane { clear:left; }
- .sailen_element .ui-datepicker-row-break { clear:both; width:100%; font-size:0em; }
- .sailen_element .ui-datepicker-rtl { direction: rtl; }
- .sailen_element .ui-datepicker-rtl .ui-datepicker-prev { right: 2px; left: auto; }
- .sailen_element .ui-datepicker-rtl .ui-datepicker-next { left: 2px; right: auto; }
- .sailen_element .ui-datepicker-rtl .ui-datepicker-prev:hover { right: 1px; left: auto; }
- .sailen_element .ui-datepicker-rtl .ui-datepicker-next:hover { left: 1px; right: auto; }
- .sailen_element .ui-datepicker-rtl .ui-datepicker-buttonpane { clear:right; }
- .sailen_element .ui-datepicker-rtl .ui-datepicker-buttonpane button { float: left; }
- .sailen_element .ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current { float:right; }
- .sailen_element .ui-datepicker-rtl .ui-datepicker-group { float:right; }
- .sailen_element .ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
- .sailen_element .ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
- .sailen_element .ui-datepicker-cover {
+ .savp_sailen_element .ui-helper-clearfix { display:block; }
+ .savp_sailen_element .ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+ .savp_sailen_element .ui-state-disabled { cursor: default !important; }
+ .savp_sailen_element .ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
+ .savp_sailen_element .ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+ .savp_sailen_element .ui-widget { font-family: Verdana,Arial,sans-serif; font-size: 1.1em; }
+ .savp_sailen_element .ui-widget .ui-widget { font-size: 1em; }
+ .savp_sailen_element .ui-widget input, .savp_sailen_element .ui-widget select, .savp_sailen_element .ui-widget textarea, .savp_sailen_element .ui-widget button { font-family: Verdana,Arial,sans-serif; font-size: 1em; }
+ .savp_sailen_element .ui-widget-content { border: 1px solid #aaaaaa; background: #ffffff 50% 50% repeat-x; color: #222222; }
+ .savp_sailen_element .ui-widget-content a { color: #222222; }
+ .savp_sailen_element .ui-widget-header { border: 1px solid #aaaaaa; background: #cccccc; color: #222222; font-weight: bold; }
+ .savp_sailen_element .ui-widget-header a { color: #222222; }
+ .savp_sailen_element .ui-state-default, .savp_sailen_element .ui-widget-content .ui-state-default, .savp_sailen_element .ui-widget-header .ui-state-default { border: 1px solid #d3d3d3; background: #e6e6e6; font-weight: normal; color: #555555; }
+ .savp_sailen_element .ui-state-default a, .savp_sailen_element .ui-state-default a:link, .savp_sailen_element .ui-state-default a:visited { color: #555555; text-decoration: none; }
+ .savp_sailen_element .ui-state-hover, .savp_sailen_element .ui-widget-content .ui-state-hover, .savp_sailen_element .ui-widget-header .ui-state-hover, .savp_sailen_element .ui-state-focus, .savp_sailen_element .ui-widget-content .ui-state-focus, .savp_sailen_element .ui-widget-header .ui-state-focus { border: 1px solid #999999; background: #dadada; font-weight: normal; color: #212121; }
+ .savp_sailen_element .ui-state-hover a, .savp_sailen_element .ui-state-hover a:hover { color: #212121; text-decoration: none; }
+ .savp_sailen_element .ui-state-active, .savp_sailen_element .ui-widget-content .ui-state-active, .savp_sailen_element .ui-widget-header .ui-state-active { border: 1px solid #aaaaaa; background: #ffffff; font-weight: normal; color: #212121; }
+ .savp_sailen_element .ui-state-active a, .savp_sailen_element .ui-state-active a:link, .savp_sailen_element .ui-state-active a:visited { color: #212121; text-decoration: none; }
+ .savp_sailen_element .ui-widget :active { outline: none; }
+ .savp_sailen_element .ui-state-highlight, .savp_sailen_element .ui-widget-content .ui-state-highlight, .savp_sailen_element .ui-widget-header .ui-state-highlight  {border: 1px solid #fcefa1; background: #fbf9ee; color: #363636; }
+ .savp_sailen_element .ui-state-highlight a, .savp_sailen_element .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #363636; }
+ .savp_sailen_element .ui-state-error, .savp_sailen_element .ui-widget-content .ui-state-error, .savp_sailen_element .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #fef1ec; color: #cd0a0a; }
+ .savp_sailen_element .ui-state-error a, .savp_sailen_element .ui-widget-content .ui-state-error a, .savp_sailen_element .ui-widget-header .ui-state-error a { color: #cd0a0a; }
+ .savp_sailen_element .ui-state-error-text, .savp_sailen_element .ui-widget-content .ui-state-error-text, .savp_sailen_element .ui-widget-header .ui-state-error-text { color: #cd0a0a; }
+ .savp_sailen_element .ui-priority-primary, .savp_sailen_element .ui-widget-content .ui-priority-primary, .savp_sailen_element .ui-widget-header .ui-priority-primary { font-weight: bold; }
+ .savp_sailen_element .ui-priority-secondary, .savp_sailen_element .ui-widget-content .ui-priority-secondary,  .ui-widget-header .ui-priority-secondary { opacity: .7; filter:Alpha(Opacity=70); font-weight: normal; }
+ .savp_sailen_element .ui-state-disabled, .savp_sailen_element .ui-widget-content .ui-state-disabled, .savp_sailen_element .ui-widget-header .ui-state-disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }
+ .savp_sailen_element .ui-corner-all, .savp_sailen_element .ui-corner-top, .savp_sailen_element .ui-corner-left, .savp_sailen_element .ui-corner-tl { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; -khtml-border-top-left-radius: 4px; border-top-left-radius: 4px; }
+ .savp_sailen_element .ui-corner-all, .savp_sailen_element .ui-corner-top, .savp_sailen_element .ui-corner-right, .savp_sailen_element .ui-corner-tr { -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; -khtml-border-top-right-radius: 4px; border-top-right-radius: 4px; }
+ .savp_sailen_element .ui-corner-all, .savp_sailen_element .ui-corner-bottom, .savp_sailen_element .ui-corner-left, .savp_sailen_element .ui-corner-bl { -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; -khtml-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; }
+ .savp_sailen_element .ui-corner-all, .savp_sailen_element .ui-corner-bottom, .savp_sailen_element .ui-corner-right, .savp_sailen_element .ui-corner-br { -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; -khtml-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; }
+ .savp_sailen_element .ui-widget-overlay { background: #aaaaaa; opacity: .30;filter:Alpha(Opacity=30); }
+ .savp_sailen_element .ui-widget-shadow { margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa; opacity: .30;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -khtml-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
+ .savp_sailen_element .ui-datepicker { width: 17em; padding: .2em .2em 0; display: none; }
+ .savp_sailen_element .ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; }
+ .savp_sailen_element .ui-datepicker .ui-datepicker-prev, .savp_sailen_element .ui-datepicker .ui-datepicker-next { position:absolute; top: 2px; width: 1.8em; height: 1.8em; }
+ .savp_sailen_element .ui-datepicker .ui-datepicker-prev-hover, .savp_sailen_element .ui-datepicker .ui-datepicker-next-hover { top: 1px; }
+ .savp_sailen_element .ui-datepicker .ui-datepicker-prev { left:2px; }
+ .savp_sailen_element .ui-datepicker .ui-datepicker-next { right:2px; }
+ .savp_sailen_element .ui-datepicker .ui-datepicker-prev-hover { left:1px; }
+ .savp_sailen_element .ui-datepicker .ui-datepicker-next-hover { right:1px; }
+ .savp_sailen_element .ui-datepicker .ui-datepicker-prev span, .savp_sailen_element .ui-datepicker .ui-datepicker-next span { display: block; position: absolute; left: 50%; margin-left: -8px; top: 50%; margin-top: -8px;  }
+ .savp_sailen_element .ui-datepicker .ui-datepicker-title { margin: 0 2.3em; line-height: 1.8em; text-align: center; }
+ .savp_sailen_element .ui-datepicker .ui-datepicker-title select { font-size:1em; margin:1px 0; }
+ .savp_sailen_element .ui-datepicker select.ui-datepicker-month-year {width: 100%;}
+ .savp_sailen_element .ui-datepicker select.ui-datepicker-month,
+ .savp_sailen_element .ui-datepicker select.ui-datepicker-year { width: 49%;}
+ .savp_sailen_element .ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; }
+ .savp_sailen_element .ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
+ .savp_sailen_element .ui-datepicker td { border: 0; padding: 1px; }
+ .savp_sailen_element .ui-datepicker td span, .savp_sailen_element .ui-datepicker td a { display: block; padding: .2em; text-align: right; text-decoration: none; }
+ .savp_sailen_element .ui-datepicker .ui-datepicker-buttonpane { background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0; }
+ .savp_sailen_element .ui-datepicker .ui-datepicker-buttonpane button { float: right; margin: .5em .2em .4em; cursor: pointer; padding: .2em .6em .3em .6em; width:auto; overflow:visible; }
+ .savp_sailen_element .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
+ .savp_sailen_element .ui-datepicker.ui-datepicker-multi { width:auto; }
+ .savp_sailen_element .ui-datepicker-multi .ui-datepicker-group { float:left; }
+ .savp_sailen_element .ui-datepicker-multi .ui-datepicker-group table { width:95%; margin:0 auto .4em; }
+ .savp_sailen_element .ui-datepicker-multi-2 .ui-datepicker-group { width:50%; }
+ .savp_sailen_element .ui-datepicker-multi-3 .ui-datepicker-group { width:33.3%; }
+ .savp_sailen_element .ui-datepicker-multi-4 .ui-datepicker-group { width:25%; }
+ .savp_sailen_element .ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header { border-left-width:0; }
+ .savp_sailen_element .ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header { border-left-width:0; }
+ .savp_sailen_element .ui-datepicker-multi .ui-datepicker-buttonpane { clear:left; }
+ .savp_sailen_element .ui-datepicker-row-break { clear:both; width:100%; font-size:0em; }
+ .savp_sailen_element .ui-datepicker-rtl { direction: rtl; }
+ .savp_sailen_element .ui-datepicker-rtl .ui-datepicker-prev { right: 2px; left: auto; }
+ .savp_sailen_element .ui-datepicker-rtl .ui-datepicker-next { left: 2px; right: auto; }
+ .savp_sailen_element .ui-datepicker-rtl .ui-datepicker-prev:hover { right: 1px; left: auto; }
+ .savp_sailen_element .ui-datepicker-rtl .ui-datepicker-next:hover { left: 1px; right: auto; }
+ .savp_sailen_element .ui-datepicker-rtl .ui-datepicker-buttonpane { clear:right; }
+ .savp_sailen_element .ui-datepicker-rtl .ui-datepicker-buttonpane button { float: left; }
+ .savp_sailen_element .ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current { float:right; }
+ .savp_sailen_element .ui-datepicker-rtl .ui-datepicker-group { float:right; }
+ .savp_sailen_element .ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+ .savp_sailen_element .ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+ .savp_sailen_element .ui-datepicker-cover {
      display: none; /*sorry for IE5*/
      display/**/: block; /*sorry for IE5*/
      position: absolute; /*must have*/
@@ -158,7 +158,7 @@ div.time-picker li.selected { background: #0063CE; color: #fff; }
 .select_full {
 	width: 94%;
 }
-.sailen_textarea_small {
+.savp_sailen_textarea_small {
 	width: 94%;
 	height: 110px;
 }
@@ -166,7 +166,7 @@ div.time-picker li.selected { background: #0063CE; color: #fff; }
 max-width: 180px !important;
 }
 /**/
-#sailen_css_editor .iris-picker.iris-border {
+#savp_sailen_css_editor .iris-picker.iris-border {
 	z-index: 9999;
 }
 .button.button-small.wp-picker-clear {
@@ -176,28 +176,28 @@ max-width: 180px !important;
 	padding: 2px 10px !important;
 	height: 27px;
 }
-#sailen_css_editor .wp-color-picker {
+#savp_sailen_css_editor .wp-color-picker {
 	z-index: 9999;
 	float: left;
 	width: 80px !important;
 }
-#sailen_css_editor .wp-picker-input-wrap {
+#savp_sailen_css_editor .wp-picker-input-wrap {
 	z-index: 9999;
 	width: 160px;
 }
-#sailen_css_editor .wp-picker-input-wrap {
+#savp_sailen_css_editor .wp-picker-input-wrap {
 	z-index: 99999;
 	position: relative;
 	top: -27px;
 	left: 120px;
 }
-#sailen_css_editor .wp-picker-holder {
+#savp_sailen_css_editor .wp-picker-holder {
 	position: relative;
 	z-index: 9999;
 	top: -29px;
 	right: 0;
 }
-.sailen_media_status>img {
+.savp_sailen_media_status>img {
 	width: 180px !important;
 }
 td > div.star {

@@ -6,14 +6,14 @@
  * @param array $meta_boxes 
  * @return meta-box elements
  */
-function sailen_metaboxes( array $meta_boxes ) {
+function savp_sailen_metaboxes( array $meta_boxes ) {
 	// Start with an underscore to hide fields from custom fields list
-	$prefix = '_sailen_';
+	$prefix = '_savp_sailen_';
 	$post_types=get_post_types('','names');
  	
 	$meta_boxes[] = array(
 		'id'         => 'review_metabox',
-		'title'      => __('Sailenseo','rich-snippets'),
+		'title'      => __('SailenSeo','rich-snippets'),
 		'pages'      => $post_types, //array( 'post','page' ), // Custom Post types
 		'context'    => 'normal',
 		'priority'   => 'high',
@@ -26,7 +26,7 @@ function sailen_metaboxes( array $meta_boxes ) {
 				'name' => __('Meta Title','rich-snippets'),
 				'desc' => __('If you don&#144t want to use the post title for sharing the post on social media but instead want another title there, write it here.','rich-snippets'),
 				'id'   => $prefix . 'og_title',
-				'class' => 'sailen_og_title',
+				'class' => 'savp_sailen_og_title',
 				'type' => 'text',
 				),	
 
@@ -35,7 +35,7 @@ function sailen_metaboxes( array $meta_boxes ) {
 				'name' => __('Meta Description','rich-snippets'),
 				'desc' => __('If you don&#144t want to use the meta description for sharing the post on social media but want another description there, write it here.','rich-snippets'),
 				'id'   => $prefix . 'og_description',
-				'class' => 'sailen_og_description',
+				'class' => 'savp_sailen_og_description',
 				'type' => 'textarea',
 			),		
 
@@ -43,7 +43,7 @@ function sailen_metaboxes( array $meta_boxes ) {
 				'name' => __('Meta Image','rich-snippets'),
 				'desc' => __('If you want to override the image used on social media for this post, upload &#147 choose an image or add the URL here. The recommended image size for Facebook is 1200 × 630px.','rich-snippets'),
 				'id'   => $prefix . 'og_image',
-				'class' => 'sailen_og_image',
+				'class' => 'savp_sailen_og_image',
 				'type' => 'file',
 			),		
 
@@ -653,7 +653,7 @@ function sailen_metaboxes( array $meta_boxes ) {
 
 			array(
 				'name' => __('Embed Video','rich-snippets'),
-				'desc' => __('A URL pointing to a player for the specific video. Usually this is the information in the src element of an &lt;embed&gt;tag. <br>Example: <br>Youtube: https://www.youtube.com/embed/CibazcCevOk <br>Dailymotion: http://www.dailymotion.com/swf/x1o2g<br><div class="sailen_vd_note"><h3>Add only one url either in "Video" or "Embed Video" field. Dont use both.</h3></div>','rich-snippets'),
+				'desc' => __('A URL pointing to a player for the specific video. Usually this is the information in the src element of an &lt;embed&gt;tag. <br>Example: <br>Youtube: https://www.youtube.com/embed/CibazcCevOk <br>Dailymotion: http://www.dailymotion.com/swf/x1o2g<br><div class="savp_sailen_vd_note"><h3>Add only one url either in "Video" or "Embed Video" field. Dont use both.</h3></div>','rich-snippets'),
 				'id'   => $prefix . 'video_emb_url',
 				'class' => 'video',
 				'type' => 'text',
