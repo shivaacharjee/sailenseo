@@ -9,6 +9,10 @@
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 Search engine optimisation tool to get more visibility & optimise content to display it as rich object using Rich snippets open graph & twitter cards
+
+##Sailenseo now available on WordPress.org##
+<a href="https://wordpress.org/plugins/sailen-seo/">Sailenseo plugin on WordPress</a>
+
 ## Sailenseo makes use of  Rich Snippets, OG for better performance ##
 
 ### What is a Rich Snippet? ###
