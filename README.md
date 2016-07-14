@@ -67,6 +67,8 @@ This plugin have that all.
 
 <img src="http://blog.sempo.org/wp-content/uploads/Image5SEMPO.png" data-imageCredit='http://blog.sempo.org'/>
 
+<i>Image-source: http://blog.sempo.org </i>
+
 
 
 ## Installation ##
