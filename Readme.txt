@@ -10,8 +10,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Search engine optimisation tool to get more visibility and optimise content to display it as rich object using Rich snippets, open graph, TwitterCards
 
 == Description ==
+
+* For undestanding better please refer to FAQ section. You will  exctly know how this plugin would be so helpful for you.
+
 Sailenseo makes use of  Rich Snippets, Open Graph , Twitter Cards for better performance
--For undestanding better please refer to FAQ section. You will get exctly know how this plugin helpful for you.
+
 Since this plugin make use of Rich Snippets, Open Graph, Twitter Cards so let see what are these
 
  What is Open Graph?
