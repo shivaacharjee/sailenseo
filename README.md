@@ -15,7 +15,7 @@ Search engine optimisation tool to get more visibility & optimise content to dis
 
 
 ### How does a Rich Snippet, Open Graph and Twitter Cards help? ###
-For undestanding better please refer to FAQ section. You will get exctly know how this plugin is helpful for you.
+For undestanding better please refer to FAQ section. You will  exctly know how this plugin is helpful for you.
 
 
 ### Supported Content Types - ###
