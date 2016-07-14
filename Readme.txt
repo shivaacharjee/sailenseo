@@ -49,7 +49,7 @@ This plugin supports the following types of Schemas:
 
 
 
-== Frequently Asked Questions ==
+### Frequently Asked Questions ###
 
 
 
