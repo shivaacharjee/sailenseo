@@ -65,7 +65,7 @@ This plugin have that all.
 
 ### This is how Search engines will treat your content ###
 
-<img src="http://socialnotz.com/images/battlestar-galactica-google.png"/>
+<img src="http://blog.sempo.org/wp-content/uploads/Image5SEMPO.png" data-imageCredit='http://blog.sempo.org'/>
 
 
 
