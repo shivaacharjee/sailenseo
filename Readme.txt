@@ -11,7 +11,7 @@ Search engine optimisation tool to get more visibility and optimise content to d
 
 == Description ==
 Sailenseo makes use of  Rich Snippets, Open Graph , Twitter Cards for better performance
-
+-For undestanding better please refer to FAQ section. You will get exctly know how this plugin helpful for you.
 Since this plugin make use of Rich Snippets, Open Graph, Twitter Cards so let see what are these
 
  What is Open Graph?
@@ -30,7 +30,7 @@ What is Twitter cards
 
 How does a Rich Snippet, Open Graph and Twitter Cards help?
 
-For undestanding better please refer to FAQ section. You will get exctly know how this plugin helpful for you.
+
 
 Supported Content Types -
 This plugin supports the following types of Schemas:
