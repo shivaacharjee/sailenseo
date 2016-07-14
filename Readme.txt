@@ -57,13 +57,13 @@ This plugin supports the following types of Schemas:
 Rich Snippets provide a small sample of a site’s content on Search Engine Result Pages (SERPs) of search engines such as Google, Yahoo and Bing. They enhance your search listing, making it more enticing for users to click on and easier for search engines to extract information.Adding Rich Snippets to your site won’t affect the appearance or content of your pages; rather, everything is done behind the scenes in your site’s HTML code. To display Rich Snippets, you just need to tweak the code of your website with some additional tags.
  
 
-= How does a Rich Snippet help? =
-- It gives search engines only the important & precise information to display in search result snippets.
-- Rich Snippets are very interactive (photos, star ratings, price, author, etc.) to let you stand out from competition
-- Helps you rank higher in search results
-- Helps Facebook/twitter/G+ display customized  information when users share your links on those platform
+= What is Open Graph? =
+- The Open Graph protocol enables any web page to become a rich object in a social graph. For instance, this is used on Facebook to allow any web page to have the same functionality as any other object on Facebook.
 
-  
+= What is Twitter cards =
+- With Twitter Cards, you can attach rich photos, videos and media experience to Tweets that drive traffic to your website. Simply add a few lines of HTML to your webpage, and users who Tweet links to your content will have a “Card” added to the Tweet that’s visible to all of their followers.
+
+This plugin have that all. 
 
 == Screenshots ==
 
