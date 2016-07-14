@@ -32,7 +32,7 @@ This plugin supports the following types of Schemas:
  
  ## FAQ ##
 
-###How to use Open Graph ,Twitter cards and Rich Snippets with this plugin?###
+###How does Open Graph ,Twitter cards and Rich Snippets helps?###
 
 On our plugin meta-box  three fields namely 'title', 'description', and 'image'. If you provide those details then this plugin will generate OG,Twitter Cards meta automatically on your page. How ever if you do not provide Title, the page title/site title is used same goes for description too.
 
@@ -49,6 +49,9 @@ So it goes like this
 Rich Snippets provide a small sample of a site’s content on Search Engine Result Pages (SERPs) of search engines such as Google, Yahoo and Bing. They enhance your search listing, making it more enticing for users to click on and easier for search engines to extract information.Adding Rich Snippets to your site won’t affect the appearance or content of your pages; rather, everything is done behind the scenes in your site’s HTML code. To display Rich Snippets, you just need to tweak the code of your website with some additional tags.
  
 
+
+
+
 ### What is Open Graph? ###
 - The Open Graph protocol enables any web page to become a rich object in a social graph. For instance, this is used on Facebook to allow any web page to have the same functionality as any other object on Facebook.
 
@@ -60,7 +63,9 @@ This plugin have that all.
 
 
 
+### This is how Search engines will treat your content ###
 
+<img src="http://socialnotz.com/images/battlestar-galactica-google.png"/>
 
 
 
