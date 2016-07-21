@@ -85,6 +85,10 @@ This plugin have that all.
 Now go and create a new post/page. There you will find a meta box, there you will find 'title, description, image upload options'
 and a select box from where you can select any conetent. Its okay not to use rich-snippet select box if not required the 'Title, Description and Image' is also quite sufficient for your post to provide best contents to the crawler.
 
+
+
+
+ 
 =======
  
 

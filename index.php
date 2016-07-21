@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Salenseo
+Plugin Name: Sailenseo
 Plugin URI: https://github.com//shivaacharjee/sailenseo
 Author: Shiva Acharjee
 Author URI: https://www.shivaacharjee.com
